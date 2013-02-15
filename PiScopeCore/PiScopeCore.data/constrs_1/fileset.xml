@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DARoots Version="1" Minor="25">
+  <FileSet Name="constrs_1" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/imports/Xlinx/spartanboard.ucf">
+      <FileInfo>
+        <Attr Name="ImportPath" Val="C:/documents/xilinx/spi_slave_test/spi_slave_test.srcs/constrs_1/imports/Xlinx/spartanboard.ucf"/>
+        <Attr Name="ImportTime" Val="1360595402"/>
+        <Attr Name="UsedInSynthesis" Val="1"/>
+        <Attr Name="UsedInImplementation" Val="1"/>
+        <Attr Name="UsedInSimulation" Val="1"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/imports/Xlinx/spartanboard.ucf"/>
+      <Option Name="ConstrsType" Val="UCF"/>
+    </Config>
+  </FileSet>
+</DARoots>

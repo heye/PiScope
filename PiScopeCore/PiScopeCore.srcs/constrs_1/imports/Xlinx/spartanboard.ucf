@@ -1,0 +1,165 @@
+# alle Taster liefern nicht gedrueckt einen HIGH-Pegel (sind also low-active)
+
+# Oszillator 25 MHz
+NET "clk" LOC = P55;
+NET "SCK" LOC = "P56";
+#NET "GCK1"       LOC = "P56"
+#NET "GCK2"       LOC = "P52"
+#NET "GCK3"       LOC = "P53"
+
+## Taster
+NET "reset" LOC = P69;
+#NET "s1" LOC = P20;
+#NET "s2" LOC = P21;
+#NET "S3"         LOC = "P23";  
+
+## UART
+#NET "RXD"	     LOC = "P26";
+#NET "TXD"	     LOC = "P25";
+
+## LED-Bar
+NET "led[0]" LOC = P112;
+NET "led[1]" LOC = P113;
+NET "led[2]" LOC = P116;
+NET "led[3]" LOC = P118;
+NET "led[4]" LOC = P119;
+NET "led[5]" LOC = P122;
+NET "led[6]" LOC = P123;
+NET "led[7]" LOC = P124;
+
+
+## Display
+## Display data lines
+NET "d[0]" LOC = P132;
+NET "d[1]" LOC = P130;
+NET "d[2]" LOC = P128;
+NET "d[3]" LOC = P127;
+NET "d[4]" LOC = P129;
+NET "d[5]" LOC = P131;
+NET "d[6]" LOC = P135;
+## Display address lines
+# A(0)
+NET "a[0]" LOC = P137;
+# A(1)
+NET "a[1]" LOC = P140;
+## Display control lines
+# Clear
+NET "wr" LOC = P141;
+
+
+## ADC Data
+NET "Data<0>"      LOC = "P1";      #p3 0
+NET "Data<1>"      LOC = "P2";
+NET "Data<2>"      LOC = "P4";
+NET "Data<3>"      LOC = "P5";
+NET "Data<4>"      LOC = "P6";
+NET "Data<5>"      LOC = "P7";
+NET "Data<6>"      LOC = "P8";
+NET "Data<7>"      LOC = "P10";     #p3 7
+NET "Data<8>"      LOC = "P125";    #x 1
+NET "Data<9>"      LOC = "P12";     #x 13
+
+# ADC Clock
+NET "clk_adc"      LOC = "P11";     #x12
+
+## Keyboard
+#NET "COL<0>"       LOC = "P36";
+#NET "COL<1>"       LOC = "P41";
+#NET "COL<2>"       LOC = "P46";
+#NET "ROW<0>"       LOC = "P50";
+#NET "ROW<1>"       LOC = "P52";
+#NET "ROW<2>"       LOC = "P55";
+#NET "ROW<3>"       LOC = "P57";
+
+
+
+## Port 0
+#NET "P0DIR"      LOC = "P77";
+#NET "P0OE"       LOC = "P78";
+#NET "P0<0>"      LOC = "P79";
+#NET "P0<1>"      LOC = "P80";
+#NET "P0<2>"      LOC = "P82";
+#NET "P0<3>"      LOC = "P83";
+#NET "P0<4>"      LOC = "P84";
+#NET "P0<5>"      LOC = "P85";
+#NET "P0<6>"      LOC = "P86";
+#NET "P0<7>"      LOC = "P87";
+#
+## Port 1
+#NET "P1DIR"      LOC = "P103";
+#NET "P1OE"       LOC = "P102";
+#NET "P1<0>"      LOC = "P92";
+#NET "P1<1>"      LOC = "P93";
+#NET "P1<2>"      LOC = "P95";
+#NET "P1<3>"      LOC = "P96";
+#NET "P1<4>"      LOC = "P97";
+#NET "P1<5>"      LOC = "P98";
+#NET "P1<6>"      LOC = "P99";
+#NET "P1<7>"      LOC = "P100";
+#
+## Port 2
+NET "SS"        LOC = "P27";
+#NET "SCK"        LOC = "P2";
+NET "MISO"        LOC = "P28";
+NET "MOSI"        LOC = "P30";
+#
+#NET "P2<0>"      LOC = "P27";
+#NET "P2<1>"      LOC = "P28";
+#NET "P2<2>"      LOC = "P30";
+#NET "P2<3>"      LOC = "P31";
+#NET "P2<4>"      LOC = "P32";
+#NET "P2<5>"      LOC = "P33";
+#NET "P2<6>"      LOC = "P35";
+#NET "P2<7>"      LOC = "P36";
+#
+#
+## Port 3
+#NET "P3<0>"      LOC = "P1";
+#NET "P3<1>"      LOC = "P2";
+#NET "P3<2>"      LOC = "P4";
+#NET "P3<3>"      LOC = "P5";
+#NET "P3<4>"      LOC = "P6";
+#NET "P3<5>"      LOC = "P7";
+#NET "P3<6>"      LOC = "P8";
+#NET "P3<7>"      LOC = "P10";
+#
+##Bluetooth
+#NET "BT-RXD"	 LOC = "P13";
+#NET "BT-TXD"	 LOC = "P17";
+#NET "BT-RTS"	 LOC = "P14";
+#NET "BT-CTS"	 LOC = "P15";
+#NET "BT-RESET"	 LOC = "P18";
+#
+## Port X
+#NET "X<0>"       LOC = "P68";
+#NET "X<1>"       LOC = "P125";
+#NET "X<2>"       LOC = "P44";
+#NET "X<3>"       LOC = "P24";
+#NET "X<4>"       LOC = "P108";
+#NET "X<5>"       LOC = "P107";
+#NET "X<6>"       LOC = "P105";
+#NET "X<7>"       LOC = "P104";
+#NET "X<8>"       LOC = "P73";
+#NET "X<9>"       LOC = "P74";
+#NET "X<10>"      LOC = "P89";
+#NET "X<11>"      LOC = "P90";
+#NET "X<12>"      LOC = "P11";
+#NET "X<13>"      LOC = "P12";
+#NET "X<14>"      LOC = "P70";
+#NET "X<15>"      LOC = "P76";
+#
+#Config-Interface
+#NET "D0"         LOC = "P65";
+#NET "D1"         LOC = "P63";
+#NET "D2"         LOC = "P60";
+#NET "D3"         LOC = "P59";
+#NET "D4"         LOC = "P51";
+#NET "D5"         LOC = "P50";
+#NET "D6"         LOC = "P47";
+#NET "D7"         LOC = "P46";
+#NET "INIT_B"     LOC = "P58";
+#NET "CS_B"       LOC = "P40";
+#NET "RDWR_B"     LOC = "P41";
+#NET "BUSY"       LOC = "P57";
+#
+#NET "cnt[4]" KEEP = "FALSE";
