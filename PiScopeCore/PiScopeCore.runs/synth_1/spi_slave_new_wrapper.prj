@@ -1,0 +1,5 @@
+vhdl work "z:/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/ip/fifo_generator_v9_2_0/fifo_generator_v9_2_0_synth.vhd"
+vhdl work "z:/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/ip/fifo_generator_v9_2_0/fifo_generator_v9_2_0.vhd"
+vhdl work "Z:/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/spi_slave_new.vhd"
+vhdl work "Z:/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/Display.vhd"
+vhdl work "Z:/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/spi_slave_new_wrapper.vhd"

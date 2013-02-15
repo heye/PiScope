@@ -1,0 +1,22 @@
+# Date: Fri Feb 15 17:03:07 2013
+
+SET addpads = false
+SET asysymbol = true
+SET busformat = BusFormatAngleBracketNotRipped
+SET createndf = false
+SET designentry = VHDL
+SET device = xc3s400
+SET devicefamily = spartan3
+SET flowvendor = Other
+SET formalverification = false
+SET foundationsym = false
+SET implementationfiletype = Ngc
+SET package = tq144
+SET removerpms = false
+SET simulationfiles = Behavioral
+SET speedgrade = -4
+SET verilogsim = false
+SET vhdlsim = true
+SET workingdirectory = .\tmp\
+
+# CRC: 57548349

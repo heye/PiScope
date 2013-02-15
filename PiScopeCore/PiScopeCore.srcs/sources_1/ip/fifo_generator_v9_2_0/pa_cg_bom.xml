@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<BillOfMaterials Version="1" Minor="2">
+  <IPInstance name="fifo_generator_v9_2_0">
+    <FileSets>
+      <FileSet generator="apply_current_project_options_generator">
+        <File name="./apply_current_project_options_generator.xlog" type="ignore" timestamp="Fri Feb 15 17:50:44 GMT 2013" checksum="0xFFFFFFFF"></File>
+      </FileSet>
+      <FileSet generator="model_parameter_resolution_generator">
+        <File name="./model_parameter_resolution_generator.xlog" type="ignore" timestamp="Fri Feb 15 17:50:44 GMT 2013" checksum="0xFFFFFFFF"></File>
+      </FileSet>
+      <FileSet generator="ip_xco_generator">
+        <File name="./fifo_generator_v9_2_0.xco" type="xco" timestamp="Fri Feb 15 17:45:42 GMT 2013" checksum="0xEB70AAC0"></File>
+      </FileSet>
+      <FileSet generator="associated_files_generator">
+        <File name="./fifo_generator_v9_2_0/doc/fifo_generator_v9_2_vinfo.html" type="ignore" timestamp="Sat Jul 21 06:06:12 GMT 2012" checksum="0x592E1419"></File>
+        <File name="./fifo_generator_v9_2_0/fifo_generator_v9_2_readme.txt" type="ignore" timestamp="Sat Jul 21 06:06:12 GMT 2012" checksum="0x6BCEB3CC"></File>
+      </FileSet>
+      <FileSet generator="ejava_generator">
+        <File name="./fifo_generator_v9_2_0/example_design/fifo_generator_v9_2_0_exdes.ucf" type="ignore" timestamp="Fri Feb 15 17:45:47 GMT 2013" checksum="0x5D662CE6"></File>
+        <File name="./fifo_generator_v9_2_0/example_design/fifo_generator_v9_2_0_exdes.vhd" type="ignore" timestamp="Fri Feb 15 17:45:47 GMT 2013" checksum="0xF43C08C1"></File>
+        <File name="./fifo_generator_v9_2_0/example_design/fifo_generator_v9_2_0_exdes.xdc" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x77D89547"></File>
+        <File name="./fifo_generator_v9_2_0/implement/implement.bat" type="ignore" timestamp="Fri Feb 15 17:45:47 GMT 2013" checksum="0x24012A03"></File>
+        <File name="./fifo_generator_v9_2_0/implement/implement.sh" type="ignore" timestamp="Fri Feb 15 17:45:47 GMT 2013" checksum="0x5B684236"></File>
+        <File name="./fifo_generator_v9_2_0/implement/implement_synplify.bat" type="ignore" timestamp="Fri Feb 15 17:45:47 GMT 2013" checksum="0x85F00A75"></File>
+        <File name="./fifo_generator_v9_2_0/implement/implement_synplify.sh" type="ignore" timestamp="Fri Feb 15 17:45:47 GMT 2013" checksum="0x73925062"></File>
+        <File name="./fifo_generator_v9_2_0/implement/planAhead_ise.bat" type="ignore" timestamp="Fri Feb 15 17:45:49 GMT 2013" checksum="0x40444720"></File>
+        <File name="./fifo_generator_v9_2_0/implement/planAhead_ise.sh" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x50A788F6"></File>
+        <File name="./fifo_generator_v9_2_0/implement/planAhead_ise.tcl" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x849C2F7C"></File>
+        <File name="./fifo_generator_v9_2_0/implement/xst.prj" type="ignore" timestamp="Fri Feb 15 17:45:47 GMT 2013" checksum="0x1B5C4DA1"></File>
+        <File name="./fifo_generator_v9_2_0/implement/xst.scr" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x1AA24E3E"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/fifo_generator_v9_2_0_dgen.vhd" type="ignore" timestamp="Fri Feb 15 17:45:47 GMT 2013" checksum="0xD7D38EB6"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/fifo_generator_v9_2_0_dverif.vhd" type="ignore" timestamp="Fri Feb 15 17:45:47 GMT 2013" checksum="0x93C6EE4D"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/fifo_generator_v9_2_0_pctrl.vhd" type="ignore" timestamp="Fri Feb 15 17:45:47 GMT 2013" checksum="0xBF7885E7"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/fifo_generator_v9_2_0_pkg.vhd" type="ignore" timestamp="Fri Feb 15 17:45:47 GMT 2013" checksum="0x27552C5D"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/fifo_generator_v9_2_0_rng.vhd" type="ignore" timestamp="Fri Feb 15 17:45:47 GMT 2013" checksum="0xA615E551"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/fifo_generator_v9_2_0_synth.vhd" type="ignore" timestamp="Fri Feb 15 17:45:47 GMT 2013" checksum="0xAC10F843"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/fifo_generator_v9_2_0_tb.vhd" type="ignore" timestamp="Fri Feb 15 17:45:47 GMT 2013" checksum="0x296D3947"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/functional/simulate_isim.bat" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x306A90A2"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/functional/simulate_isim.sh" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x76AA3875"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/functional/simulate_mti.bat" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x0C3CDB0C"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/functional/simulate_mti.do" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0xA8BD5E09"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/functional/simulate_mti.sh" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x5FDBD750"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/functional/simulate_ncsim.bat" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x48B24217"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/functional/simulate_vcs.bat" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x6883A192"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/functional/ucli_commands.key" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0xD485023F"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/functional/vcs_session.tcl" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0xFFDD2627"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/functional/wave_isim.tcl" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0xDF7C63C6"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/functional/wave_mti.do" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x92C6F56A"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/functional/wave_ncsim.sv" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0xBDF4ABF6"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/timing/simulate_isim.bat" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x1EDFF675"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/timing/simulate_isim.sh" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x762A7299"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/timing/simulate_mti.bat" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x0C3CDB0C"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/timing/simulate_mti.do" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0xD9912E08"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/timing/simulate_mti.sh" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x5FDBD750"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/timing/simulate_ncsim.bat" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x58B2FA6F"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/timing/simulate_vcs.bat" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0xCDE231B7"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/timing/ucli_commands.key" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0xD485023F"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/timing/vcs_session.tcl" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0xC500A4E7"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/timing/wave_isim.tcl" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0xDF7C63C6"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/timing/wave_mti.do" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0x92C6F56A"></File>
+        <File name="./fifo_generator_v9_2_0/simulation/timing/wave_ncsim.sv" type="ignore" timestamp="Fri Feb 15 17:45:48 GMT 2013" checksum="0xBDF4ABF6"></File>
+      </FileSet>
+      <FileSet generator="ngc_netlist_generator">
+        <File name="./fifo_generator_v9_2_0.ngc" type="ngc" timestamp="Fri Feb 15 17:50:30 GMT 2013" checksum="0x44D7AAF2"></File>
+      </FileSet>
+      <FileSet generator="obfuscate_netlist_generator">
+        <File name="./obfuscate_netlist_generator.xlog" type="ignore" timestamp="Fri Feb 15 17:50:44 GMT 2013" checksum="0xFFFFFFFF"></File>
+      </FileSet>
+      <FileSet generator="padded_implementation_netlist_generator">
+        <File name="./padded_implementation_netlist_generator.xlog" type="ignore" timestamp="Fri Feb 15 17:50:44 GMT 2013" checksum="0xFFFFFFFF"></File>
+      </FileSet>
+      <FileSet generator="synthesis_instantiation_wrapper_generator">
+        <File name="./fifo_generator_v9_2_0_synth.vhd" type="vhdl" timestamp="Fri Feb 15 17:50:36 GMT 2013" checksum="0xD33EA69C"></File>
+      </FileSet>
+      <FileSet generator="structural_simulation_model_generator">
+        <File name="./fifo_generator_v9_2_0.vhd" type="vhdl" timestamp="Fri Feb 15 17:50:37 GMT 2013" checksum="0x7F2141A6"></File>
+      </FileSet>
+      <FileSet generator="xmdf_generator">
+        <File name="./fifo_generator_v9_2_0_xmdf.tcl" type="tclXmdf" timestamp="Fri Feb 15 17:50:39 GMT 2013" checksum="0xF65D7E82"></File>
+      </FileSet>
+    </FileSets>
+  </IPInstance>
+</BillOfMaterials>
