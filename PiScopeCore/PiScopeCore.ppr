@@ -2,13 +2,14 @@
 <Project Version="4" Minor="36">
 	<FileSet Dir="sources_1" File="fileset.xml"/>
 	<FileSet Dir="constrs_1" File="fileset.xml"/>
+	<RunSet Dir="runs" File="runs.xml"/>
 	<DefaultLaunch Dir="$PRUNDIR"/>
 	<DefaultPromote Dir="$PROMOTEDIR"/>
 	<Config>
 		<Option Name="Id" Val="3a9e5f169d1e423da7483ef6a0789060"/>
 		<Option Name="Part" Val="xc3s400tq144-4"/>
 		<Option Name="CompiledLibDir" Val="$PCACHEDIR/compxlib"/>
-		<Option Name="TargetLanguage" Val="Verilog"/>
+		<Option Name="TargetLanguage" Val="VHDL"/>
 		<Option Name="TargetSimulator" Val="ISim"/>
 		<Option Name="Board" Val=""/>
 		<Option Name="SourceMgmtMode" Val="All"/>

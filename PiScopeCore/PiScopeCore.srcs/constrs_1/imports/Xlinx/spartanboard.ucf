@@ -9,7 +9,7 @@ NET "SCK" LOC = "P56";
 
 ## Taster
 NET "reset" LOC = P69;
-#NET "s1" LOC = P20;
+NET "s1" LOC = P20;
 #NET "s2" LOC = P21;
 #NET "S3"         LOC = "P23";  
 
@@ -48,16 +48,16 @@ NET "wr" LOC = P141;
 
 
 ## ADC Data
-NET "Data<0>"      LOC = "P1";      #p3 0
-NET "Data<1>"      LOC = "P2";
-NET "Data<2>"      LOC = "P4";
-NET "Data<3>"      LOC = "P5";
-NET "Data<4>"      LOC = "P6";
-NET "Data<5>"      LOC = "P7";
-NET "Data<6>"      LOC = "P8";
-NET "Data<7>"      LOC = "P10";     #p3 7
-NET "Data<8>"      LOC = "P125";    #x 1
-NET "Data<9>"      LOC = "P12";     #x 13
+NET "adc_data<0>"      LOC = "P1";      #p3 0
+NET "adc_data<1>"      LOC = "P2";
+NET "adc_data<2>"      LOC = "P4";
+NET "adc_data<3>"      LOC = "P5";
+NET "adc_data<4>"      LOC = "P6";
+NET "adc_data<5>"      LOC = "P7";
+NET "adc_data<6>"      LOC = "P8";
+NET "adc_data<7>"      LOC = "P10";     #p3 7
+NET "adc_data<8>"      LOC = "P125";    #x 1
+NET "adc_data<9>"      LOC = "P12";     #x 13
 
 # ADC Clock
 NET "clk_adc"      LOC = "P11";     #x12

@@ -2,6 +2,13 @@
 <DARoots Version="1" Minor="25">
   <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/ip/fifo_generator_v9_2_0/fifo_generator_v9_2_0.xci">
+      <FileInfo SFType="IP">
+        <Attr Name="UsedInSynthesis" Val="1"/>
+        <Attr Name="UsedInImplementation" Val="1"/>
+        <Attr Name="UsedInSimulation" Val="1"/>
+      </FileInfo>
+    </File>
     <File Path="$PSRCDIR/sources_1/imports/new/spi_slave_new.vhd">
       <FileInfo>
         <Attr Name="ImportPath" Val="C:/documents/xilinx/spi_slave_test/spi_slave_test.srcs/sources_1/new/spi_slave_new.vhd"/>

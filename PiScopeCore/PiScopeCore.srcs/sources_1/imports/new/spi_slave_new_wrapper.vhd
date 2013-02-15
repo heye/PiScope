@@ -22,19 +22,24 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
+--library XilinxCoreLib;
+
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 --use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
+library UNISIM;
+use UNISIM.VComponents.all;
+
+
 entity spi_slave_new_wrapper is
     Port (  
             clk : in STD_LOGIC;
-            data_adc : in STD_LOGIC_VECTOR(9 downto 0);
+            adc_data : in STD_LOGIC_VECTOR(9 downto 0);
             clk_adc : out STD_LOGIC;
+            s1 : in STD_LOGIC;
            MOSI : in STD_LOGIC;
            MISO : out STD_LOGIC;
            SCK : in STD_LOGIC;
@@ -62,9 +67,29 @@ signal digit2 : STD_LOGIC_VECTOR(3 downto 0);
 signal digit3 : STD_LOGIC_VECTOR(3 downto 0);
 signal data_request : STD_LOGIC;
 
+signal fifo_we : STD_LOGIC;
+signal fifo_full : STD_LOGIC;
+signal fifo_re : STD_LOGIC;
+signal fifo_empty : STD_LOGIC;
+signal fifo_dout : STD_LOGIC_VECTOR(9 downto 0);
+
 begin
 
-    adc_clk <= clk;
+    clk_adc <= clk; 
+
+    fifefgo : entity fifo_generator_v9_2_0
+    port map(
+        RST => s1,
+        WR_CLK => clk,
+        DIN => adc_data,
+        WR_EN => fifo_we,
+        FULL => fifo_full,
+         
+        RD_CLK => SCK,
+        DOUT => fifo_dout,
+        RD_EN => fifo_re,
+        EMPTY => fifo_empty
+    );
 
     spi_slave_core : entity work.spi_slave_new(Behavioral)
     generic map(
@@ -93,9 +118,11 @@ begin
         write => wr,
         addr => a,
         data => d
-    );  
+    );     
    
-    read : process (SCK, data_ready, data_rx)
+   
+   
+    spi_data_input : process (SCK, data_ready, data_rx)
     begin
         if falling_edge(SCK) then
             if data_ready = '1' then
@@ -110,21 +137,44 @@ begin
         end if;
     end process;  
     
-    write: process (SCK, data_request, data_buffer)
+    
+    
+    
+    spi_data_request: process (SCK, data_request, data_buffer, fifo_re, fifo_dout)
     begin 
         if rising_edge(SCK) then
             if data_request = '1' then
-                data_tx(7 downto 0) <= data_buffer(7 downto 0);
-                led(7 downto 0) <= data_buffer(7 downto 0);
+                fifo_re <= '1';
+                --data_tx(7 downto 0) <= data_buffer(7 downto 0);
+                --led(7 downto 0) <= data_buffer(7 downto 0);
+                
+                --counter test
                 --data_tx(7 downto 0) <= data_counter;
                 --data_counter <= data_counter + 1;
-            end if;
+            else
+                fifo_re <= '0';
+            end if;     
+            
+            if fifo_re = '1' then
+                data_tx(7 downto 0) <= fifo_dout(9 downto 2);
+                led(7 downto 0) <= fifo_dout(9 downto 2);
+            end if;       
         end if;
-    end process;
+    end process;  
     
-    readAdc : process(clk, adcData)
+    
+    
+    fifo_write_enable : process(clk, fifo_full, fifo_empty)
     begin
-        
-    end process;
-    
+        if rising_edge(clk) then
+            if fifo_full = '1' then
+                --pi_append <= '0';
+                fifo_we <= '0';
+            elsif fifo_empty = '1'then
+                --pi_append <= '1';
+                fifo_we <= '1';
+            end if;
+        end if;    
+    end process;  
+      
 end Behavioral;
