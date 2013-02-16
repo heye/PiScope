@@ -100,3 +100,47 @@ void Button::update(mouse& cursor){
 int Button::getPressed(){
 	return mPressed;
 }
+
+
+
+
+
+Graph::Graph(int width, int height){
+	mWidth = width;
+	mHeight = height;
+	mX = new VGfloat[mWidth];
+	mY = new VGfloat[mWidth];
+	
+	for(int i = 0; i<mWidth; i++){
+		mX[i] = i;
+		mY[i] = height/2;
+	}
+	
+	
+}
+Graph::~Graph(){
+	delete mX;
+	delete mY;
+}
+
+void Graph::setData(uint8_t* newData, int len){
+	if(len > mWidth)
+		len = mWidth;
+	for(int i = 0; i < len; i++){
+		mY[i] = (float)newData[i];
+	}
+}
+
+void Graph::draw(){
+	Stroke(255,255,0,1); // red green blue alpha
+	StrokeWidth(1);
+	
+	int div = mWidth/256;
+	int r = mWidth%256;
+	
+	for(int i = 0; i<div; i++){
+		Polyline(mX+i*256,mY+i*256, 256);	
+	}
+	if(r > 0)
+		Polyline(mX+(mWidth-r), mY + (mWidth-r), r);
+}

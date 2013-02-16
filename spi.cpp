@@ -18,9 +18,17 @@ spi::spi(uint32_t speed){
 	mSpeed = speed;
 	mDelay = 0;
 	mBits = 8;
+	mBuffLen = BUFFLEN;
 	
 	mRx = new uint8_t[BUFFLEN];
 	mTx = new uint8_t[BUFFLEN];
+	
+	
+	for(int i=0; i<BUFFLEN; i++){
+		mRx[i] = 42;
+		mTx[i] = 42;
+	}
+	
 	
 	mDevice = open("/dev/spidev0.0", O_RDWR);
 	if (mDevice < 0)
@@ -107,6 +115,15 @@ void spi::error(const char* s){
 	std::cout << "SPI Error: "<< s << endl;
 };
 
+int spi::getBuffLen(){
+	return mBuffLen;
+}
+void spi::print(){
+	for(int i=0; i < 10; i++){
+		cout << mRx[i] << endl;
+	}
+}
+
 void spi::read(){	
 	int ret;
 	/*uint8_t tx[] = {
@@ -125,18 +142,21 @@ void spi::read(){
 		tr.delay_usecs = mDelay;
 		tr.speed_hz = mSpeed;
 		tr.bits_per_word = mBits;
-		
+	
+	ret = ioctl(mDevice, SPI_IOC_MESSAGE(1), &tr);
+	
+	/*
 	//10 mal 4096 bytes lesen
 	for(int i=0; i<8; i++){
-	//perform actual read/write
-	ret = ioctl(mDevice, SPI_IOC_MESSAGE(1), &tr);
-	//ret = ioctl(mDevice, SPI_IOC_MESSAGE(2), &tr[1]);
+		//perform actual read/write
+		ret = ioctl(mDevice, SPI_IOC_MESSAGE(1), &tr);
+		//ret = ioctl(mDevice, SPI_IOC_MESSAGE(2), &tr[1]);
 	
-	if (ret < 1)
+		if (ret < 1)
 		error("cant't send spi message");
-	}
+	}*/
 		
-		//pabort("can't send spi message");
+	//pabort("can't send spi message");
 
 /*	for (ret = 0; ret < ARRAY_SIZE(tx); ret++) {
 		if (!(ret % 6))

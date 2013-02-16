@@ -7,7 +7,7 @@
 #include "VG/openvg.h"
 #include "VG/vgu.h"
 #include "fontinfo.h"
-#include "shapes.h"
+#include "shapes.h" 
 #include "SDL.h"
 #include "spi.h"
 
@@ -78,6 +78,7 @@ int main ()
     //create buttons, etc...
     Button quit(width, height, width-80, height-30, 80, 30, "QUIT");
  	mouse cursor(width, height);
+ 	Graph g(width, height);
     
     spi spiConnection(16000000);    
     
@@ -93,11 +94,15 @@ int main ()
     	//get and process data
     	
     	spiConnection.read();
+    	//spiConnection.print();
+    	g.setData(spiConnection.getRX(), spiConnection.getBuffLen());
     	  
     	//draw 
     	Background(0, 0, 0);    
     	
     	drawGrid(50, width, height);
+    	
+    	g.draw();
     	
     	quit.update(cursor);
     	quit.draw();

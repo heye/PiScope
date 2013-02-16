@@ -15,6 +15,8 @@ class spi{
 		uint8_t* mRx;
 		uint8_t* mTx;
 		
+		int mBuffLen;
+		
 		int mDevice;
 		void error(const char*);
 	public:
@@ -22,6 +24,9 @@ class spi{
 		~spi();
 		void read();
 		uint8_t* getRX();
+		int getBuffLen();
+		
+		void print();
 };
 
 #endif

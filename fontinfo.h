@@ -11,6 +11,9 @@ typedef struct {
 	VGPath Glyphs[256];
 } Fontinfo;
 
+
+extern Fontinfo SansTypeface, SerifTypeface, MonoTypeface;
+
 //Fontinfo SansTypeface, SerifTypeface, MonoTypeface;
 
 #endif

@@ -61,4 +61,22 @@ class Button{
 };
 
 
+class Graph{
+	private:
+		uint8_t* data;
+		int len;		
+		int mWidth;
+		int mHeight;
+		VGfloat* mX;
+		VGfloat* mY;
+	public:
+		Graph(int, int);
+		~Graph();
+		void setData(uint8_t*, int);
+		void draw();
+		
+		//void setOffset(int);
+};
+
+
 #endif
