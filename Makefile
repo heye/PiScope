@@ -48,9 +48,12 @@ oglinit.o: oglinit.c $(SHAPESH)
 
 spi.o: spi.cpp spi.h 
 	g++ -c spi.cpp 
+
+fontinfo.o: fontinfo.cpp fontinfo.h
+	g++ fontinfo.cpp -I/opt/vc/include -I/opt/vc/include/interface/vcos/pthreads -L/opt/vc/lib -lGLESv2 -ljpeg 
 	
 #guielements.o: guielements.cpp guielements.h libshapes.o 
 #	g++ -o guielements.cpp libshapes.o $(LIBS) $(INCL) 
 
-guielements.o: 
-	g++ -c guielements.cpp
+guielements.o: guielements.cpp guielements.h
+	g++ -c guielements.cpp $(LIBS) $(INCL) -o $@ 

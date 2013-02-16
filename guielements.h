@@ -1,7 +1,14 @@
 #ifndef GUIELEMENTS_H
 #define GUIELEMENTS_H
 
+//openVG shit
+#include "VG/openvg.h"
+#include "VG/vgu.h"
+#include "fontinfo.h"
+#include "shapes.h"
 
+//SDL shit 
+#include "SDL.h"
 
 class mouse{
 	private:

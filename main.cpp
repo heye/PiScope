@@ -20,13 +20,14 @@ using namespace std;
 
 
 
+//Fontinfo SerifTypeface, MonoTypeface;
 
 
 
 
 
 
-
+ 
 
 void drawFPS(int x, int y){
 	static int lastTime = 0;
@@ -35,7 +36,11 @@ void drawFPS(int x, int y){
 	int currentTime = SDL_GetTicks();
 	sprintf(buff, "FPS: %d \n", 1000/ (currentTime - lastTime));
 	
-	Fill(255, 255, 255, 1); 
+	Fill(255, 255, 255, 1);
+	
+	//Fontinfo SerifTypeface;
+	
+	//Fontinfo SansTypeface, SerifTypeface, MonoTypeface;
     TextMid(x, y, buff, SerifTypeface, 10);  // Greetings 
     
     lastTime = currentTime;
