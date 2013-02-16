@@ -46,6 +46,8 @@ void mouse::update(){
 }
 void mouse::draw(){
 	Stroke(255,255,255, 1);
+	Line(mX-10, mY, mX+10, mY);
+	Line(mX, mY-10, mX, mY+10);
 	if(mDown){
 		Fill(255, 255, 255, 0.5);	
 		Circle(mX, mY, 25);
@@ -74,7 +76,7 @@ Button::Button(int width, int height, int posX, int posY, int sizeX, int sizeY, 
 }
 void Button::draw(){
 	Stroke(255,255,255, 1);
-	
+	StrokeWidth(1);
 	if(mActive)
 		Fill(120, 120, 120, 1);
 	else
@@ -144,3 +146,61 @@ void Graph::draw(){
 	if(r > 0)
 		Polyline(mX+(mWidth-r), mY + (mWidth-r), r);
 }
+
+
+
+
+
+Poti::Poti(int width, int height, int posX, int posY){
+	mWidth = width;
+	mHeight = height;
+	mX = posX;
+	mY = posY;
+	mWrap = 0;
+	mPhi = 0;
+}
+Poti::Poti(int width, int height, int posX, int posY, int wrap){
+	mWidth = width;
+	mHeight = height;
+	mX = posX;
+	mY = posY;
+	mWrap = 1;
+	mPhi = 0;
+}
+void Poti::draw(){
+	Stroke(255,255,255,1); // red green blue alpha
+	StrokeWidth(1);
+	Fill(255, 255, 255, 0.1);	
+	
+	Circle(mX, mY, 50);
+	Line(mX-10, mY, mX+10, mY);
+	
+	StrokeWidth(0);
+	Fill(0, 255, 0, 1);
+	Circle(mX + cos(mPhi)*25, mY + sin(mPhi)*25, 10);
+	
+}
+void Poti::update(mouse& cursor){
+	if(cursor.getDown() && cursor.getX() < mX+20 && cursor.getX() > mX-20 &&
+		cursor.getY() < mY && cursor.getY() > mY -20){
+		mPhi += 0.08;
+	}
+	else if(cursor.getDown() && cursor.getX() < mX+20 && cursor.getX() > mX-20 &&
+		cursor.getY() < mY + 20 && cursor.getY() > mY){
+		mPhi -= 0.08;
+	}
+	
+	//make wrap around
+	if(mWrap){
+		if(mPhi > 6.28)
+			mPhi -= 6.28;
+		if(mPhi < 0)
+			mPhi += 6.28;
+	}
+}
+float Poti::getValue(){
+	return mPhi;
+}
+
+
+

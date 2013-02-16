@@ -6,6 +6,7 @@
 #include "VG/vgu.h"
 #include "fontinfo.h"
 #include "shapes.h"
+#include <math.h>
 
 //SDL shit 
 #include "SDL.h"
@@ -73,10 +74,34 @@ class Graph{
 		Graph(int, int);
 		~Graph();
 		void setData(uint8_t*, int);
+		//void setYOffset(float offset);
 		void draw();
 		
 		//void setOffset(int);
 };
+
+
+
+class Poti{
+	private:
+		float mPhi;
+		int mWidth;
+		int mHeight;
+		int mX;
+		int mY;
+		int mWrap;
+	public:
+		Poti(int width, int height, int posX, int posY);
+		Poti(int width, int height, int posX, int posY, int wrap);
+		void draw();
+		void update(mouse&);
+		float getValue();
+};
+
+/*class Mark{
+	private:
+	public:
+}*/
 
 
 #endif

@@ -79,7 +79,7 @@ int main ()
     Button quit(width, height, width-80, height-30, 80, 30, "QUIT");
  	mouse cursor(width, height);
  	Graph g(width, height);
-    
+    Poti pot(width, height, 100, 100);
     spi spiConnection(16000000);    
     
         
@@ -96,26 +96,29 @@ int main ()
     	spiConnection.read();
     	//spiConnection.print();
     	g.setData(spiConnection.getRX(), spiConnection.getBuffLen());
-    	  
-    	//draw 
-    	Background(0, 0, 0);    
     	
-    	drawGrid(50, width, height);
-    	
-    	g.draw();
-    	
+    	cursor.update();
+    	pot.update(cursor);
     	quit.update(cursor);
-    	quit.draw();
+    	
     	if(quit.getPressed()){
     		quitv = 1;
     	}
+    	
+    	//draw 
+    	Background(0, 0, 0);
+    	drawGrid(50, width, height);
+    	
+    	g.draw();
+    	pot.draw();
+    	quit.draw();
     	
     	drawFPS(width-100, height-100);
     	
     	Stroke(255,255,0,1); 
 		StrokeWidth(1);
     	
-    	cursor.update();
+    	
     	cursor.draw();    	 
     
     	End();
