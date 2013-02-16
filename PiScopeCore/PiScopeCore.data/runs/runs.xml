@@ -10,6 +10,31 @@
 		<File Type="RUN-CONSTRS" Name="$PDATADIR/runs/synth_1/constrs_in.xml"/>
 		<Search Dir="$PSRCDIR/sources_1/ip/fifo_generator_v9_2_0"/>
 	</Run>
-	<Run Id="impl_1" Type="Ft2:EntireDesign" SynthRun="synth_1" Part="xc3s400tq144-4" ConstrsSet="constrs_1" Description="ISE Defaults, including packing registers in IOs off" State="current"/>
+	<Run Id="impl_1" Type="Ft2:EntireDesign" SynthRun="synth_1" Part="xc3s400tq144-4" LaunchPart="xc3s400tq144-4" ConstrsSet="constrs_1" Description="ISE Defaults, including packing registers in IOs off" State="current" Dir="$PRUNDIR/impl_1" LaunchTime="1361004014">
+		<File Type="MAP-MRP" Name="spi_slave_new_wrapper.mrp"/>
+		<File Type="PA-EDIF" Name="spi_slave_new_wrapper.edf"/>
+		<File Type="MAP-MAP" Name="spi_slave_new_wrapper.map"/>
+		<File Type="PA-UCF" Name="spi_slave_new_wrapper.ucf"/>
+		<File Type="MAP-PSR" Name="spi_slave_new_wrapper.psr"/>
+		<File Type="PAR-NCD" Name="spi_slave_new_wrapper_routed.ncd"/>
+		<File Type="PAR-PAD" Name="spi_slave_new_wrapper_routed_pad.txt"/>
+		<File Type="PAR-PAR" Name="spi_slave_new_wrapper_routed.par"/>
+		<File Type="PAR-UNR" Name="spi_slave_new_wrapper_routed.unroutes"/>
+		<File Type="PA-CONSTRSDIR" Name=".constrs"/>
+		<File Type="BG-BIT" Name="spi_slave_new_wrapper.bit"/>
+		<File Type="BG-DRC" Name="spi_slave_new_wrapper.drc"/>
+		<File Type="BG-BGN" Name="spi_slave_new_wrapper.bgn"/>
+		<File Type="TRCE-TWR" Name="spi_slave_new_wrapper.twr"/>
+		<File Type="TRCE-TWX" Name="spi_slave_new_wrapper.twx"/>
+		<File Type="XDL-XDL" Name="spi_slave_new_wrapper_routed.xdl"/>
+		<File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+		<File Type="WBT-LOG" Name="webtalk.log"/>
+		<File Type="RUN-CONSTRS" Name="$PDATADIR/runs/impl_1/constrs_in.xml"/>
+		<File Type="RUN-STRAT" Name="$PDATADIR/runs/impl_1/impl_1.psg"/>
+		<File Type="NGDB-NGD" Name="spi_slave_new_wrapper.ngd"/>
+		<File Type="NGDB-BLD" Name="spi_slave_new_wrapper.bld"/>
+		<File Type="MAP-NCD" Name="spi_slave_new_wrapper.ncd"/>
+		<File Type="MAP-PCF" Name="spi_slave_new_wrapper.pcf"/>
+	</Run>
 </Runs>
 

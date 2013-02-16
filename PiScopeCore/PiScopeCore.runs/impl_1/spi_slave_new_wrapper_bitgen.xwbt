@@ -1,0 +1,8 @@
+INTSTYLE=pa
+INFILE=Z:\PiScope\PiScopeCore\PiScopeCore.runs\impl_1\spi_slave_new_wrapper_routed.ncd
+OUTFILE=Z:\PiScope\PiScopeCore\PiScopeCore.runs\impl_1\spi_slave_new_wrapper.bit
+FAMILY=Spartan3
+PART=xc3s400-4tq144
+WORKINGDIR=Z:\PiScope\PiScopeCore\PiScopeCore.runs\impl_1
+LICENSE=WebPack
+USER_INFO=208211973_0_0_115
