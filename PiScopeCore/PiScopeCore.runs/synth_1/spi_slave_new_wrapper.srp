@@ -2,8 +2,8 @@ Release 14.2 - xst P.28xd (nt64)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 --> 
 
-Total REAL time to Xst completion: 3.00 secs
-Total CPU time to Xst completion: 2.26 secs
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 4.38 secs
  
 --> Reading design: spi_slave_new_wrapper.prj
 
@@ -82,7 +82,7 @@ Analyzing hierarchy for entity <display> in library <work> (architecture <Behavi
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <spi_slave_new_wrapper> in library <work> (Architecture <Behavioral>).
-WARNING:Xst:2211 - "//psf/home/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/spi_slave_new_wrapper.vhd" line 80: Instantiating black box module <fifo_generator_v9_2_0>.
+WARNING:Xst:2211 - "//psf/home/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/spi_slave_new_wrapper.vhd" line 86: Instantiating black box module <fifo_generator_v9_2_0>.
 Entity <spi_slave_new_wrapper> analyzed. Unit <spi_slave_new_wrapper> generated.
 
 Analyzing generic Entity <spi_slave_new> in library <work> (Architecture <Behavioral>).
@@ -140,14 +140,13 @@ Unit <display> synthesized.
 Synthesizing Unit <spi_slave_new_wrapper>.
     Related source file is "//psf/home/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/spi_slave_new_wrapper.vhd".
 WARNING:Xst:646 - Signal <fifo_dout<1:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:653 - Signal <digit3> is used but never assigned. This sourceless signal will be automatically connected to value 0000.
-WARNING:Xst:653 - Signal <digit2> is used but never assigned. This sourceless signal will be automatically connected to value 0000.
 WARNING:Xst:1780 - Signal <data_counter> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <data_buffer> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-    Found 8-bit register for signal <led>.
     Found 8-bit register for signal <data_tx>.
     Found 4-bit register for signal <digit0>.
     Found 4-bit register for signal <digit1>.
+    Found 4-bit register for signal <digit2>.
+    Found 4-bit register for signal <digit3>.
     Found 1-bit register for signal <fifo_re>.
     Found 1-bit register for signal <fifo_we>.
     Summary:
@@ -166,11 +165,11 @@ Macro Statistics
 # Counters                                             : 3
  2-bit up counter                                      : 1
  4-bit down counter                                    : 2
-# Registers                                            : 21
+# Registers                                            : 22
  1-bit register                                        : 14
  2-bit register                                        : 1
- 4-bit register                                        : 2
- 8-bit register                                        : 4
+ 4-bit register                                        : 4
+ 8-bit register                                        : 3
 # Comparators                                          : 2
  4-bit comparator greater                              : 2
 # Multiplexers                                         : 2
@@ -210,14 +209,14 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-INFO:Xst:2261 - The FF/Latch <data_tx_0> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <led_0> 
-INFO:Xst:2261 - The FF/Latch <data_tx_1> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <led_1> 
-INFO:Xst:2261 - The FF/Latch <data_tx_2> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <led_2> 
-INFO:Xst:2261 - The FF/Latch <data_tx_3> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <led_3> 
-INFO:Xst:2261 - The FF/Latch <data_tx_4> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <led_4> 
-INFO:Xst:2261 - The FF/Latch <data_tx_5> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <led_5> 
-INFO:Xst:2261 - The FF/Latch <data_tx_6> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <led_6> 
-INFO:Xst:2261 - The FF/Latch <data_tx_7> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <led_7> 
+INFO:Xst:2261 - The FF/Latch <data_tx_0> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit2_0> 
+INFO:Xst:2261 - The FF/Latch <data_tx_1> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit2_1> 
+INFO:Xst:2261 - The FF/Latch <data_tx_2> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit2_2> 
+INFO:Xst:2261 - The FF/Latch <data_tx_3> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit2_3> 
+INFO:Xst:2261 - The FF/Latch <data_tx_4> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit3_0> 
+INFO:Xst:2261 - The FF/Latch <data_tx_5> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit3_1> 
+INFO:Xst:2261 - The FF/Latch <data_tx_6> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit3_2> 
+INFO:Xst:2261 - The FF/Latch <data_tx_7> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit3_3> 
 INFO:Xst:1901 - Instance U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram in unit U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram of type RAMB16_S9_S9 has been replaced by RAMB16
 INFO:Xst:1901 - Instance U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/s3_noinit.ram/dpram.dp9x9.ram in unit U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/s3_noinit.ram/dpram.dp9x9.ram of type RAMB16_S9_S9 has been replaced by RAMB16
 INFO:Xst:1901 - Instance U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/s3_noinit.ram/dpram.dp9x9.ram in unit U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/s3_noinit.ram/dpram.dp9x9.ram of type RAMB16_S9_S9 has been replaced by RAMB16
@@ -280,21 +279,21 @@ Design Statistics
 # IOs                              : 36
 
 Cell Usage :
-# BELS                             : 349
-#      GND                         : 10
-#      INV                         : 8
+# BELS                             : 359
+#      GND                         : 11
+#      INV                         : 9
 #      LUT1                        : 26
 #      LUT2                        : 45
 #      LUT2_D                      : 1
 #      LUT2_L                      : 3
-#      LUT3                        : 62
+#      LUT3                        : 70
 #      LUT3_D                      : 2
 #      LUT3_L                      : 1
-#      LUT4                        : 72
+#      LUT4                        : 68
 #      LUT4_D                      : 3
 #      LUT4_L                      : 1
 #      MUXCY                       : 54
-#      MUXF5                       : 20
+#      MUXF5                       : 24
 #      MUXF6                       : 10
 #      VCC                         : 3
 #      XORCY                       : 28
@@ -327,9 +326,9 @@ Device utilization summary:
 
 Selected Device : 3s400tq144-4 
 
- Number of Slices:                      192  out of   3584     5%  
+ Number of Slices:                      194  out of   3584     5%  
  Number of Slice Flip Flops:            262  out of   7168     3%  
- Number of 4 input LUTs:                224  out of   7168     3%  
+ Number of 4 input LUTs:                229  out of   7168     3%  
  Number of IOs:                          36
  Number of bonded IOBs:                  36  out of     97    37%  
  Number of BRAMs:                         9  out of     16    56%  
@@ -369,7 +368,7 @@ fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg<1>(fifefgo/U
 fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg<0>(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_0:Q)| NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].wr_stg_inst/Q_0)| 56    |
 fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg<1>(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_1:Q)| NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/count_0)                   | 42    |
 fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg<2>(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_2:Q)| NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_fb_i)        | 30    |
-s1                                                                                                                                             | IBUF                                                                                                             | 6     |
+fifefgo_not0000(fifefgo_not00001_INV_0:O)                                                                                                      | NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/RST_FULL_GEN)                                      | 6     |
 display0/cnt_Acst_inv(display0/cnt_Acst_inv1_INV_0:O)                                                                                          | NONE(display0/address_0)                                                                                         | 5     |
 fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_comb(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_comb1:O)  | NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_0)                                      | 3     |
 fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rst_d2(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rst_d2:Q)             | NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_fb_i)         | 2     |
@@ -380,9 +379,9 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 6.447ns (Maximum Frequency: 155.114MHz)
+   Minimum period: 6.523ns (Maximum Frequency: 153.306MHz)
    Minimum input arrival time before clock: 5.643ns
-   Maximum output required time after clock: 11.027ns
+   Maximum output required time after clock: 11.528ns
    Maximum combinational path delay: 7.342ns
 
 Timing Detail:
@@ -405,7 +404,7 @@ Delay:               6.075ns (Levels of Logic = 2)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDS:C->Q              8   0.720   1.278  current_bit_mosi_0 (current_bit_mosi_0)
-     LUT4_D:I1->O          2   0.551   1.072  Mcount_current_bit_mosi_xor<3>111 (N01_0)
+     LUT4_D:I1->O          2   0.551   1.072  Mcount_current_bit_mosi_xor<3>111 (N01)
      LUT2:I1->O            2   0.551   0.877  data_ready_and00001 (data_ready_and0000)
      FDRE_1:R                  1.026          data_ready
     ----------------------------------------
@@ -414,10 +413,10 @@ Delay:               6.075ns (Levels of Logic = 2)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 6.447ns (frequency: 155.114MHz)
+  Clock period: 6.523ns (frequency: 153.306MHz)
   Total number of paths / destination ports: 632 / 246
 -------------------------------------------------------------------------
-Delay:               6.447ns (Levels of Logic = 3)
+Delay:               6.523ns (Levels of Logic = 3)
   Source:            fifo_we (FF)
   Destination:       fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram (RAM)
   Source Clock:      clk rising
@@ -427,15 +426,15 @@ Delay:               6.447ns (Levels of Logic = 3)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q             1   0.720   1.140  fifo_we (fifo_we)
+     FDRE:C->Q             2   0.720   1.216  fifo_we (fifo_we)
      begin scope: 'fifefgo'
      LUT2:I0->O           88   0.551   2.200  U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/ram_wr_en_i1 (U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ENA)
      LUT4:I3->O            1   0.551   0.801  U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<7>1 (U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<7>)
      begin scope: 'U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram'
      RAMB16:ENA                0.484          U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram
     ----------------------------------------
-    Total                      6.447ns (2.306ns logic, 4.141ns route)
-                                       (35.8% logic, 64.2% route)
+    Total                      6.523ns (2.306ns logic, 4.217ns route)
+                                       (35.4% logic, 64.6% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
@@ -473,7 +472,7 @@ Offset:              5.643ns (Levels of Logic = 4)
     ----------------------------------------  ------------
      IBUF:I->O             6   0.821   1.342  SS_IBUF (SS_IBUF)
      begin scope: 'spi_slave_core'
-     LUT3_D:I0->O          3   0.551   0.975  data_in_buffer_0_not000111 (N2)
+     LUT3_D:I0->O          3   0.551   0.975  data_in_buffer_0_not000111 (N2_0)
      LUT3:I2->O            1   0.551   0.801  data_in_buffer_4_not00011 (data_in_buffer_4_not0001)
      FDE_1:CE                  0.602          data_in_buffer_4
     ----------------------------------------
@@ -482,25 +481,45 @@ Offset:              5.643ns (Levels of Logic = 4)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'SCK'
-  Total number of paths / destination ports: 122 / 19
+  Total number of paths / destination ports: 188 / 13
 -------------------------------------------------------------------------
-Offset:              11.027ns (Levels of Logic = 4)
-  Source:            display0/address_1 (FF)
+Offset:              11.528ns (Levels of Logic = 5)
+  Source:            display0/address_0 (FF)
   Destination:       d<5> (PAD)
   Source Clock:      SCK falling
 
-  Data Path: display0/address_1 to d<5>
+  Data Path: display0/address_0 to d<5>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDPE:C->Q             6   0.720   1.342  address_1 (address_1)
-     LUT4:I0->O            6   0.551   1.342  Mmux_selDigit61 (selDigit<2>)
+     FDPE:C->Q            11   0.720   1.483  address_0 (address_0)
+     LUT3:I0->O            1   0.551   0.000  Mmux_selDigit_32 (Mmux_selDigit_32)
+     MUXF5:I1->O           6   0.360   1.342  Mmux_selDigit_2_f5_1 (selDigit<2>)
      LUT3:I0->O            2   0.551   0.877  data<5>1 (data<4>)
      end scope: 'display0'
      OBUF:I->O                 5.644          d_5_OBUF (d<5>)
     ----------------------------------------
-    Total                     11.027ns (7.466ns logic, 3.561ns route)
-                                       (67.7% logic, 32.3% route)
+    Total                     11.528ns (7.826ns logic, 3.702ns route)
+                                       (67.9% logic, 32.1% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Offset:              7.241ns (Levels of Logic = 1)
+  Source:            fifo_we (FF)
+  Destination:       led<3> (PAD)
+  Source Clock:      clk rising
+
+  Data Path: fifo_we to led<3>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             2   0.720   0.877  fifo_we (fifo_we)
+     OBUF:I->O                 5.644          led_3_OBUF (led<3>)
+    ----------------------------------------
+    Total                      7.241ns (6.364ns logic, 0.877ns route)
+                                       (87.9% logic, 12.1% route)
 
 =========================================================================
 Timing constraint: Default path analysis
@@ -523,14 +542,14 @@ Delay:               7.342ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 45.00 secs
-Total CPU time to Xst completion: 44.67 secs
+Total REAL time to Xst completion: 17.00 secs
+Total CPU time to Xst completion: 16.77 secs
  
 --> 
 
-Total memory usage is 307472 kilobytes
+Total memory usage is 276112 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    7 (   0 filtered)
+Number of warnings :    5 (   0 filtered)
 Number of infos    :   25 (   0 filtered)
 

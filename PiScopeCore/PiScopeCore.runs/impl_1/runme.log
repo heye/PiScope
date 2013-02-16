@@ -35,8 +35,8 @@ NGDBUILD Design Results Summary:
   Number of warnings:   0
 
 Writing NGD file "spi_slave_new_wrapper.ngd" ...
-Total REAL time to NGDBUILD completion:  17 sec
-Total CPU time to NGDBUILD completion:   4 sec
+Total REAL time to NGDBUILD completion:  10 sec
+Total CPU time to NGDBUILD completion:   3 sec
 
 Writing NGDBUILD log file "spi_slave_new_wrapper.bld"...
 
@@ -59,14 +59,14 @@ Number of errors:      0
 Number of warnings:    1
 Logic Utilization:
   Number of Slice Flip Flops:           262 out of   7,168    3%
-  Number of 4 input LUTs:               188 out of   7,168    2%
+  Number of 4 input LUTs:               192 out of   7,168    2%
 Logic Distribution:
-  Number of occupied Slices:            202 out of   3,584    5%
-    Number of Slices containing only related logic:     202 out of     202 100%
-    Number of Slices containing unrelated logic:          0 out of     202   0%
+  Number of occupied Slices:            204 out of   3,584    5%
+    Number of Slices containing only related logic:     204 out of     204 100%
+    Number of Slices containing unrelated logic:          0 out of     204   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         214 out of   7,168    2%
-    Number used as logic:               188
+  Total Number of 4 input LUTs:         218 out of   7,168    3%
+    Number used as logic:               192
     Number used as a route-thru:         26
 
   The Slice Logic Distribution report is not meaningful if the design is
@@ -76,9 +76,9 @@ Logic Distribution:
   Number of RAMB16s:                      8 out of      16   50%
   Number of BUFGMUXs:                     2 out of       8   25%
 
-Average Fanout of Non-Clock Nets:                3.25
+Average Fanout of Non-Clock Nets:                3.27
 
-Peak Memory Usage:  229 MB
+Peak Memory Usage:  230 MB
 Total REAL time to MAP completion:  4 secs 
 Total CPU time to MAP completion:   1 secs 
 
@@ -132,7 +132,7 @@ Device Utilization Summary:
       Number of LOCed IOBs                  35 out of 35    100%
 
    Number of RAMB16s                         8 out of 16     50%
-   Number of Slices                        202 out of 3584    5%
+   Number of Slices                        204 out of 3584    5%
       Number of SLICEMs                      0 out of 1792    0%
 
 
@@ -151,34 +151,34 @@ Total REAL time at the beginning of Placer: 1 secs
 Total CPU  time at the beginning of Placer: 1 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:db7a3794) REAL time: 3 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:db7a3983) REAL time: 2 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:db7a3794) REAL time: 3 secs 
+Phase 2.7  Design Feasibility Check (Checksum:db7a3983) REAL time: 2 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:db7a3794) REAL time: 3 secs 
+Phase 3.31  Local Placement Optimization (Checksum:db7a3983) REAL time: 2 secs 
 
 Phase 4.2  Initial Clock and IO Placement
 
-Phase 4.2  Initial Clock and IO Placement (Checksum:40840c8c) REAL time: 3 secs 
+Phase 4.2  Initial Clock and IO Placement (Checksum:40840e7b) REAL time: 3 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:40840c8c) REAL time: 3 secs 
+Phase 5.36  Local Placement Optimization (Checksum:40840e7b) REAL time: 3 secs 
 
 Phase 6.8  Global Placement
-.............
+...........
 ...
-Phase 6.8  Global Placement (Checksum:ffb392c5) REAL time: 4 secs 
+Phase 6.8  Global Placement (Checksum:6a60abd8) REAL time: 4 secs 
 
 Phase 7.5  Local Placement Optimization
-Phase 7.5  Local Placement Optimization (Checksum:ffb392c5) REAL time: 4 secs 
+Phase 7.5  Local Placement Optimization (Checksum:6a60abd8) REAL time: 4 secs 
 
 Phase 8.18  Placement Optimization
-Phase 8.18  Placement Optimization (Checksum:a2c08aa6) REAL time: 5 secs 
+Phase 8.18  Placement Optimization (Checksum:e62273b2) REAL time: 5 secs 
 
 Phase 9.5  Local Placement Optimization
-Phase 9.5  Local Placement Optimization (Checksum:a2c08aa6) REAL time: 5 secs 
+Phase 9.5  Local Placement Optimization (Checksum:e62273b2) REAL time: 5 secs 
 
 Total REAL time to Placer completion: 5 secs 
 Total CPU  time to Placer completion: 3 secs 
@@ -189,30 +189,28 @@ Writing design to file spi_slave_new_wrapper_routed.ncd
 Starting Router
 
 
-Phase  1  : 1510 unrouted;      REAL time: 6 secs 
+Phase  1  : 1522 unrouted;      REAL time: 5 secs 
 
-Phase  2  : 1320 unrouted;      REAL time: 6 secs 
+Phase  2  : 1332 unrouted;      REAL time: 5 secs 
 
-Phase  3  : 468 unrouted;      REAL time: 6 secs 
+Phase  3  : 432 unrouted;      REAL time: 6 secs 
 
-Phase  4  : 515 unrouted; (Par is working to improve performance)     REAL time: 12 secs 
+Phase  4  : 457 unrouted; (Par is working to improve performance)     REAL time: 12 secs 
 
-Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 13 secs 
+Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 16 secs 
 
 Updating file: spi_slave_new_wrapper_routed.ncd with current fully routed design.
 
-Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 13 secs 
+Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 17 secs 
 
-Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 14 secs 
+Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 17 secs 
 
-Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 14 secs 
+Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 17 secs 
 
-Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 14 secs 
+Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 17 secs 
 
-Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 14 secs 
-
-Total REAL time to Router completion: 14 secs 
-Total CPU time to Router completion: 11 secs 
+Total REAL time to Router completion: 17 secs 
+Total CPU time to Router completion: 14 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -252,10 +250,10 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net SCK | SETUP       |         N/A|     7.078ns|     N/A|           0
+  Autotimespec constraint for clock net SCK | SETUP       |         N/A|     7.344ns|     N/A|           0
   _BUFGP                                    | HOLD        |     0.800ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net clk | SETUP       |         N/A|     7.141ns|     N/A|           0
+  Autotimespec constraint for clock net clk | SETUP       |         N/A|     6.996ns|     N/A|           0
   _adc_OBUF                                 | HOLD        |     0.800ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
@@ -272,10 +270,10 @@ Generating Pad Report.
 
 All signals are completely routed.
 
-Total REAL time to PAR completion: 15 secs 
-Total CPU time to PAR completion: 12 secs 
+Total REAL time to PAR completion: 18 secs 
+Total CPU time to PAR completion: 15 secs 
 
-Peak Memory Usage:  253 MB
+Peak Memory Usage:  252 MB
 
 Placement: Completed - No errors found.
 Routing: Completed - No errors found.
@@ -298,7 +296,7 @@ C:\Xilinx\14.2\ISE_DS\ISE\.
    "spi_slave_new_wrapper" is an NCD, version 3.2, device xc3s400, package
 tq144, speed -4
 
-Analysis completed Sat Feb 16 09:41:39 2013
+Analysis completed Sat Feb 16 10:58:49 2013
 --------------------------------------------------------------------------------
 
 Generating Report ...
