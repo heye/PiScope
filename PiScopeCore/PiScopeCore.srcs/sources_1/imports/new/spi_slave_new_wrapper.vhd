@@ -76,10 +76,16 @@ signal fifo_dout : STD_LOGIC_VECTOR(9 downto 0);
 begin
 
     clk_adc <= clk; 
+    
+    led(0) <= fifo_empty;
+    led(1) <= fifo_full;
+    led(2) <= fifo_re;
+    led(3) <= fifo_we;
+    led(7 downto 4) <= "0000";
 
     fifefgo : entity fifo_generator_v9_2_0
     port map(
-        RST => s1,
+        RST => not s1,  --active low
         WR_CLK => clk,
         DIN => adc_data,
         WR_EN => fifo_we,
@@ -157,7 +163,11 @@ begin
             
             if fifo_re = '1' then
                 data_tx(7 downto 0) <= fifo_dout(9 downto 2);
-                led(7 downto 0) <= fifo_dout(9 downto 2);
+                --led(7 downto 2) <= fifo_dout(9 downto 2);
+                
+                digit2 <= fifo_dout(5 downto 2);
+                digit3 <= fifo_dout(9 downto 6);
+                
             end if;       
         end if;
     end process;  

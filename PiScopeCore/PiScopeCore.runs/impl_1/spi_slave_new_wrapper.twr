@@ -45,9 +45,9 @@ Setup/Hold to clock SCK
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-MOSI        |    2.733(F)|    0.137(F)|SCK_BUFGP         |   0.000|
-SS          |    4.274(R)|   -1.486(R)|SCK_BUFGP         |   0.000|
-            |    4.814(F)|   -1.309(F)|SCK_BUFGP         |   0.000|
+MOSI        |    2.277(F)|    0.751(F)|SCK_BUFGP         |   0.000|
+SS          |    2.976(R)|   -0.565(R)|SCK_BUFGP         |   0.000|
+            |    4.779(F)|   -1.189(F)|SCK_BUFGP         |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Setup/Hold to clock clk
@@ -55,15 +55,15 @@ Setup/Hold to clock clk
             |Max Setup to|Max Hold to |                  | Clock  |
 Source      | clk (edge) | clk (edge) |Internal Clock(s) | Phase  |
 ------------+------------+------------+------------------+--------+
-adc_data[1] |    5.797(R)|    0.491(R)|clk_adc_OBUF      |   0.000|
-adc_data[2] |    3.902(R)|    0.744(R)|clk_adc_OBUF      |   0.000|
-adc_data[3] |    4.402(R)|    0.500(R)|clk_adc_OBUF      |   0.000|
-adc_data[4] |    4.543(R)|    0.547(R)|clk_adc_OBUF      |   0.000|
-adc_data[5] |    5.695(R)|    0.822(R)|clk_adc_OBUF      |   0.000|
-adc_data[6] |    4.552(R)|    0.749(R)|clk_adc_OBUF      |   0.000|
-adc_data[7] |    4.364(R)|    0.576(R)|clk_adc_OBUF      |   0.000|
-adc_data[8] |    6.022(R)|   -0.241(R)|clk_adc_OBUF      |   0.000|
-adc_data[9] |    3.752(R)|    0.562(R)|clk_adc_OBUF      |   0.000|
+adc_data[1] |    6.214(R)|    0.386(R)|clk_adc_OBUF      |   0.000|
+adc_data[2] |    5.756(R)|    0.559(R)|clk_adc_OBUF      |   0.000|
+adc_data[3] |    4.189(R)|    0.540(R)|clk_adc_OBUF      |   0.000|
+adc_data[4] |    6.332(R)|    0.288(R)|clk_adc_OBUF      |   0.000|
+adc_data[5] |    4.238(R)|    0.805(R)|clk_adc_OBUF      |   0.000|
+adc_data[6] |    5.351(R)|    0.818(R)|clk_adc_OBUF      |   0.000|
+adc_data[7] |    3.853(R)|    0.524(R)|clk_adc_OBUF      |   0.000|
+adc_data[8] |    6.164(R)|   -0.241(R)|clk_adc_OBUF      |   0.000|
+adc_data[9] |    3.905(R)|    0.546(R)|clk_adc_OBUF      |   0.000|
 ------------+------------+------------+------------------+--------+
 
 Clock SCK to Pad
@@ -71,25 +71,35 @@ Clock SCK to Pad
             | clk (edge) |                  | Clock  |
 Destination |   to PAD   |Internal Clock(s) | Phase  |
 ------------+------------+------------------+--------+
-MISO        |   12.426(R)|SCK_BUFGP         |   0.000|
-a[0]        |   10.439(F)|SCK_BUFGP         |   0.000|
-a[1]        |   11.682(F)|SCK_BUFGP         |   0.000|
-d[0]        |   13.589(F)|SCK_BUFGP         |   0.000|
-d[1]        |   14.043(F)|SCK_BUFGP         |   0.000|
-d[2]        |   13.654(F)|SCK_BUFGP         |   0.000|
-d[3]        |   13.910(F)|SCK_BUFGP         |   0.000|
-d[4]        |   13.580(F)|SCK_BUFGP         |   0.000|
-d[5]        |   13.920(F)|SCK_BUFGP         |   0.000|
-d[6]        |   13.773(F)|SCK_BUFGP         |   0.000|
-led[0]      |   12.066(R)|SCK_BUFGP         |   0.000|
-led[1]      |   12.035(R)|SCK_BUFGP         |   0.000|
-led[2]      |   11.666(R)|SCK_BUFGP         |   0.000|
-led[3]      |   10.922(R)|SCK_BUFGP         |   0.000|
-led[4]      |   11.072(R)|SCK_BUFGP         |   0.000|
-led[5]      |   10.690(R)|SCK_BUFGP         |   0.000|
-led[6]      |   11.360(R)|SCK_BUFGP         |   0.000|
-led[7]      |   11.660(R)|SCK_BUFGP         |   0.000|
-wr          |   11.858(F)|SCK_BUFGP         |   0.000|
+MISO        |   12.275(R)|SCK_BUFGP         |   0.000|
+a[0]        |   11.379(F)|SCK_BUFGP         |   0.000|
+a[1]        |   11.907(F)|SCK_BUFGP         |   0.000|
+d[0]        |   14.577(R)|SCK_BUFGP         |   0.000|
+            |   15.783(F)|SCK_BUFGP         |   0.000|
+d[1]        |   14.709(R)|SCK_BUFGP         |   0.000|
+            |   16.006(F)|SCK_BUFGP         |   0.000|
+d[2]        |   14.762(R)|SCK_BUFGP         |   0.000|
+            |   15.775(F)|SCK_BUFGP         |   0.000|
+d[3]        |   14.261(R)|SCK_BUFGP         |   0.000|
+            |   14.980(F)|SCK_BUFGP         |   0.000|
+d[4]        |   15.263(R)|SCK_BUFGP         |   0.000|
+            |   16.225(F)|SCK_BUFGP         |   0.000|
+d[5]        |   15.263(R)|SCK_BUFGP         |   0.000|
+            |   16.225(F)|SCK_BUFGP         |   0.000|
+d[6]        |   14.618(R)|SCK_BUFGP         |   0.000|
+            |   15.580(F)|SCK_BUFGP         |   0.000|
+led[0]      |   11.312(R)|SCK_BUFGP         |   0.000|
+led[2]      |   11.263(R)|SCK_BUFGP         |   0.000|
+wr          |   11.149(F)|SCK_BUFGP         |   0.000|
+------------+------------+------------------+--------+
+
+Clock clk to Pad
+------------+------------+------------------+--------+
+            | clk (edge) |                  | Clock  |
+Destination |   to PAD   |Internal Clock(s) | Phase  |
+------------+------------+------------------+--------+
+led[1]      |   11.573(R)|clk_adc_OBUF      |   0.000|
+led[3]      |   10.481(R)|clk_adc_OBUF      |   0.000|
 ------------+------------+------------------+--------+
 
 Clock to Setup on destination clock SCK
@@ -97,7 +107,7 @@ Clock to Setup on destination clock SCK
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-SCK            |    7.078|         |         |    5.461|
+SCK            |    7.344|         |         |    5.325|
 clk            |    2.628|         |         |         |
 ---------------+---------+---------+---------+---------+
 
@@ -106,19 +116,19 @@ Clock to Setup on destination clock clk
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-SCK            |    3.027|         |         |         |
-clk            |    7.141|         |         |         |
+SCK            |    2.583|         |         |         |
+clk            |    6.996|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Pad to Pad
 ---------------+---------------+---------+
 Source Pad     |Destination Pad|  Delay  |
 ---------------+---------------+---------+
-clk            |clk_adc        |   11.218|
+clk            |clk_adc        |   10.334|
 ---------------+---------------+---------+
 
 
-Analysis completed Sat Feb 16 09:41:39 2013 
+Analysis completed Sat Feb 16 10:58:49 2013 
 --------------------------------------------------------------------------------
 
 Trace Settings:

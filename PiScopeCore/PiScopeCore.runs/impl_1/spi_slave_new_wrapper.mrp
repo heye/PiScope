@@ -8,7 +8,7 @@ Target Device  : xc3s400
 Target Package : tq144
 Target Speed   : -4
 Mapper Version : spartan3 -- $Revision: 1.55 $
-Mapped Date    : Sat Feb 16 09:41:03 2013
+Mapped Date    : Sat Feb 16 10:58:13 2013
 
 Design Summary
 --------------
@@ -16,14 +16,14 @@ Number of errors:      0
 Number of warnings:    1
 Logic Utilization:
   Number of Slice Flip Flops:           262 out of   7,168    3%
-  Number of 4 input LUTs:               188 out of   7,168    2%
+  Number of 4 input LUTs:               192 out of   7,168    2%
 Logic Distribution:
-  Number of occupied Slices:            202 out of   3,584    5%
-    Number of Slices containing only related logic:     202 out of     202 100%
-    Number of Slices containing unrelated logic:          0 out of     202   0%
+  Number of occupied Slices:            204 out of   3,584    5%
+    Number of Slices containing only related logic:     204 out of     204 100%
+    Number of Slices containing unrelated logic:          0 out of     204   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         214 out of   7,168    2%
-    Number used as logic:               188
+  Total Number of 4 input LUTs:         218 out of   7,168    3%
+    Number used as logic:               192
     Number used as a route-thru:         26
 
   The Slice Logic Distribution report is not meaningful if the design is
@@ -33,9 +33,9 @@ Logic Distribution:
   Number of RAMB16s:                      8 out of      16   50%
   Number of BUFGMUXs:                     2 out of       8   25%
 
-Average Fanout of Non-Clock Nets:                3.25
+Average Fanout of Non-Clock Nets:                3.27
 
-Peak Memory Usage:  229 MB
+Peak Memory Usage:  230 MB
 Total REAL time to MAP completion:  4 secs 
 Total CPU time to MAP completion:   1 secs 
 
@@ -96,7 +96,7 @@ INFO:LIT:244 - All of the single ended outputs in this design are using slew
 Section 4 - Removed Logic Summary
 ---------------------------------
   10 block(s) removed
-   4 block(s) optimized away
+   5 block(s) optimized away
   18 signal(s) removed
 
 Section 5 - Removed Logic
@@ -215,6 +215,7 @@ oinit.ram/dpram.dp1x1.ram" (RAMB16_S1_S1) removed.
 
 Optimized Block(s):
 TYPE 		BLOCK
+GND 		XST_GND
 VCC 		XST_VCC
 GND 		fifefgo/XST_GND
 VCC 		fifefgo/XST_VCC

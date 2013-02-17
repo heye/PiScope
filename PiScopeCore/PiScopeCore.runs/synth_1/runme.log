@@ -38,7 +38,7 @@ Analyzing hierarchy for entity <display> in library <work> (architecture <Behavi
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <spi_slave_new_wrapper> in library <work> (Architecture <Behavioral>).
-WARNING:Xst:2211 - "//psf/home/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/spi_slave_new_wrapper.vhd" line 80: Instantiating black box module <fifo_generator_v9_2_0>.
+WARNING:Xst:2211 - "//psf/home/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/spi_slave_new_wrapper.vhd" line 86: Instantiating black box module <fifo_generator_v9_2_0>.
 Entity <spi_slave_new_wrapper> analyzed. Unit <spi_slave_new_wrapper> generated.
 
 Analyzing generic Entity <spi_slave_new> in library <work> (Architecture <Behavioral>).
@@ -96,14 +96,13 @@ Unit <display> synthesized.
 Synthesizing Unit <spi_slave_new_wrapper>.
     Related source file is "//psf/home/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/spi_slave_new_wrapper.vhd".
 WARNING:Xst:646 - Signal <fifo_dout<1:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:653 - Signal <digit3> is used but never assigned. This sourceless signal will be automatically connected to value 0000.
-WARNING:Xst:653 - Signal <digit2> is used but never assigned. This sourceless signal will be automatically connected to value 0000.
 WARNING:Xst:1780 - Signal <data_counter> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <data_buffer> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-    Found 8-bit register for signal <led>.
     Found 8-bit register for signal <data_tx>.
     Found 4-bit register for signal <digit0>.
     Found 4-bit register for signal <digit1>.
+    Found 4-bit register for signal <digit2>.
+    Found 4-bit register for signal <digit3>.
     Found 1-bit register for signal <fifo_re>.
     Found 1-bit register for signal <fifo_we>.
     Summary:
@@ -122,11 +121,11 @@ Macro Statistics
 # Counters                                             : 3
  2-bit up counter                                      : 1
  4-bit down counter                                    : 2
-# Registers                                            : 21
+# Registers                                            : 22
  1-bit register                                        : 14
  2-bit register                                        : 1
- 4-bit register                                        : 2
- 8-bit register                                        : 4
+ 4-bit register                                        : 4
+ 8-bit register                                        : 3
 # Comparators                                          : 2
  4-bit comparator greater                              : 2
 # Multiplexers                                         : 2
@@ -166,14 +165,14 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-INFO:Xst:2261 - The FF/Latch <data_tx_0> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <led_0> 
-INFO:Xst:2261 - The FF/Latch <data_tx_1> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <led_1> 
-INFO:Xst:2261 - The FF/Latch <data_tx_2> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <led_2> 
-INFO:Xst:2261 - The FF/Latch <data_tx_3> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <led_3> 
-INFO:Xst:2261 - The FF/Latch <data_tx_4> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <led_4> 
-INFO:Xst:2261 - The FF/Latch <data_tx_5> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <led_5> 
-INFO:Xst:2261 - The FF/Latch <data_tx_6> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <led_6> 
-INFO:Xst:2261 - The FF/Latch <data_tx_7> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <led_7> 
+INFO:Xst:2261 - The FF/Latch <data_tx_0> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit2_0> 
+INFO:Xst:2261 - The FF/Latch <data_tx_1> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit2_1> 
+INFO:Xst:2261 - The FF/Latch <data_tx_2> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit2_2> 
+INFO:Xst:2261 - The FF/Latch <data_tx_3> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit2_3> 
+INFO:Xst:2261 - The FF/Latch <data_tx_4> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit3_0> 
+INFO:Xst:2261 - The FF/Latch <data_tx_5> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit3_1> 
+INFO:Xst:2261 - The FF/Latch <data_tx_6> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit3_2> 
+INFO:Xst:2261 - The FF/Latch <data_tx_7> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit3_3> 
 INFO:Xst:1901 - Instance U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram in unit U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram of type RAMB16_S9_S9 has been replaced by RAMB16
 INFO:Xst:1901 - Instance U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/s3_noinit.ram/dpram.dp9x9.ram in unit U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/s3_noinit.ram/dpram.dp9x9.ram of type RAMB16_S9_S9 has been replaced by RAMB16
 INFO:Xst:1901 - Instance U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/s3_noinit.ram/dpram.dp9x9.ram in unit U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/s3_noinit.ram/dpram.dp9x9.ram of type RAMB16_S9_S9 has been replaced by RAMB16
@@ -245,7 +244,7 @@ fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg<1>(fifefgo/U
 fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg<0>(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_0:Q)| NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].wr_stg_inst/Q_0)| 56    |
 fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg<1>(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_1:Q)| NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/count_0)                   | 42    |
 fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg<2>(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_2:Q)| NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_fb_i)        | 30    |
-s1                                                                                                                                             | IBUF                                                                                                             | 6     |
+fifefgo_not0000(fifefgo_not00001_INV_0:O)                                                                                                      | NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/RST_FULL_GEN)                                      | 6     |
 display0/cnt_Acst_inv(display0/cnt_Acst_inv1_INV_0:O)                                                                                          | NONE(display0/address_0)                                                                                         | 5     |
 fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_comb(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_comb1:O)  | NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_0)                                      | 3     |
 fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rst_d2(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rst_d2:Q)             | NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_fb_i)         | 2     |
@@ -256,9 +255,9 @@ Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 6.447ns (Maximum Frequency: 155.114MHz)
+   Minimum period: 6.523ns (Maximum Frequency: 153.306MHz)
    Minimum input arrival time before clock: 5.643ns
-   Maximum output required time after clock: 11.027ns
+   Maximum output required time after clock: 11.528ns
    Maximum combinational path delay: 7.342ns
 
 =========================================================================
