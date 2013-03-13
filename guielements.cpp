@@ -107,11 +107,13 @@ int Button::getPressed(){
 
 
 
-Graph::Graph(int width, int height, int offsetY, int midpoint){
+Graph::Graph(int width, int height, int offsetY, int midpoint, int red, int green, int blue){
 	mWidth = width;
 	mHeight = height;
 	mOffsetY = offsetY;
 	mMidpoint = midpoint;
+	
+	mData = new uint16_t[mWidth];
 	
 	mX = new VGfloat[mWidth];
 	mY = new VGfloat[mWidth];
@@ -121,25 +123,32 @@ Graph::Graph(int width, int height, int offsetY, int midpoint){
 		mY[i] = height/2;
 	}
 	
-	mRed = 255;
-	mGreen = 0;
-	mBlue = 255;
+	mRed = red;
+	mGreen = green;
+	mBlue = blue;
 }
 Graph::~Graph(){
 	delete mX;
 	delete mY;
 }
 
-void Graph::setData(uint16_t* newData, int mLen){
-	if(mLen > mWidth)
-		mLen = mWidth;
-	for(int i = 0; i < mLen; i++){
-		mY[i] = (float)newData[i] - (mMidpoint - mOffsetY);
+void Graph::setData(uint16_t* newData, int len){
+	if(len > mWidth)
+		len = mWidth;
+	for(int i = 0; i < len; i++){
+		mData[i] = newData[i];
+	}
+}
+
+void Graph::setOffsetY(int offset){
+	mOffsetY = offset;
+	
+	for(int i = 0; i < mWidth; i++){
+		mY[i] = mData[i] - mMidpoint + mOffsetY;
 	}
 }
 
 void Graph::draw(){
-	//moveY();
 
 	Stroke(mRed,mGreen,mBlue,1); // red green blue alpha
 	StrokeWidth(1);
@@ -157,12 +166,6 @@ void Graph::draw(){
 	
 }
 
-/*void Graph::moveY(){
-	for(int i = 0; i < mLen; i++){
-		mY[i] += mOffsetY;
-		mY[i] -= mMidpoint;
-	}
-}*/
 
 void Graph::drawMark(int x, int y){
 	Stroke(mRed,mGreen,mBlue,1); // red green blue alpha
@@ -231,11 +234,71 @@ void Poti::update(mouse& cursor){
 		if(mPhi < 0)
 			mPhi += 6.28;
 	}
+	
 	mDotx = mX + cos(mPhi)*25; //dont calculate dot position in every fram for better performance
 	mDoty = mY + sin(mPhi)*25;
 }
 float Poti::getValue(){
 	return mPhi;
+}
+
+
+
+
+
+
+Grid::Grid(int width, int height, int div){
+	mWidth = width;
+	mHeight = height;
+	mDiv = div;
+	
+	mLen = (mWidth/mDiv)*2 + 1 + (mHeight/mDiv)*2 +1 +2;
+	//mLen = (mHeight/mDiv)*2 +1;
+	
+	mX = new VGfloat[mLen];
+	mY = new VGfloat[mLen];
+	
+	
+	for(int i = 0, j=0 ; i <= mWidth/mDiv; i++, j+=mDiv){
+		if(i%2 == 0){
+			mX[2*i] = j;
+			mX[2*i+1] = j;
+			mY[2*i] = 0;
+			mY[2*i+1] = mHeight;
+		}
+		else{
+			mX[2*i] = j;
+			mX[2*i+1] = j;
+			mY[2*i] = mHeight;
+			mY[2*i+1] = 0;
+		}
+	}
+	
+	for(int i = (mWidth/mDiv)+1, j=0 ; i <= (mWidth/mDiv + mHeight/mDiv)+1; i++, j+=mDiv){
+		if(i%2 == 0){
+			mX[2*i] = 0;
+			mX[2*i+1] = mWidth;
+			mY[2*i] = j;
+			mY[2*i+1] = j;
+		}
+		else{
+			mX[2*i] = mWidth;
+			mX[2*i+1] = 0;
+			mY[2*i] = j;
+			mY[2*i+1] = j;
+		}
+	}	
+	
+	
+	
+	
+}
+void Grid::draw(){
+	Stroke(100,100,100,1); // red green blue alpha
+	StrokeWidth(1);
+	
+	
+	Polyline(mX, mY, mLen);	
 }
 
 

@@ -40,7 +40,7 @@ spi::spi(uint32_t speed){
 	int ret = 0;
 	static uint8_t mode;
 		
-	mode |= SPI_CPHA;
+	mode |= SPI_CPOL;
 	//mode |= SPI_READY;
 	
 	/*
@@ -178,8 +178,18 @@ void spi::read(){
 	}
 	}
 	
-	for(int i=0, j=0; j < BUFFLEN; i+=3, j++){
-		mCHB[j] = mCHA[j] = ((mRx[i+1] << 7) + mRx[i+2] >> 1) & 0b0000001111111111 ;
+	//int m = 0;
+	for(int i=0, j=0; j < BUFFLEN; i+=3, j++){	
+		
+		mCHA[j] = (((mRx[i]<<16) + (mRx[i+1]<<8) + mRx[i+2])&0b000000000000001111111111);
+		//mCHA[j] = ((mRx[i+1]<<7) + (mRx[i+2]>>1)) & 0b0000001111111111 ;
+		mCHB[j] = (((mRx[i]<<16) + (mRx[i+1]<<8) + mRx[i+2])&0b001111111111000000000000) >> 12 ;
+		
+		/*if((mRx[i+2] & 0b00000001 ) == 0x00) { // if last bit is not append -> stop writing data
+			mBuffLen = j;
+			j = BUFFLEN;
+		}*/
+		
 	}
 	
 	

@@ -64,13 +64,15 @@ class Button{
 
 class Graph{
 	private:
-		uint8_t* data;
-		int mLen;		
+		//uint8_t* data;
+		//int mLen;		
 		int mWidth;
 		int mHeight;
 		
 		int mOffsetY;
 		int mMidpoint;
+		
+		uint16_t* mData;
 		
 		VGfloat* mX;
 		VGfloat* mY;
@@ -82,9 +84,10 @@ class Graph{
 		void moveY();
 		void drawMark(int x, int y);
 	public:
-		Graph(int width, int height, int offsetY, int midpoint);
+		Graph(int width, int height, int offsetY, int midpoint, int red, int green, int blue);
 		~Graph();
 		void setData(uint16_t*, int);
+		void setOffsetY(int offset);
 		//void setYOffset(float offset);
 		void draw();
 		
@@ -109,6 +112,19 @@ class Poti{
 		void draw();
 		void update(mouse&);
 		float getValue();
+};
+
+class Grid{
+	private:
+		int mWidth;
+		int mHeight;
+		int mDiv;
+		VGfloat* mX;
+		VGfloat* mY;
+		int mLen;
+	public:
+		Grid(int width, int height, int div);
+		void draw();
 };
 
 /*class Mark{
