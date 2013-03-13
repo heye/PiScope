@@ -10,8 +10,8 @@ NET "SCK" LOC = P56;
 ## Taster
 NET "reset" LOC = P69;
 NET "s1" LOC = P20;
-#NET "s2" LOC = P21;
-#NET "S3"         LOC = "P23";  
+NET "s2" LOC = P21;
+NET "s3" LOC = P23;
 
 ## UART
 #NET "RXD"	     LOC = "P26";

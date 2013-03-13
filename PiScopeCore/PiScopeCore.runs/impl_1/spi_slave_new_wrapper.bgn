@@ -6,7 +6,7 @@ C:\Xilinx\14.2\ISE_DS\ISE\.
 tq144, speed -4
 Opened constraints file spi_slave_new_wrapper.pcf.
 
-Sat Feb 16 10:59:05 2013
+Wed Mar 13 11:27:18 2013
 
 C:\Xilinx\14.2\ISE_DS\ISE\bin\nt64\unwrapped\bitgen.exe -w -intstyle pa spi_slave_new_wrapper_routed.ncd spi_slave_new_wrapper.bit spi_slave_new_wrapper.pcf 
 

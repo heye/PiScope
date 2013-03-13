@@ -1,12 +1,15 @@
 //! **************************************************************************
-// Written by: Map P.28xd on Sat Feb 16 10:58:17 2013
+// Written by: Map P.28xd on Wed Mar 13 11:23:11 2013
 //! **************************************************************************
 
 SCHEMATIC START;
 COMP "SS" LOCATE = SITE "P27" LEVEL 1;
 COMP "s1" LOCATE = SITE "P20" LEVEL 1;
+COMP "s2" LOCATE = SITE "P21" LEVEL 1;
+COMP "s3" LOCATE = SITE "P23" LEVEL 1;
 COMP "wr" LOCATE = SITE "P141" LEVEL 1;
 COMP "SCK" LOCATE = SITE "P56" LEVEL 1;
+COMP "adc_data[0]" LOCATE = SITE "P1" LEVEL 1;
 COMP "adc_data[1]" LOCATE = SITE "P2" LEVEL 1;
 COMP "adc_data[2]" LOCATE = SITE "P4" LEVEL 1;
 COMP "adc_data[3]" LOCATE = SITE "P5" LEVEL 1;

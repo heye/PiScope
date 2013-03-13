@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <Runs Version="1" Minor="8">
-	<Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc3s400tq144-4" LaunchPart="xc3s400tq144-4" ConstrsSet="constrs_1" Description="PlanAhead Defaults (XST defaults with hierarchy)" State="current" Dir="$PRUNDIR/synth_1" LaunchTime="1361008616">
+	<Run Id="synth_1" Type="Ft3:Synth" SrcSet="sources_1" Part="xc3s400tq144-4" LaunchPart="xc3s400tq144-4" ConstrsSet="constrs_1" Description="PlanAhead Defaults (XST defaults with hierarchy)" State="current" Dir="$PRUNDIR/synth_1" LaunchTime="1363169951">
 		<File Type="RUN-STRAT" Name="$PDATADIR/runs/synth_1/synth_1.psg"/>
 		<File Type="XST-NGC" Name="spi_slave_new_wrapper.ngc"/>
 		<File Type="XST-SRP" Name="spi_slave_new_wrapper.srp"/>
@@ -10,7 +10,7 @@
 		<File Type="RUN-CONSTRS" Name="$PDATADIR/runs/synth_1/constrs_in.xml"/>
 		<Search Dir="$PSRCDIR/sources_1/ip/fifo_generator_v9_2_0"/>
 	</Run>
-	<Run Id="impl_1" Type="Ft2:EntireDesign" SynthRun="synth_1" Part="xc3s400tq144-4" LaunchPart="xc3s400tq144-4" ConstrsSet="constrs_1" Description="ISE Defaults, including packing registers in IOs off" State="current" Dir="$PRUNDIR/impl_1" LaunchTime="1361008665">
+	<Run Id="impl_1" Type="Ft2:EntireDesign" SynthRun="synth_1" Part="xc3s400tq144-4" LaunchPart="xc3s400tq144-4" ConstrsSet="constrs_1" Description="ISE Defaults, including packing registers in IOs off" State="current" Dir="$PRUNDIR/impl_1" LaunchTime="1363170166">
 		<File Type="PA-EDIF" Name="spi_slave_new_wrapper.edf"/>
 		<File Type="MAP-MRP" Name="spi_slave_new_wrapper.mrp"/>
 		<File Type="PA-UCF" Name="spi_slave_new_wrapper.ucf"/>
