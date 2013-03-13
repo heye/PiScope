@@ -20,6 +20,7 @@
 #include <sys/ioctl.h>
 #include <linux/types.h>
 #include <linux/spi/spidev.h>
+#include <math.h>
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
 
@@ -35,16 +36,38 @@ static uint8_t bits = 8;
 static uint32_t speed = 16000000;
 static uint16_t delay = 0;
 
+
+
+void printbits(int input, int bits){
+	
+	printf("\n 0x%.2X \n", input);
+
+	int max = 1;
+	for(int i = bits-1; i>=0; i--){
+		printf("%3d", i);
+	}
+	printf("\n");	
+	
+	for(int i=0; i<bits-1; i++){
+		max *=2;
+	}
+	
+	for(int j=max, i=0; i<bits; j/=2, i++){
+		//printf("%d", i);
+		printf("%3d", (input & j)!=0);
+	}
+	printf("\n");
+}
+
 static void transfer(int fd)
 {
 	int ret;
 	uint8_t tx[] = {
-		0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 
-		0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10, 0x11, 0x12, 
-		0x13, 0x14, 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A, 0x1B, 
-		0x1C, 0x1D, 0x1E, 0x1F
+		0x01, 0x02, 0x03
 	};
+	
 	uint8_t rx[ARRAY_SIZE(tx)] = {0, };
+	
 	struct spi_ioc_transfer tr;
 		tr.tx_buf = (unsigned long)tx;
 		tr.rx_buf = (unsigned long)rx;
@@ -55,16 +78,20 @@ static void transfer(int fd)
 	
 
 	ret = ioctl(fd, SPI_IOC_MESSAGE(1), &tr);
+	
 	if (ret < 1)
 		pabort("can't send spi message");
 
-	for (ret = 0; ret < ARRAY_SIZE(tx); ret++) {
-		if (!(ret % 6))
-			puts("");
-		printf("%.2X ", rx[ret]);
+	for (ret = 0; ret < ARRAY_SIZE(tx); ret+=3) {
+		
+		//printbits((rx[ret]<<16) + (rx[ret+1]<<8) + rx[ret+2],  24);
+		printf("CHA: %d \n", (((rx[ret]<<16) + (rx[ret+1]<<8) + rx[ret+2])&0b001111111111000000000000) >> 12);
+		
+		//printf("%.2X ", rx[ret]);
 	}
 	puts("");
 }
+
 
 static void print_usage(const char *prog)
 {
@@ -156,7 +183,7 @@ int main(int argc, char *argv[])
 	int ret = 0;
 	int fd;
 
-	//parse_opts(argc, argv);
+	parse_opts(argc, argv);
 
 	fd = open(device, O_RDWR);
 	if (fd < 0)
@@ -199,7 +226,9 @@ int main(int argc, char *argv[])
 	printf("bits per word: %d\n", bits);
 	printf("max speed: %d Hz (%d KHz)\n", speed, speed/1000);
 
-	transfer(fd);
+	for(int i = 0; i< 10; i++){
+		transfer(fd);
+	}
 
 	close(fd);
 

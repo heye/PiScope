@@ -46,7 +46,7 @@ void drawFPS(int x, int y){
     lastTime = currentTime;
 }
 
-void drawGrid(int div, int width, int height){
+/*void drawGrid(int div, int width, int height){
 	int i;
 	
 	Stroke(255,255,255, 0.5);
@@ -58,12 +58,13 @@ void drawGrid(int div, int width, int height){
 	for(i = 0; i < height; i+=div){
 		Line(0,i, width,i);
 	}
-}
+}*/
 
 int main ()
 {
 	//variable required for initialising
-    int width, height;
+    int width, height, pause;
+    pause = 0;
 
 	//initialise SDL
     if ( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_TIMER ) < 0 ) {
@@ -77,41 +78,73 @@ int main ()
             
     //create buttons, etc...
     Button quit(width, height, width-80, height-30, 80, 30, "QUIT");
+ 	Button pauseButton(width, height-30, width-80, height-60, 80, 30, "PAUSE");
+ 	
  	mouse cursor(width, height);
- 	Graph g(width, height);
+ 	
+ 	Graph g(width, height, 512, 480, 255, 255, 0);
+ 	Graph g2(width, height, 700, 480, 0, 255, 255);
+ 	
     Poti pot(width, height, 100, 100);
+    Poti pot2(width, height, 200, 100);
+    Poti pot3(width, height, 300, 100);
+    Poti pot4(width, height, 400, 100);
+    Poti pot5(width, height, 500, 100);
     spi spiConnection(16000000);    
-    
+    Grid grid(width, height, 50);
         
     Background(0, 0, 0);    
     
-    drawGrid(50, width, height);	
+    //drawGrid(50, width, height);	
 	
     End();
     
    	int quitv = 0; 
     while(quitv == 0){
-    	//get and process data
+    	//#######################get and process data#########################
     	
     	spiConnection.read();
     	//spiConnection.print();
-    	g.setData(spiConnection.getRX(), spiConnection.getBuffLen());
+    	
+    	if(pauseButton.getPressed()){
+    		pause = (pause+1)%2;
+    	}   	
+    	if(pause == 0){
+    		g.setData(spiConnection.getCHB(), spiConnection.getBuffLen());
+    		g2.setData(spiConnection.getCHA(), spiConnection.getBuffLen());
+    	}
+    	
+    	g.setOffsetY(-(pot.getValue()*256)/(3.14159));
+		g2.setOffsetY(-(pot2.getValue()*256)/(3.14159));
+		
     	
     	cursor.update();
     	pot.update(cursor);
+    	pot2.update(cursor);
+    	pot3.update(cursor);
+    	pot4.update(cursor);
+    	pot5.update(cursor);
     	quit.update(cursor);
+    	pauseButton.update(cursor);
     	
     	if(quit.getPressed()){
     		quitv = 1;
     	}
-    	
-    	//draw 
+    	 
+    	//################################draw #############################
     	Background(0, 0, 0);
-    	drawGrid(50, width, height);
+    	//drawGrid(50, width, height);
+    	grid.draw();
     	
     	g.draw();
+    	g2.draw();
     	pot.draw();
+    	pot2.draw();
+    	pot3.draw();
+    	pot4.draw();
+    	pot5.draw();
     	quit.draw();
+    	pauseButton.draw();
     	
     	drawFPS(width-100, height-100);
     	

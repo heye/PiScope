@@ -20,9 +20,11 @@ spi::spi(uint32_t speed){
 	mBits = 8;
 	mBuffLen = BUFFLEN;
 	
-	mRx = new uint8_t[BUFFLEN];
-	mTx = new uint8_t[BUFFLEN];
+	mRx = new uint8_t[BUFFLEN*3];
+	mTx = new uint8_t[BUFFLEN*3];
 	
+	mCHA = new uint16_t[BUFFLEN];
+	mCHB = new uint16_t[BUFFLEN];	
 	
 	for(int i=0; i<BUFFLEN; i++){
 		mRx[i] = 42;
@@ -33,17 +35,12 @@ spi::spi(uint32_t speed){
 	mDevice = open("/dev/spidev0.0", O_RDWR);
 	if (mDevice < 0)
 		error("can't open device");
-	
-	//if (mDevice < 0)
-	// TODO: log or something
-	
+		
 	
 	int ret = 0;
 	static uint8_t mode;
-	static uint8_t bits = mBits;
-	//static uint32_t speed = mSpeed;
 		
-	mode |= SPI_CPHA;
+	mode |= SPI_CPOL;
 	//mode |= SPI_READY;
 	
 	/*
@@ -111,6 +108,13 @@ uint8_t* spi::getRX(){
 	return mRx;
 }
 
+uint16_t* spi::getCHA(){
+	return mCHA;
+}
+uint16_t* spi::getCHB(){
+	return mCHB;
+}
+
 void spi::error(const char* s){
 	std::cout << "SPI Error: "<< s << endl;
 };
@@ -135,15 +139,59 @@ void spi::read(){
 	//uint8_t rx[ARRAY_SIZE(mTx)] = {0, };
 	
 	
+	int spiNumTransmissions = (BUFFLEN*3)/4096;
+	int spiTransmissionLen = 4096;
+	int spiLastTransmissionLen = BUFFLEN*3 - spiTransmissionLen*spiNumTransmissions;
+	
+	//transmissions
+	for(int i = 0; i < spiNumTransmissions; i++){
+	
 	struct spi_ioc_transfer tr;   
-		tr.tx_buf = (unsigned long)mTx;
-		tr.rx_buf = (unsigned long)mRx;
-		tr.len = BUFFLEN;
+		tr.tx_buf = (unsigned long)mTx+i*spiTransmissionLen;
+		tr.rx_buf = (unsigned long)mRx+i*spiTransmissionLen;
+		tr.len = spiTransmissionLen ;
 		tr.delay_usecs = mDelay;
 		tr.speed_hz = mSpeed;
 		tr.bits_per_word = mBits;
 	
 	ret = ioctl(mDevice, SPI_IOC_MESSAGE(1), &tr);
+	
+	if (ret < 1){
+		error("cant't send spi message1");
+	}
+	}
+	
+	if(spiLastTransmissionLen > 0){
+	//last transmission
+	struct spi_ioc_transfer tr;   
+		tr.tx_buf = (unsigned long)(mTx+spiNumTransmissions*spiTransmissionLen);
+		tr.rx_buf = (unsigned long)(mRx+spiNumTransmissions*spiTransmissionLen);
+		tr.len = spiLastTransmissionLen ;
+		tr.delay_usecs = mDelay;
+		tr.speed_hz = mSpeed;
+		tr.bits_per_word = mBits;
+	
+	ret = ioctl(mDevice, SPI_IOC_MESSAGE(1), &tr);
+	
+	if (ret < 1){
+		error("cant't send spi message2");
+	}
+	}
+	
+	//int m = 0;
+	for(int i=0, j=0; j < BUFFLEN; i+=3, j++){	
+		
+		mCHA[j] = (((mRx[i]<<16) + (mRx[i+1]<<8) + mRx[i+2])&0b000000000000001111111111);
+		//mCHA[j] = ((mRx[i+1]<<7) + (mRx[i+2]>>1)) & 0b0000001111111111 ;
+		mCHB[j] = (((mRx[i]<<16) + (mRx[i+1]<<8) + mRx[i+2])&0b001111111111000000000000) >> 12 ;
+		
+		/*if((mRx[i+2] & 0b00000001 ) == 0x00) { // if last bit is not append -> stop writing data
+			mBuffLen = j;
+			j = BUFFLEN;
+		}*/
+		
+	}
+	
 	
 	/*
 	//10 mal 4096 bytes lesen

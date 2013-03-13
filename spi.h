@@ -2,7 +2,9 @@
 #define SPI_H
 
 #include <stdint.h>
-#define BUFFLEN 4096
+
+// bufflen ist länge an messwerten in cha, chb
+#define BUFFLEN 4096 
 
 class spi{
 	private:
@@ -15,6 +17,9 @@ class spi{
 		uint8_t* mRx;
 		uint8_t* mTx;
 		
+		uint16_t* mCHA;
+		uint16_t* mCHB;
+		
 		int mBuffLen;
 		
 		int mDevice;
@@ -24,6 +29,10 @@ class spi{
 		~spi();
 		void read();
 		uint8_t* getRX();
+		
+		uint16_t* getCHA();
+		uint16_t* getCHB();
+		
 		int getBuffLen();
 		
 		void print();
