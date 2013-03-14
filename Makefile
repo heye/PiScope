@@ -26,8 +26,8 @@ SHAPESH = shapes.h
 
 all: main
 
-main: libshapes.o oglinit.o spi.o guielements.o main.o fontinfo.o $(SHAPESH) 
-	$(CC) -o $@ libshapes.o oglinit.o spi.o guielements.o main.o fontinfo.o $(LIBS) $(INCL) 
+main: libshapes.o oglinit.o spi.o guielements.o main.o fontinfo.o trigger.o $(SHAPESH) 
+	$(CC) -o $@ libshapes.o oglinit.o spi.o guielements.o main.o fontinfo.o trigger.o $(LIBS) $(INCL) 
 
 main.o: $(SHAPESH) $(MAIN) 
 	$(CC) -o $@ -c $(MAIN) $(LIBS) $(INCL) 
@@ -52,8 +52,9 @@ spi.o: spi.cpp spi.h
 fontinfo.o: fontinfo.cpp fontinfo.h
 	g++ -c fontinfo.cpp -I/opt/vc/include -I/opt/vc/include/interface/vcos/pthreads -L/opt/vc/lib -lGLESv2 -ljpeg 
 	
-#guielements.o: guielements.cpp guielements.h libshapes.o 
-#	g++ -o guielements.cpp libshapes.o $(LIBS) $(INCL) 
 
-guielements.o: guielements.cpp guielements.h fontinfo.h
+trigger.o: trigger.cpp trigger.h 
+	g++ -o $@ -c trigger.cpp
+
+guielements.o: guielements.cpp guielements.h fontinfo.h trigger.cpp trigger.h
 	g++ -o $@ -c guielements.cpp $(LIBS) $(INCL) 

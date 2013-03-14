@@ -11,6 +11,14 @@
 //SDL shit 
 #include "SDL.h"
 
+//anderer shit
+#include "trigger.h"
+
+#ifndef BUFFLEN
+#define BUFFLEN 4096
+#endif
+
+
 class mouse{
 	private:
 		int mWidth;
@@ -66,10 +74,13 @@ class Graph{
 	private:
 		//uint8_t* data;
 		//int mLen;		
+		Trigger mTrigger;
+		
 		int mWidth;
 		int mHeight;
 		
 		int mOffsetY;
+		int mOffsetX;
 		int mMidpoint;
 		
 		uint16_t* mData;
@@ -88,6 +99,8 @@ class Graph{
 		~Graph();
 		void setData(uint16_t*, int);
 		void setOffsetY(int offset);
+		void setOffsetX(int offset);
+		void setTriggerValue(int pos);
 		//void setYOffset(float offset);
 		void draw();
 		
