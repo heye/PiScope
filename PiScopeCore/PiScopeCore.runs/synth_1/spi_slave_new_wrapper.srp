@@ -2,8 +2,8 @@ Release 14.2 - xst P.28xd (nt64)
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 --> 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 4.38 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.15 secs
  
 --> Reading design: spi_slave_new_wrapper.prj
 
@@ -73,7 +73,7 @@ Entity <fifo_generator_v9_2_0> (Architecture <fifo_generator_v9_2_0_a>) compiled
 Analyzing hierarchy for entity <spi_slave_new_wrapper> in library <work> (architecture <Behavioral>).
 
 Analyzing hierarchy for entity <spi_slave_new> in library <work> (architecture <Behavioral>) with generics.
-	N = 8
+	N = 24
 
 Analyzing hierarchy for entity <display> in library <work> (architecture <Behavioral>).
 
@@ -82,11 +82,15 @@ Analyzing hierarchy for entity <display> in library <work> (architecture <Behavi
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <spi_slave_new_wrapper> in library <work> (Architecture <Behavioral>).
-WARNING:Xst:2211 - "//psf/home/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/spi_slave_new_wrapper.vhd" line 86: Instantiating black box module <fifo_generator_v9_2_0>.
+WARNING:Xst:2211 - "//psf/home/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/spi_slave_new_wrapper.vhd" line 101: Instantiating black box module <fifo_generator_v9_2_0>.
+INFO:Xst:2679 - Register <data_tx<11>> in unit <spi_slave_new_wrapper> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <data_tx<10>> in unit <spi_slave_new_wrapper> has a constant value of 0 during circuit operation. The register is replaced by logic.
 Entity <spi_slave_new_wrapper> analyzed. Unit <spi_slave_new_wrapper> generated.
 
 Analyzing generic Entity <spi_slave_new> in library <work> (Architecture <Behavioral>).
-	N = 8
+	N = 24
+WARNING:Xst:819 - "//psf/home/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/spi_slave_new.vhd" line 147: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+   <data_out_buffer>
 Entity <spi_slave_new> analyzed. Unit <spi_slave_new> generated.
 
 Analyzing Entity <display> in library <work> (Architecture <Behavioral>).
@@ -101,22 +105,35 @@ Performing bidirectional port resolution...
 
 Synthesizing Unit <spi_slave_new>.
     Related source file is "//psf/home/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/spi_slave_new.vhd".
-    Found 1-bit 8-to-1 multiplexer for signal <spi_miso>.
+WARNING:Xst:1780 - Signal <next_state> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <data_request_internal> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <current_bit_miso> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+    Found finite state machine <FSM_0> for signal <current_state>.
+    -----------------------------------------------------------------------
+    | States             | 24                                             |
+    | Transitions        | 24                                             |
+    | Inputs             | 0                                              |
+    | Outputs            | 24                                             |
+    | Clock              | spi_sck                   (rising_edge)        |
+    | Reset              | current_state$or0000      (positive)           |
+    | Reset type         | synchronous                                    |
+    | Reset State        | b23                                            |
+    | Power Up State     | b0                                             |
+    | Encoding           | automatic                                      |
+    | Implementation     | automatic                                      |
+    -----------------------------------------------------------------------
     Found 1-bit register for signal <data_ready>.
-    Found 8-bit register for signal <data_rx>.
+    Found 24-bit register for signal <data_rx>.
     Found 1-bit register for signal <bitM>.
-    Found 4-bit comparator greater for signal <bitM$cmp_gt0000> created at line 77.
-    Found 4-bit down counter for signal <current_bit_miso>.
-    Found 4-bit comparator greater for signal <current_bit_miso$cmp_gt0000> created at line 192.
-    Found 4-bit down counter for signal <current_bit_mosi>.
-    Found 8-bit register for signal <data_in_buffer>.
-    Found 8-bit register for signal <data_out_buffer>.
-    Found 1-bit register for signal <data_request_internal>.
+    Found 5-bit down counter for signal <current_bit_mosi>.
+    Found 24-bit register for signal <data_in_buffer>.
+    Found 5-bit comparator greater for signal <data_in_buffer_23$cmp_gt0000> created at line 83.
+    Found 24-bit register for signal <data_out_buffer>.
     Summary:
-	inferred   2 Counter(s).
-	inferred  27 D-type flip-flop(s).
-	inferred   2 Comparator(s).
-	inferred   1 Multiplexer(s).
+	inferred   1 Finite State Machine(s).
+	inferred   1 Counter(s).
+	inferred  74 D-type flip-flop(s).
+	inferred   1 Comparator(s).
 Unit <spi_slave_new> synthesized.
 
 
@@ -139,18 +156,38 @@ Unit <display> synthesized.
 
 Synthesizing Unit <spi_slave_new_wrapper>.
     Related source file is "//psf/home/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/spi_slave_new_wrapper.vhd".
-WARNING:Xst:646 - Signal <fifo_dout<1:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:647 - Input <s2> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <s3> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:646 - Signal <fifo_dout<10>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:653 - Signal <digit1> is used but never assigned. This sourceless signal will be automatically connected to value 0000.
+WARNING:Xst:653 - Signal <digit0> is used but never assigned. This sourceless signal will be automatically connected to value 0000.
 WARNING:Xst:1780 - Signal <data_counter> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <data_buffer> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
-    Found 8-bit register for signal <data_tx>.
-    Found 4-bit register for signal <digit0>.
-    Found 4-bit register for signal <digit1>.
+WARNING:Xst:653 - Signal <adc_time_mul> is used but never assigned. This sourceless signal will be automatically connected to value 0010000000.
+    Register <data_tx<2>> equivalent to <data_tx<14>> has been removed
+    Register <data_tx<3>> equivalent to <data_tx<15>> has been removed
+    Register <data_tx<4>> equivalent to <data_tx<16>> has been removed
+    Register <data_tx<5>> equivalent to <data_tx<17>> has been removed
+    Register <data_tx<6>> equivalent to <data_tx<18>> has been removed
+    Register <data_tx<7>> equivalent to <data_tx<19>> has been removed
+    Register <data_tx<8>> equivalent to <data_tx<20>> has been removed
+    Register <data_tx<9>> equivalent to <data_tx<21>> has been removed
+    Register <data_tx<23>> equivalent to <data_tx<22>> has been removed
+    Found 10-bit up counter for signal <adc_counter>.
+    Found 11-bit register for signal <data_tx<22:12>>.
+    Found 2-bit register for signal <data_tx<1:0>>.
     Found 4-bit register for signal <digit2>.
     Found 4-bit register for signal <digit3>.
     Found 1-bit register for signal <fifo_re>.
+    Found 1-bit register for signal <fifo_w_hold>.
+    Found 1-bit register for signal <fifo_w_hold_prev>.
     Found 1-bit register for signal <fifo_we>.
+    Found 11-bit comparator greatequal for signal <fifo_we$cmp_ge0000> created at line 236.
+    Found 1-bit register for signal <rpi_append>.
     Summary:
+	inferred   1 Counter(s).
 	inferred  26 D-type flip-flop(s).
+	inferred   1 Comparator(s).
 Unit <spi_slave_new_wrapper> synthesized.
 
 
@@ -163,17 +200,18 @@ Macro Statistics
 # Adders/Subtractors                                   : 1
  2-bit adder                                           : 1
 # Counters                                             : 3
+ 10-bit up counter                                     : 1
  2-bit up counter                                      : 1
- 4-bit down counter                                    : 2
-# Registers                                            : 22
- 1-bit register                                        : 14
+ 5-bit down counter                                    : 1
+# Registers                                            : 50
+ 1-bit register                                        : 45
  2-bit register                                        : 1
- 4-bit register                                        : 4
- 8-bit register                                        : 3
+ 24-bit register                                       : 2
+ 4-bit register                                        : 2
 # Comparators                                          : 2
- 4-bit comparator greater                              : 2
-# Multiplexers                                         : 2
- 1-bit 8-to-1 multiplexer                              : 1
+ 11-bit comparator greatequal                          : 1
+ 5-bit comparator greater                              : 1
+# Multiplexers                                         : 1
  4-bit 4-to-1 multiplexer                              : 1
 
 =========================================================================
@@ -182,26 +220,58 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
+Analyzing FSM <FSM_0> for best encoding.
+Optimizing FSM <spi_slave_core/current_state/FSM> on signal <current_state[1:24]> with one-hot encoding.
+-----------------------------------
+ State | Encoding
+-----------------------------------
+ b0    | 000000000000000000000001
+ b1    | 100000000000000000000000
+ b2    | 010000000000000000000000
+ b3    | 001000000000000000000000
+ b4    | 000100000000000000000000
+ b5    | 000010000000000000000000
+ b6    | 000001000000000000000000
+ b7    | 000000100000000000000000
+ b8    | 000000010000000000000000
+ b9    | 000000001000000000000000
+ b10   | 000000000100000000000000
+ b11   | 000000000010000000000000
+ b12   | 000000000001000000000000
+ b13   | 000000000000100000000000
+ b14   | 000000000000010000000000
+ b15   | 000000000000001000000000
+ b16   | 000000000000000100000000
+ b17   | 000000000000000010000000
+ b18   | 000000000000000001000000
+ b19   | 000000000000000000100000
+ b20   | 000000000000000000010000
+ b21   | 000000000000000000001000
+ b22   | 000000000000000000000100
+ b23   | 000000000000000000000010
+-----------------------------------
 Reading core <z:/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/ip/fifo_generator_v9_2_0/fifo_generator_v9_2_0.ngc>.
-Loading core <fifo_generator_v9_2_0> for timing and area information for instance <fifefgo>.
+Loading core <fifo_generator_v9_2_0> for timing and area information for instance <bigFifo>.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
+# FSMs                                                 : 1
 # ROMs                                                 : 1
  16x7-bit ROM                                          : 1
 # Adders/Subtractors                                   : 1
  2-bit adder                                           : 1
 # Counters                                             : 3
+ 10-bit up counter                                     : 1
  2-bit up counter                                      : 1
- 4-bit down counter                                    : 2
-# Registers                                            : 56
- Flip-Flops                                            : 56
+ 5-bit down counter                                    : 1
+# Registers                                            : 103
+ Flip-Flops                                            : 103
 # Comparators                                          : 2
- 4-bit comparator greater                              : 2
-# Multiplexers                                         : 2
- 1-bit 8-to-1 multiplexer                              : 1
+ 11-bit comparator greatequal                          : 1
+ 5-bit comparator greater                              : 1
+# Multiplexers                                         : 1
  4-bit 4-to-1 multiplexer                              : 1
 
 =========================================================================
@@ -209,40 +279,104 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-INFO:Xst:2261 - The FF/Latch <data_tx_0> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit2_0> 
-INFO:Xst:2261 - The FF/Latch <data_tx_1> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit2_1> 
-INFO:Xst:2261 - The FF/Latch <data_tx_2> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit2_2> 
-INFO:Xst:2261 - The FF/Latch <data_tx_3> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit2_3> 
-INFO:Xst:2261 - The FF/Latch <data_tx_4> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit3_0> 
-INFO:Xst:2261 - The FF/Latch <data_tx_5> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit3_1> 
-INFO:Xst:2261 - The FF/Latch <data_tx_6> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit3_2> 
-INFO:Xst:2261 - The FF/Latch <data_tx_7> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit3_3> 
-INFO:Xst:1901 - Instance U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram in unit U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram of type RAMB16_S9_S9 has been replaced by RAMB16
-INFO:Xst:1901 - Instance U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/s3_noinit.ram/dpram.dp9x9.ram in unit U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/s3_noinit.ram/dpram.dp9x9.ram of type RAMB16_S9_S9 has been replaced by RAMB16
-INFO:Xst:1901 - Instance U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/s3_noinit.ram/dpram.dp9x9.ram in unit U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/s3_noinit.ram/dpram.dp9x9.ram of type RAMB16_S9_S9 has been replaced by RAMB16
-INFO:Xst:1901 - Instance U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp9x9.ram in unit U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp9x9.ram of type RAMB16_S9_S9 has been replaced by RAMB16
+WARNING:Xst:1426 - The value init of the FF/Latch data_tx_22 hinder the constant cleaning in the block spi_slave_new_wrapper.
+   You should achieve better results by setting this init to 0.
+INFO:Xst:2261 - The FF/Latch <data_tx_14> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit2_0> 
+INFO:Xst:2261 - The FF/Latch <data_tx_15> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit2_1> 
+INFO:Xst:2261 - The FF/Latch <data_tx_16> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit2_2> 
+INFO:Xst:2261 - The FF/Latch <data_tx_17> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit2_3> 
+INFO:Xst:2261 - The FF/Latch <data_tx_18> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit3_0> 
+INFO:Xst:2261 - The FF/Latch <data_tx_19> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit3_1> 
+INFO:Xst:2261 - The FF/Latch <data_tx_20> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit3_2> 
+INFO:Xst:2261 - The FF/Latch <data_tx_21> in Unit <spi_slave_new_wrapper> is equivalent to the following FF/Latch, which will be removed : <digit3_3> 
+INFO:Xst:2261 - The FF/Latch <data_out_buffer_2> in Unit <spi_slave_new> is equivalent to the following FF/Latch, which will be removed : <data_out_buffer_14> 
+INFO:Xst:2261 - The FF/Latch <data_out_buffer_3> in Unit <spi_slave_new> is equivalent to the following FF/Latch, which will be removed : <data_out_buffer_15> 
+INFO:Xst:2261 - The FF/Latch <data_out_buffer_8> in Unit <spi_slave_new> is equivalent to the following FF/Latch, which will be removed : <data_out_buffer_20> 
+INFO:Xst:2261 - The FF/Latch <data_out_buffer_4> in Unit <spi_slave_new> is equivalent to the following FF/Latch, which will be removed : <data_out_buffer_16> 
+INFO:Xst:2261 - The FF/Latch <data_out_buffer_9> in Unit <spi_slave_new> is equivalent to the following FF/Latch, which will be removed : <data_out_buffer_21> 
+INFO:Xst:2261 - The FF/Latch <data_out_buffer_5> in Unit <spi_slave_new> is equivalent to the following FF/Latch, which will be removed : <data_out_buffer_17> 
+INFO:Xst:2261 - The FF/Latch <data_out_buffer_6> in Unit <spi_slave_new> is equivalent to the following FF/Latch, which will be removed : <data_out_buffer_18> 
+INFO:Xst:2261 - The FF/Latch <data_out_buffer_22> in Unit <spi_slave_new> is equivalent to the following FF/Latch, which will be removed : <data_out_buffer_23> 
+INFO:Xst:2261 - The FF/Latch <data_out_buffer_7> in Unit <spi_slave_new> is equivalent to the following FF/Latch, which will be removed : <data_out_buffer_19> 
+INFO:Xst:2261 - The FF/Latch <data_out_buffer_10> in Unit <spi_slave_new> is equivalent to the following FF/Latch, which will be removed : <data_out_buffer_11> 
+WARNING:Xst:1710 - FF/Latch <data_out_buffer_10> (without init value) has a constant value of 0 in block <spi_slave_new>. This FF/Latch will be trimmed during the optimization process.
 INFO:Xst:1901 - Instance U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp9x9.ram in unit U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp9x9.ram of type RAMB16_S9_S9 has been replaced by RAMB16
 INFO:Xst:1901 - Instance U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/s3_noinit.ram/dpram.dp9x9.ram in unit U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/s3_noinit.ram/dpram.dp9x9.ram of type RAMB16_S9_S9 has been replaced by RAMB16
 INFO:Xst:1901 - Instance U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/s3_noinit.ram/dpram.dp9x9.ram in unit U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[2].ram.r/s3_noinit.ram/dpram.dp9x9.ram of type RAMB16_S9_S9 has been replaced by RAMB16
 INFO:Xst:1901 - Instance U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/s3_noinit.ram/dpram.dp9x9.ram in unit U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/s3_noinit.ram/dpram.dp9x9.ram of type RAMB16_S9_S9 has been replaced by RAMB16
-INFO:Xst:1901 - Instance U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s3_noinit.ram/dpram.dp1x1.ram in unit U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s3_noinit.ram/dpram.dp1x1.ram of type RAMB16_S1_S1 has been replaced by RAMB16
+INFO:Xst:1901 - Instance U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s3_noinit.ram/dpram.dp2x2.ram in unit U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s3_noinit.ram/dpram.dp2x2.ram of type RAMB16_S2_S2 has been replaced by RAMB16
 
 Optimizing unit <spi_slave_new_wrapper> ...
 
 Optimizing unit <spi_slave_new> ...
 
 Optimizing unit <display> ...
+WARNING:Xst:2677 - Node <spi_slave_core/current_bit_mosi_4> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/current_bit_mosi_3> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/current_bit_mosi_2> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/current_bit_mosi_1> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/current_bit_mosi_0> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_23> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_22> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_21> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_20> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_19> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_18> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_17> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_16> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_15> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_14> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_13> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_12> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_11> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_10> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_9> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_8> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_7> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_6> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_5> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_4> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_3> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_2> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_1> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_rx_0> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_23> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_9> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_8> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_7> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_6> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_5> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_ready> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_4> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_3> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_2> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_1> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_0> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_19> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/bitM> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_18> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_22> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_17> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_21> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_16> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_20> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_15> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_14> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_13> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_12> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_11> of sequential type is unconnected in block <spi_slave_new_wrapper>.
+WARNING:Xst:2677 - Node <spi_slave_core/data_in_buffer_10> of sequential type is unconnected in block <spi_slave_new_wrapper>.
 
 Mapping all equations...
 Building and optimizing final netlist ...
-INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_fb_i> in Unit <fifefgo> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i> 
-INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_1> in Unit <fifefgo> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_0> 
-INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i> in Unit <fifefgo> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_fb_i> 
-INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_2> in Unit <fifefgo> is equivalent to the following 2 FFs/Latches : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_1> <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_0> 
-INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_fb_i> in Unit <fifefgo> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i> 
-INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_1> in Unit <fifefgo> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_0> 
-INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i> in Unit <fifefgo> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_fb_i> 
-INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_2> in Unit <fifefgo> is equivalent to the following 2 FFs/Latches : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_1> <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_0> 
+INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_fb_i> in Unit <bigFifo> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i> 
+INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_1> in Unit <bigFifo> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_0> 
+INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i> in Unit <bigFifo> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_fb_i> 
+INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_2> in Unit <bigFifo> is equivalent to the following 2 FFs/Latches : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_1> <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_0> 
+INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_fb_i> in Unit <bigFifo> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i> 
+INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_1> in Unit <bigFifo> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_0> 
+INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i> in Unit <bigFifo> is equivalent to the following FF/Latch : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_fb_i> 
+INFO:Xst:2260 - The FF/Latch <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_2> in Unit <bigFifo> is equivalent to the following 2 FFs/Latches : <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_1> <U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_0> 
 
 Final Macro Processing ...
 
@@ -250,8 +384,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 58
- Flip-Flops                                            : 58
+# Registers                                            : 70
+ Flip-Flops                                            : 70
 
 =========================================================================
 
@@ -276,48 +410,45 @@ Optimization Goal                  : speed
 Keep Hierarchy                     : no
 
 Design Statistics
-# IOs                              : 36
+# IOs                              : 38
 
 Cell Usage :
-# BELS                             : 359
-#      GND                         : 11
-#      INV                         : 9
-#      LUT1                        : 26
-#      LUT2                        : 45
-#      LUT2_D                      : 1
-#      LUT2_L                      : 3
-#      LUT3                        : 70
-#      LUT3_D                      : 2
+# BELS                             : 317
+#      GND                         : 7
+#      INV                         : 6
+#      LUT1                        : 24
+#      LUT2                        : 52
+#      LUT2_D                      : 2
+#      LUT2_L                      : 1
+#      LUT3                        : 48
+#      LUT3_D                      : 1
 #      LUT3_L                      : 1
-#      LUT4                        : 68
-#      LUT4_D                      : 3
-#      LUT4_L                      : 1
-#      MUXCY                       : 54
-#      MUXF5                       : 24
-#      MUXF6                       : 10
-#      VCC                         : 3
-#      XORCY                       : 28
-# FlipFlops/Latches                : 262
-#      FD                          : 4
-#      FDC                         : 113
+#      LUT4                        : 65
+#      LUT4_D                      : 2
+#      MUXCY                       : 61
+#      MUXF5                       : 9
+#      VCC                         : 2
+#      XORCY                       : 36
+# FlipFlops/Latches                : 260
+#      FD                          : 15
+#      FDC                         : 105
 #      FDC_1                       : 1
-#      FDCE                        : 67
-#      FDE                         : 19
-#      FDE_1                       : 25
+#      FDCE                        : 62
+#      FDE                         : 28
 #      FDP                         : 12
 #      FDP_1                       : 2
 #      FDPE                        : 7
-#      FDR                         : 4
-#      FDRE                        : 1
-#      FDRE_1                      : 1
-#      FDS                         : 6
-# RAMS                             : 9
-#      RAMB16                      : 9
+#      FDR                         : 24
+#      FDRE                        : 2
+#      FDS                         : 1
+#      FDSE                        : 1
+# RAMS                             : 5
+#      RAMB16                      : 5
 # Clock Buffers                    : 2
 #      BUFG                        : 1
 #      BUFGP                       : 1
-# IO Buffers                       : 35
-#      IBUF                        : 15
+# IO Buffers                       : 34
+#      IBUF                        : 14
 #      OBUF                        : 20
 =========================================================================
 
@@ -326,12 +457,12 @@ Device utilization summary:
 
 Selected Device : 3s400tq144-4 
 
- Number of Slices:                      194  out of   3584     5%  
- Number of Slice Flip Flops:            262  out of   7168     3%  
- Number of 4 input LUTs:                229  out of   7168     3%  
- Number of IOs:                          36
- Number of bonded IOBs:                  36  out of     97    37%  
- Number of BRAMs:                         9  out of     16    56%  
+ Number of Slices:                      179  out of   3584     4%  
+ Number of Slice Flip Flops:            260  out of   7168     3%  
+ Number of 4 input LUTs:                202  out of   7168     2%  
+ Number of IOs:                          38
+ Number of bonded IOBs:                  35  out of     97    36%  
+ Number of BRAMs:                         5  out of     16    31%  
  Number of GCLKs:                         2  out of      8    25%  
 
 ---------------------------
@@ -355,8 +486,8 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-SCK                                | BUFGP                  | 161   |
-clk                                | IBUF+BUFG              | 119   |
+SCK                                | BUFGP                  | 149   |
+clk                                | IBUF+BUFG              | 121   |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -364,24 +495,24 @@ Asynchronous Control Signals Information:
 -----------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+-------+
 Control Signal                                                                                                                                 | Buffer(FF name)                                                                                                  | Load  |
 -----------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+-------+
-fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg<1>(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_1:Q)| NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].rd_stg_inst/Q_0)| 56    |
-fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg<0>(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_0:Q)| NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].wr_stg_inst/Q_0)| 56    |
-fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg<1>(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_1:Q)| NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/count_0)                   | 42    |
-fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg<2>(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_2:Q)| NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_fb_i)        | 30    |
-fifefgo_not0000(fifefgo_not00001_INV_0:O)                                                                                                      | NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/RST_FULL_GEN)                                      | 6     |
+bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg<1>(bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_1:Q)| NONE(bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].rd_stg_inst/Q_0)| 52    |
+bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg<0>(bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_0:Q)| NONE(bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].wr_stg_inst/Q_0)| 52    |
+bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg<1>(bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_1:Q)| NONE(bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/wpntr/count_0)                   | 39    |
+bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg<2>(bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_2:Q)| NONE(bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_fb_i)        | 28    |
+bigFifo_not0000(bigFifo_not00001_INV_0:O)                                                                                                      | NONE(bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/RST_FULL_GEN)                                      | 6     |
 display0/cnt_Acst_inv(display0/cnt_Acst_inv1_INV_0:O)                                                                                          | NONE(display0/address_0)                                                                                         | 5     |
-fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_comb(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_comb1:O)  | NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_0)                                      | 3     |
-fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rst_d2(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rst_d2:Q)             | NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_fb_i)         | 2     |
-fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_comb(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_comb1:O)  | NONE(fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_0)                                      | 2     |
+bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_comb(bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_comb1:O)  | NONE(bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_0)                                      | 3     |
+bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rst_d2(bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rst_d2:Q)             | NONE(bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_fb_i)         | 2     |
+bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_comb(bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_comb1:O)  | NONE(bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_0)                                      | 2     |
 -----------------------------------------------------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------+-------+
 
 Timing Summary:
 ---------------
 Speed Grade: -4
 
-   Minimum period: 6.523ns (Maximum Frequency: 153.306MHz)
-   Minimum input arrival time before clock: 5.643ns
-   Maximum output required time after clock: 11.528ns
+   Minimum period: 7.982ns (Maximum Frequency: 125.282MHz)
+   Minimum input arrival time before clock: 5.441ns
+   Maximum output required time after clock: 13.379ns
    Maximum combinational path delay: 7.342ns
 
 Timing Detail:
@@ -390,123 +521,134 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'SCK'
-  Clock period: 6.075ns (frequency: 164.609MHz)
-  Total number of paths / destination ports: 864 / 330
+  Clock period: 5.925ns (frequency: 168.776MHz)
+  Total number of paths / destination ports: 590 / 247
 -------------------------------------------------------------------------
-Delay:               6.075ns (Levels of Logic = 2)
-  Source:            spi_slave_core/current_bit_mosi_0 (FF)
-  Destination:       spi_slave_core/data_ready (FF)
-  Source Clock:      SCK falling
-  Destination Clock: SCK falling
+Delay:               5.925ns (Levels of Logic = 3)
+  Source:            fifo_re (FF)
+  Destination:       bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp9x9.ram/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp9x9.ram (RAM)
+  Source Clock:      SCK rising
+  Destination Clock: SCK rising
 
-  Data Path: spi_slave_core/current_bit_mosi_0 to spi_slave_core/data_ready
+  Data Path: fifo_re to bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp9x9.ram/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp9x9.ram
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDS:C->Q              8   0.720   1.278  current_bit_mosi_0 (current_bit_mosi_0)
-     LUT4_D:I1->O          2   0.551   1.072  Mcount_current_bit_mosi_xor<3>111 (N01)
-     LUT2:I1->O            2   0.551   0.877  data_ready_and00001 (data_ready_and0000)
-     FDRE_1:R                  1.026          data_ready
+     FDRE:C->Q            17   0.720   1.684  fifo_re (fifo_re)
+     begin scope: 'bigFifo'
+     LUT3:I0->O            7   0.551   1.134  U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/tmp_ram_rd_en1 (U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/tmp_ram_rd_en)
+     LUT3:I2->O            1   0.551   0.801  U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/enb_array<2>1 (U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/enb_array<2>)
+     begin scope: 'U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/s3_noinit.ram/dpram.dp9x9.ram'
+     RAMB16:ENB                0.484          U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[3].ram.r/s3_noinit.ram/dpram.dp9x9.ram
     ----------------------------------------
-    Total                      6.075ns (2.848ns logic, 3.227ns route)
-                                       (46.9% logic, 53.1% route)
+    Total                      5.925ns (2.306ns logic, 3.619ns route)
+                                       (38.9% logic, 61.1% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 6.523ns (frequency: 153.306MHz)
-  Total number of paths / destination ports: 632 / 246
+  Clock period: 7.982ns (frequency: 125.282MHz)
+  Total number of paths / destination ports: 1239 / 206
 -------------------------------------------------------------------------
-Delay:               6.523ns (Levels of Logic = 3)
-  Source:            fifo_we (FF)
-  Destination:       fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram (RAM)
+Delay:               7.982ns (Levels of Logic = 13)
+  Source:            adc_counter_6 (FF)
+  Destination:       adc_counter_9 (FF)
   Source Clock:      clk rising
   Destination Clock: clk rising
 
-  Data Path: fifo_we to fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram
+  Data Path: adc_counter_6 to adc_counter_9
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q             2   0.720   1.216  fifo_we (fifo_we)
-     begin scope: 'fifefgo'
-     LUT2:I0->O           88   0.551   2.200  U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/ram_wr_en_i1 (U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ENA)
-     LUT4:I3->O            1   0.551   0.801  U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<7>1 (U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ena_array<7>)
-     begin scope: 'U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram'
-     RAMB16:ENA                0.484          U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram
+     FD:C->Q               2   0.720   1.216  adc_counter_6 (adc_counter_6)
+     LUT4:I0->O            2   0.551   0.945  adc_counter_and00008 (adc_counter_and00008)
+     LUT4:I2->O           10   0.551   1.329  adc_counter_and000027 (adc_counter_and0000)
+     LUT2:I1->O            1   0.551   0.000  Mcount_adc_counter_lut<0> (Mcount_adc_counter_lut<0>)
+     MUXCY:S->O            1   0.500   0.000  Mcount_adc_counter_cy<0> (Mcount_adc_counter_cy<0>)
+     MUXCY:CI->O           1   0.064   0.000  Mcount_adc_counter_cy<1> (Mcount_adc_counter_cy<1>)
+     MUXCY:CI->O           1   0.064   0.000  Mcount_adc_counter_cy<2> (Mcount_adc_counter_cy<2>)
+     MUXCY:CI->O           1   0.064   0.000  Mcount_adc_counter_cy<3> (Mcount_adc_counter_cy<3>)
+     MUXCY:CI->O           1   0.064   0.000  Mcount_adc_counter_cy<4> (Mcount_adc_counter_cy<4>)
+     MUXCY:CI->O           1   0.064   0.000  Mcount_adc_counter_cy<5> (Mcount_adc_counter_cy<5>)
+     MUXCY:CI->O           1   0.064   0.000  Mcount_adc_counter_cy<6> (Mcount_adc_counter_cy<6>)
+     MUXCY:CI->O           1   0.064   0.000  Mcount_adc_counter_cy<7> (Mcount_adc_counter_cy<7>)
+     MUXCY:CI->O           0   0.064   0.000  Mcount_adc_counter_cy<8> (Mcount_adc_counter_cy<8>)
+     XORCY:CI->O           1   0.904   0.000  Mcount_adc_counter_xor<9> (Mcount_adc_counter9)
+     FD:D                      0.203          adc_counter_9
     ----------------------------------------
-    Total                      6.523ns (2.306ns logic, 4.217ns route)
-                                       (35.4% logic, 64.6% route)
+    Total                      7.982ns (4.492ns logic, 3.490ns route)
+                                       (56.3% logic, 43.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 73 / 73
+  Total number of paths / destination ports: 34 / 34
 -------------------------------------------------------------------------
-Offset:              2.388ns (Levels of Logic = 2)
-  Source:            adc_data<8> (PAD)
-  Destination:       fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram (RAM)
+Offset:              2.222ns (Levels of Logic = 2)
+  Source:            adc_data<9> (PAD)
+  Destination:       bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp9x9.ram/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp9x9.ram (RAM)
   Destination Clock: clk rising
 
-  Data Path: adc_data<8> to fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram
+  Data Path: adc_data<9> to bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp9x9.ram/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp9x9.ram
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             8   0.821   1.083  adc_data_8_IBUF (adc_data_8_IBUF)
-     begin scope: 'fifefgo'
-     begin scope: 'U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram'
-     RAMB16:DIA7               0.484          U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram
+     IBUF:I->O             4   0.821   0.917  adc_data_9_IBUF (adc_data_9_IBUF)
+     begin scope: 'bigFifo'
+     begin scope: 'U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp9x9.ram'
+     RAMB16:DIA7               0.484          U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp9x9.ram
     ----------------------------------------
-    Total                      2.388ns (1.305ns logic, 1.083ns route)
-                                       (54.6% logic, 45.4% route)
+    Total                      2.222ns (1.305ns logic, 0.917ns route)
+                                       (58.7% logic, 41.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'SCK'
-  Total number of paths / destination ports: 27 / 27
+  Total number of paths / destination ports: 74 / 37
 -------------------------------------------------------------------------
-Offset:              5.643ns (Levels of Logic = 4)
-  Source:            SS (PAD)
-  Destination:       spi_slave_core/data_in_buffer_4 (FF)
-  Destination Clock: SCK falling
+Offset:              5.441ns (Levels of Logic = 3)
+  Source:            reset (PAD)
+  Destination:       spi_slave_core/current_state_FSM_FFd1 (FF)
+  Destination Clock: SCK rising
 
-  Data Path: SS to spi_slave_core/data_in_buffer_4
+  Data Path: reset to spi_slave_core/current_state_FSM_FFd1
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             6   0.821   1.342  SS_IBUF (SS_IBUF)
+     IBUF:I->O             3   0.821   1.246  reset_IBUF (reset_IBUF)
      begin scope: 'spi_slave_core'
-     LUT3_D:I0->O          3   0.551   0.975  data_in_buffer_0_not000111 (N2_0)
-     LUT3:I2->O            1   0.551   0.801  data_in_buffer_4_not00011 (data_in_buffer_4_not0001)
-     FDE_1:CE                  0.602          data_in_buffer_4
+     LUT2:I0->O           24   0.551   1.797  current_state_or00001 (current_state_or0000)
+     FDR:R                     1.026          current_state_FSM_FFd24
     ----------------------------------------
-    Total                      5.643ns (2.525ns logic, 3.118ns route)
-                                       (44.7% logic, 55.3% route)
+    Total                      5.441ns (2.398ns logic, 3.043ns route)
+                                       (44.1% logic, 55.9% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'SCK'
-  Total number of paths / destination ports: 188 / 13
+  Total number of paths / destination ports: 158 / 13
 -------------------------------------------------------------------------
-Offset:              11.528ns (Levels of Logic = 5)
-  Source:            display0/address_0 (FF)
-  Destination:       d<5> (PAD)
-  Source Clock:      SCK falling
+Offset:              13.379ns (Levels of Logic = 6)
+  Source:            spi_slave_core/current_state_FSM_FFd11 (FF)
+  Destination:       MISO (PAD)
+  Source Clock:      SCK rising
 
-  Data Path: display0/address_0 to d<5>
+  Data Path: spi_slave_core/current_state_FSM_FFd11 to MISO
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDPE:C->Q            11   0.720   1.483  address_0 (address_0)
-     LUT3:I0->O            1   0.551   0.000  Mmux_selDigit_32 (Mmux_selDigit_32)
-     MUXF5:I1->O           6   0.360   1.342  Mmux_selDigit_2_f5_1 (selDigit<2>)
-     LUT3:I0->O            2   0.551   0.877  data<5>1 (data<4>)
-     end scope: 'display0'
-     OBUF:I->O                 5.644          d_5_OBUF (d<5>)
+     FDR:C->Q              2   0.720   1.216  current_state_FSM_FFd11 (current_state_FSM_FFd11)
+     LUT4:I0->O            1   0.551   1.140  spi_miso159 (spi_miso159)
+     LUT3:I0->O            1   0.551   0.827  spi_miso225_SW0 (N5)
+     LUT4:I3->O            1   0.551   0.827  spi_miso225 (spi_miso225)
+     LUT4:I3->O            1   0.551   0.801  spi_miso247 (spi_miso)
+     end scope: 'spi_slave_core'
+     OBUF:I->O                 5.644          MISO_OBUF (MISO)
     ----------------------------------------
-    Total                     11.528ns (7.826ns logic, 3.702ns route)
-                                       (67.9% logic, 32.1% route)
+    Total                     13.379ns (8.568ns logic, 4.811ns route)
+                                       (64.0% logic, 36.0% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
   Total number of paths / destination ports: 2 / 2
 -------------------------------------------------------------------------
-Offset:              7.241ns (Levels of Logic = 1)
+Offset:              7.430ns (Levels of Logic = 1)
   Source:            fifo_we (FF)
   Destination:       led<3> (PAD)
   Source Clock:      clk rising
@@ -515,11 +657,11 @@ Offset:              7.241ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q             2   0.720   0.877  fifo_we (fifo_we)
+     FDR:C->Q              7   0.720   1.066  fifo_we (fifo_we)
      OBUF:I->O                 5.644          led_3_OBUF (led<3>)
     ----------------------------------------
-    Total                      7.241ns (6.364ns logic, 0.877ns route)
-                                       (87.9% logic, 12.1% route)
+    Total                      7.430ns (6.364ns logic, 1.066ns route)
+                                       (85.7% logic, 14.3% route)
 
 =========================================================================
 Timing constraint: Default path analysis
@@ -542,14 +684,14 @@ Delay:               7.342ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 17.00 secs
-Total CPU time to Xst completion: 16.77 secs
+Total REAL time to Xst completion: 12.00 secs
+Total CPU time to Xst completion: 12.37 secs
  
 --> 
 
-Total memory usage is 276112 kilobytes
+Total memory usage is 279184 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :    5 (   0 filtered)
-Number of infos    :   25 (   0 filtered)
+Number of warnings :   71 (   0 filtered)
+Number of infos    :   33 (   0 filtered)
 

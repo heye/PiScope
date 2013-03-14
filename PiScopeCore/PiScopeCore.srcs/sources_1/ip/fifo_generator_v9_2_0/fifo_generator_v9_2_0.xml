@@ -1682,7 +1682,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>customizationCRC</spirit:name>
-            <spirit:value>1707785617</spirit:value>
+            <spirit:value>37945397</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1696,7 +1696,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>customizationCRC</spirit:name>
-            <spirit:value>1707785617</spirit:value>
+            <spirit:value>37945397</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1711,7 +1711,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>customizationCRC</spirit:name>
-            <spirit:value>1707785617</spirit:value>
+            <spirit:value>37945397</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -1726,7 +1726,7 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>customizationCRC</spirit:name>
-            <spirit:value>1707785617</spirit:value>
+            <spirit:value>37945397</spirit:value>
           </spirit:parameter>
         </spirit:parameters>
       </spirit:view>
@@ -8673,19 +8673,19 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Input_Data_Width</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.INPUT_DATA_WIDTH" spirit:order="6" spirit:minimum="1" spirit:maximum="1024" spirit:rangeType="long">10</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.INPUT_DATA_WIDTH" spirit:order="6" spirit:minimum="1" spirit:maximum="1024" spirit:rangeType="long">11</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Input_Depth</spirit:name>
-      <spirit:value spirit:format="string" spirit:resolve="user" spirit:id="PARAM_VALUE.INPUT_DEPTH" spirit:choiceRef="xippack_UserParameter_choiceref_Input_Depth" spirit:order="7">16384</spirit:value>
+      <spirit:value spirit:format="string" spirit:resolve="user" spirit:id="PARAM_VALUE.INPUT_DEPTH" spirit:choiceRef="xippack_UserParameter_choiceref_Input_Depth" spirit:order="7">8192</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Output_Data_Width</spirit:name>
-      <spirit:value spirit:format="string" spirit:resolve="user" spirit:id="PARAM_VALUE.OUTPUT_DATA_WIDTH" spirit:choiceRef="xippack_UserParameter_choiceref_Output_Data_Width" spirit:order="8">10</spirit:value>
+      <spirit:value spirit:format="string" spirit:resolve="user" spirit:id="PARAM_VALUE.OUTPUT_DATA_WIDTH" spirit:choiceRef="xippack_UserParameter_choiceref_Output_Data_Width" spirit:order="8">11</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Output_Depth</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.OUTPUT_DEPTH" spirit:order="9" spirit:minimum="16" spirit:maximum="33554432" spirit:rangeType="long">16384</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.OUTPUT_DEPTH" spirit:order="9" spirit:minimum="16" spirit:maximum="33554432" spirit:rangeType="long">8192</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Enable_ECC</spirit:name>
@@ -8777,7 +8777,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Data_Count_Width</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DATA_COUNT_WIDTH" spirit:order="32" spirit:minimum="1" spirit:maximum="10" spirit:rangeType="long">14</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.DATA_COUNT_WIDTH" spirit:order="32" spirit:minimum="1" spirit:maximum="10" spirit:rangeType="long">13</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Write_Data_Count</spirit:name>
@@ -8785,7 +8785,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Write_Data_Count_Width</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.WRITE_DATA_COUNT_WIDTH" spirit:order="34" spirit:minimum="1" spirit:maximum="10" spirit:rangeType="long">14</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.WRITE_DATA_COUNT_WIDTH" spirit:order="34" spirit:minimum="1" spirit:maximum="10" spirit:rangeType="long">13</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Read_Data_Count</spirit:name>
@@ -8793,7 +8793,7 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Read_Data_Count_Width</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.READ_DATA_COUNT_WIDTH" spirit:order="36" spirit:minimum="1" spirit:maximum="10" spirit:rangeType="long">14</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.READ_DATA_COUNT_WIDTH" spirit:order="36" spirit:minimum="1" spirit:maximum="10" spirit:rangeType="long">13</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Disable_Timing_Violations</spirit:name>
@@ -8813,11 +8813,11 @@
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Full_Threshold_Assert_Value</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.FULL_THRESHOLD_ASSERT_VALUE" spirit:order="41" spirit:minimum="0" spirit:maximum="4194304" spirit:rangeType="long">16381</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.FULL_THRESHOLD_ASSERT_VALUE" spirit:order="41" spirit:minimum="0" spirit:maximum="4194304" spirit:rangeType="long">8189</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Full_Threshold_Negate_Value</spirit:name>
-      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.FULL_THRESHOLD_NEGATE_VALUE" spirit:order="42" spirit:minimum="0" spirit:maximum="4194304" spirit:rangeType="long">16380</spirit:value>
+      <spirit:value spirit:format="long" spirit:resolve="user" spirit:id="PARAM_VALUE.FULL_THRESHOLD_NEGATE_VALUE" spirit:order="42" spirit:minimum="0" spirit:maximum="4194304" spirit:rangeType="long">8188</spirit:value>
     </spirit:parameter>
     <spirit:parameter>
       <spirit:name>Programmable_Empty_Type</spirit:name>
@@ -9408,7 +9408,7 @@
         <xilinx:canUpgradeFrom>xilinx.com:ip:fifo_generator:8.4</xilinx:canUpgradeFrom>
         <xilinx:canUpgradeFrom>xilinx.com:ip:fifo_generator:9.1</xilinx:canUpgradeFrom>
       </xilinx:upgrades>
-      <xilinx:coreCreationDateTime>2013-02-15T18:51:01</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2013-02-28T13:46:45</xilinx:coreCreationDateTime>
     </xilinx:coreExtensions>
     <xilinx:coreProperties>
       <xilinx:supportedFamilies>
@@ -9489,7 +9489,7 @@
       <xilinx:display>
         <xilinx:displayName>Fifo Generator</xilinx:displayName>
         <xilinx:ipType>Spirit</xilinx:ipType>
-        <xilinx:coreCreationDateTime>2013-02-15T18:51:01</xilinx:coreCreationDateTime>
+        <xilinx:coreCreationDateTime>2013-02-28T13:46:45</xilinx:coreCreationDateTime>
         <xilinx:taxonomies>
           <xilinx:taxonomy>/Memories_&amp;_Storage_Elements/FIFOs</xilinx:taxonomy>
         </xilinx:taxonomies>

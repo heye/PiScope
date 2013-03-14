@@ -8,10 +8,41 @@
 <msg type="warning" file="HDLParsers" num="3607" delta="new" >Unit <arg fmt="%s" index="1">work/fifo_generator_v9_2_0</arg> is now defined in a different file.  It was defined in &quot;<arg fmt="%s" index="2">//psf/home/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/ip/fifo_generator_v9_2_0/fifo_generator_v9_2_0.vhd</arg>&quot;, and is now defined in &quot;<arg fmt="%s" index="3">//psf/home/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/ip/fifo_generator_v9_2_0/fifo_generator_v9_2_0_synth.vhd</arg>&quot;.
 </msg>
 
-<msg type="warning" file="Xst" num="2211" delta="new" >&quot;<arg fmt="%s" index="1">//psf/home/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/spi_slave_new_wrapper.vhd</arg>&quot; line <arg fmt="%d" index="2">86</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">fifo_generator_v9_2_0</arg>&gt;.
+<msg type="warning" file="Xst" num="2211" delta="new" >&quot;<arg fmt="%s" index="1">//psf/home/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/spi_slave_new_wrapper.vhd</arg>&quot; line <arg fmt="%d" index="2">101</arg>: Instantiating black box module &lt;<arg fmt="%s" index="3">fifo_generator_v9_2_0</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">fifo_dout&lt;1:0&gt;</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">data_tx&lt;11&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
+</msg>
+
+<msg type="info" file="Xst" num="2679" delta="new" >Register &lt;<arg fmt="%s" index="1">data_tx&lt;10&gt;</arg>&gt; in unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; has a constant value of <arg fmt="%s" index="3">0</arg> during circuit operation. The register is replaced by logic.
+</msg>
+
+<msg type="warning" file="Xst" num="819" delta="new" >&quot;<arg fmt="%s" index="1">//psf/home/PiScope/PiScopeCore/PiScopeCore.srcs/sources_1/imports/new/spi_slave_new.vhd</arg>&quot; line <arg fmt="%d" index="2">147</arg>: One or more signals are missing in the process sensitivity list. To enable synthesis of FPGA/CPLD hardware, XST will assume that all necessary signals are present in the sensitivity list. Please note that the result of the synthesis may differ from the initial design specification. The missing signals are:
+<arg fmt="%s" index="3">&lt;data_out_buffer&gt;</arg>
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">next_state</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">data_request_internal</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">current_bit_miso</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">s2</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="647" delta="new" >Input &lt;<arg fmt="%s" index="1">s3</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+</msg>
+
+<msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">fifo_dout&lt;10&gt;</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">digit1</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">0000</arg>.
+</msg>
+
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">digit0</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">0000</arg>.
 </msg>
 
 <msg type="warning" file="Xst" num="1780" delta="new" >Signal &lt;<arg fmt="%s" index="1">data_counter</arg>&gt; is never used or assigned. This unconnected signal will be trimmed during the optimization process.
@@ -20,40 +51,68 @@
 <msg type="warning" file="Xst" num="646" delta="new" >Signal &lt;<arg fmt="%s" index="1">data_buffer</arg>&gt; is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_tx_0</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;digit2_0&gt; </arg>
+<msg type="warning" file="Xst" num="653" delta="new" >Signal &lt;<arg fmt="%s" index="1">adc_time_mul</arg>&gt; is used but never assigned. This sourceless signal will be automatically connected to value <arg fmt="%s" index="2">0010000000</arg>.
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_tx_1</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;digit2_1&gt; </arg>
+<msg type="warning" file="Xst" num="1426" delta="new" >The value init of the FF/Latch <arg fmt="%s" index="1">data_tx_22</arg> hinder the constant cleaning in the block <arg fmt="%s" index="2">spi_slave_new_wrapper</arg>.
+You should achieve better results by setting this init to <arg fmt="%i" index="3">0</arg>.
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_tx_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;digit2_2&gt; </arg>
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_tx_14</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;digit2_0&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_tx_3</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;digit2_3&gt; </arg>
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_tx_15</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;digit2_1&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_tx_4</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;digit3_0&gt; </arg>
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_tx_16</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;digit2_2&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_tx_5</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;digit3_1&gt; </arg>
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_tx_17</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;digit2_3&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_tx_6</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;digit3_2&gt; </arg>
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_tx_18</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;digit3_0&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_tx_7</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;digit3_3&gt; </arg>
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_tx_19</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;digit3_1&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="1901" delta="new" >Instance <arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram</arg> in unit <arg fmt="%s" index="2">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[8].ram.r/s3_noinit.ram/dpram.dp9x9.ram</arg> of type <arg fmt="%s" index="3">RAMB16_S9_S9</arg> has been replaced by <arg fmt="%s" index="4">RAMB16</arg>
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_tx_20</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;digit3_2&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="1901" delta="new" >Instance <arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/s3_noinit.ram/dpram.dp9x9.ram</arg> in unit <arg fmt="%s" index="2">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[7].ram.r/s3_noinit.ram/dpram.dp9x9.ram</arg> of type <arg fmt="%s" index="3">RAMB16_S9_S9</arg> has been replaced by <arg fmt="%s" index="4">RAMB16</arg>
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_tx_21</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;digit3_3&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="1901" delta="new" >Instance <arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/s3_noinit.ram/dpram.dp9x9.ram</arg> in unit <arg fmt="%s" index="2">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[6].ram.r/s3_noinit.ram/dpram.dp9x9.ram</arg> of type <arg fmt="%s" index="3">RAMB16_S9_S9</arg> has been replaced by <arg fmt="%s" index="4">RAMB16</arg>
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_out_buffer_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;data_out_buffer_14&gt; </arg>
 </msg>
 
-<msg type="info" file="Xst" num="1901" delta="new" >Instance <arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp9x9.ram</arg> in unit <arg fmt="%s" index="2">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[5].ram.r/s3_noinit.ram/dpram.dp9x9.ram</arg> of type <arg fmt="%s" index="3">RAMB16_S9_S9</arg> has been replaced by <arg fmt="%s" index="4">RAMB16</arg>
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_out_buffer_3</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;data_out_buffer_15&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_out_buffer_8</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;data_out_buffer_20&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_out_buffer_4</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;data_out_buffer_16&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_out_buffer_9</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;data_out_buffer_21&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_out_buffer_5</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;data_out_buffer_17&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_out_buffer_6</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;data_out_buffer_18&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_out_buffer_22</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;data_out_buffer_23&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_out_buffer_7</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;data_out_buffer_19&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">data_out_buffer_10</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">spi_slave_new</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg>, which will be removed : <arg fmt="%s" index="4">&lt;data_out_buffer_11&gt; </arg>
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="new" >FF/Latch &lt;<arg fmt="%s" index="1">data_out_buffer_10</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">spi_slave_new</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="info" file="Xst" num="1901" delta="new" >Instance <arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp9x9.ram</arg> in unit <arg fmt="%s" index="2">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[4].ram.r/s3_noinit.ram/dpram.dp9x9.ram</arg> of type <arg fmt="%s" index="3">RAMB16_S9_S9</arg> has been replaced by <arg fmt="%s" index="4">RAMB16</arg>
@@ -68,31 +127,196 @@
 <msg type="info" file="Xst" num="1901" delta="new" >Instance <arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/s3_noinit.ram/dpram.dp9x9.ram</arg> in unit <arg fmt="%s" index="2">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[1].ram.r/s3_noinit.ram/dpram.dp9x9.ram</arg> of type <arg fmt="%s" index="3">RAMB16_S9_S9</arg> has been replaced by <arg fmt="%s" index="4">RAMB16</arg>
 </msg>
 
-<msg type="info" file="Xst" num="1901" delta="new" >Instance <arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s3_noinit.ram/dpram.dp1x1.ram</arg> in unit <arg fmt="%s" index="2">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s3_noinit.ram/dpram.dp1x1.ram</arg> of type <arg fmt="%s" index="3">RAMB16_S1_S1</arg> has been replaced by <arg fmt="%s" index="4">RAMB16</arg>
+<msg type="info" file="Xst" num="1901" delta="new" >Instance <arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s3_noinit.ram/dpram.dp2x2.ram</arg> in unit <arg fmt="%s" index="2">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s3_noinit.ram/dpram.dp2x2.ram</arg> of type <arg fmt="%s" index="3">RAMB16_S2_S2</arg> has been replaced by <arg fmt="%s" index="4">RAMB16</arg>
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_fb_i</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">fifefgo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i&gt; </arg>
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/current_bit_mosi_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_1</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">fifefgo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_0&gt; </arg>
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/current_bit_mosi_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">fifefgo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_fb_i&gt; </arg>
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/current_bit_mosi_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">fifefgo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg> : <arg fmt="%s" index="4">&lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_1&gt; &lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_0&gt; </arg>
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/current_bit_mosi_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_fb_i</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">fifefgo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i&gt; </arg>
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/current_bit_mosi_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_1</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">fifefgo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_0&gt; </arg>
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">fifefgo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_fb_i&gt; </arg>
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
 </msg>
 
-<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">fifefgo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg> : <arg fmt="%s" index="4">&lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_1&gt; &lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_0&gt; </arg>
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_19</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_18</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_17</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_16</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_11</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_10</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_9</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_rx_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_23</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_9</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_8</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_7</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_6</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_5</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_ready</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_4</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_3</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_2</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_1</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_19</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/bitM</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_18</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_22</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_17</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_21</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_16</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_20</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_12</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_11</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="warning" file="Xst" num="2677" delta="new" >Node &lt;<arg fmt="%s" index="1">spi_slave_core/data_in_buffer_10</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">spi_slave_new_wrapper</arg>&gt;.
+</msg>
+
+<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_fb_i</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">bigFifo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_1</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">bigFifo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_0&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">bigFifo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_fb_i&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">bigFifo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg> : <arg fmt="%s" index="4">&lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_1&gt; &lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_0&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_fb_i</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">bigFifo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_1</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">bigFifo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/wr_rst_reg_0&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">bigFifo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">FF/Latch</arg> : <arg fmt="%s" index="4">&lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_fb_i&gt; </arg>
+</msg>
+
+<msg type="info" file="Xst" num="2260" delta="new" >The FF/Latch &lt;<arg fmt="%s" index="1">U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_2</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">bigFifo</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">2 FFs/Latches</arg> : <arg fmt="%s" index="4">&lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_1&gt; &lt;U0/xst_fifo_generator/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg_0&gt; </arg>
 </msg>
 
 </messages>

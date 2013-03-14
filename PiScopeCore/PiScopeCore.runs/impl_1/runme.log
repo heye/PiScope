@@ -36,7 +36,7 @@ NGDBUILD Design Results Summary:
 
 Writing NGD file "spi_slave_new_wrapper.ngd" ...
 Total REAL time to NGDBUILD completion:  10 sec
-Total CPU time to NGDBUILD completion:   3 sec
+Total CPU time to NGDBUILD completion:   4 sec
 
 Writing NGDBUILD log file "spi_slave_new_wrapper.bld"...
 
@@ -47,8 +47,6 @@ NGDBUILD done.
 
 Using target part "3s400tq144-4".
 Mapping design into LUTs...
-WARNING:MapLib:701 - Signal adc_data[0] connected to top level port adc_data(0)
-   has been removed.
 Running directed packing...
 Running delay-based LUT packing...
 Running related packing...
@@ -56,30 +54,30 @@ Updating timing models...
 
 Design Summary:
 Number of errors:      0
-Number of warnings:    1
+Number of warnings:    0
 Logic Utilization:
-  Number of Slice Flip Flops:           262 out of   7,168    3%
-  Number of 4 input LUTs:               192 out of   7,168    2%
+  Number of Slice Flip Flops:           260 out of   7,168    3%
+  Number of 4 input LUTs:               172 out of   7,168    2%
 Logic Distribution:
-  Number of occupied Slices:            204 out of   3,584    5%
-    Number of Slices containing only related logic:     204 out of     204 100%
-    Number of Slices containing unrelated logic:          0 out of     204   0%
+  Number of occupied Slices:            199 out of   3,584    5%
+    Number of Slices containing only related logic:     199 out of     199 100%
+    Number of Slices containing unrelated logic:          0 out of     199   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         218 out of   7,168    3%
-    Number used as logic:               192
-    Number used as a route-thru:         26
+  Total Number of 4 input LUTs:         196 out of   7,168    2%
+    Number used as logic:               172
+    Number used as a route-thru:         24
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
 
-  Number of bonded IOBs:                 35 out of      97   36%
-  Number of RAMB16s:                      8 out of      16   50%
+  Number of bonded IOBs:                 38 out of      97   39%
+  Number of RAMB16s:                      5 out of      16   31%
   Number of BUFGMUXs:                     2 out of       8   25%
 
-Average Fanout of Non-Clock Nets:                3.27
+Average Fanout of Non-Clock Nets:                3.01
 
-Peak Memory Usage:  230 MB
-Total REAL time to MAP completion:  4 secs 
+Peak Memory Usage:  229 MB
+Total REAL time to MAP completion:  2 secs 
 Total CPU time to MAP completion:   1 secs 
 
 NOTES:
@@ -128,11 +126,11 @@ Device speed data version:  "PRODUCTION 1.39 2012-07-09".
 Device Utilization Summary:
 
    Number of BUFGMUXs                        2 out of 8      25%
-   Number of External IOBs                  35 out of 97     36%
-      Number of LOCed IOBs                  35 out of 35    100%
+   Number of External IOBs                  38 out of 97     39%
+      Number of LOCed IOBs                  38 out of 38    100%
 
-   Number of RAMB16s                         8 out of 16     50%
-   Number of Slices                        204 out of 3584    5%
+   Number of RAMB16s                         5 out of 16     31%
+   Number of Slices                        199 out of 3584    5%
       Number of SLICEMs                      0 out of 1792    0%
 
 
@@ -145,42 +143,45 @@ Router effort level (-rl):    High
 Starting initial Timing Analysis.  REAL time: 1 secs 
 Finished initial Timing Analysis.  REAL time: 1 secs 
 
+WARNING:Par:288 - The signal s2_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal s3_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal MOSI_IBUF has no load.  PAR will not attempt to route this signal.
 
 Starting Placer
 Total REAL time at the beginning of Placer: 1 secs 
 Total CPU  time at the beginning of Placer: 1 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:db7a3983) REAL time: 2 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:307772a1) REAL time: 1 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:db7a3983) REAL time: 2 secs 
+Phase 2.7  Design Feasibility Check (Checksum:307772a1) REAL time: 1 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:db7a3983) REAL time: 2 secs 
+Phase 3.31  Local Placement Optimization (Checksum:307772a1) REAL time: 1 secs 
 
 Phase 4.2  Initial Clock and IO Placement
 
-Phase 4.2  Initial Clock and IO Placement (Checksum:40840e7b) REAL time: 3 secs 
+Phase 4.2  Initial Clock and IO Placement (Checksum:89679049) REAL time: 2 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:40840e7b) REAL time: 3 secs 
+Phase 5.36  Local Placement Optimization (Checksum:89679049) REAL time: 2 secs 
 
 Phase 6.8  Global Placement
-...........
+..........
 ...
-Phase 6.8  Global Placement (Checksum:6a60abd8) REAL time: 4 secs 
+Phase 6.8  Global Placement (Checksum:6699841a) REAL time: 3 secs 
 
 Phase 7.5  Local Placement Optimization
-Phase 7.5  Local Placement Optimization (Checksum:6a60abd8) REAL time: 4 secs 
+Phase 7.5  Local Placement Optimization (Checksum:6699841a) REAL time: 3 secs 
 
 Phase 8.18  Placement Optimization
-Phase 8.18  Placement Optimization (Checksum:e62273b2) REAL time: 5 secs 
+Phase 8.18  Placement Optimization (Checksum:7f5bb28) REAL time: 4 secs 
 
 Phase 9.5  Local Placement Optimization
-Phase 9.5  Local Placement Optimization (Checksum:e62273b2) REAL time: 5 secs 
+Phase 9.5  Local Placement Optimization (Checksum:7f5bb28) REAL time: 4 secs 
 
-Total REAL time to Placer completion: 5 secs 
+Total REAL time to Placer completion: 4 secs 
 Total CPU  time to Placer completion: 3 secs 
 Writing design to file spi_slave_new_wrapper_routed.ncd
 
@@ -189,28 +190,30 @@ Writing design to file spi_slave_new_wrapper_routed.ncd
 Starting Router
 
 
-Phase  1  : 1522 unrouted;      REAL time: 5 secs 
+Phase  1  : 1308 unrouted;      REAL time: 4 secs 
 
-Phase  2  : 1332 unrouted;      REAL time: 5 secs 
+Phase  2  : 1119 unrouted;      REAL time: 4 secs 
 
-Phase  3  : 432 unrouted;      REAL time: 6 secs 
+Phase  3  : 358 unrouted;      REAL time: 5 secs 
 
-Phase  4  : 457 unrouted; (Par is working to improve performance)     REAL time: 12 secs 
+Phase  4  : 378 unrouted; (Par is working to improve performance)     REAL time: 8 secs 
 
-Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 16 secs 
+Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 9 secs 
 
 Updating file: spi_slave_new_wrapper_routed.ncd with current fully routed design.
 
-Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 17 secs 
+Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 10 secs 
 
-Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 17 secs 
+Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 11 secs 
 
-Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 17 secs 
+Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 11 secs 
 
-Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 17 secs 
+Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 11 secs 
 
-Total REAL time to Router completion: 17 secs 
-Total CPU time to Router completion: 14 secs 
+Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 11 secs 
+
+Total REAL time to Router completion: 11 secs 
+Total CPU time to Router completion: 10 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -228,9 +231,9 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|           SCK_BUFGP |      BUFGMUX1| No   |  100 |  0.020     |  1.034      |
+|           SCK_BUFGP |      BUFGMUX1| No   |   92 |  0.020     |  1.034      |
 +---------------------+--------------+------+------+------------+-------------+
-|        clk_adc_OBUF |      BUFGMUX0| No   |   68 |  0.020     |  1.034      |
+|        clk_adc_OBUF |      BUFGMUX0| No   |   72 |  0.020     |  1.034      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -250,11 +253,11 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net SCK | SETUP       |         N/A|     7.344ns|     N/A|           0
-  _BUFGP                                    | HOLD        |     0.800ns|            |       0|           0
+  Autotimespec constraint for clock net SCK | SETUP       |         N/A|     7.076ns|     N/A|           0
+  _BUFGP                                    | HOLD        |     0.780ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  Autotimespec constraint for clock net clk | SETUP       |         N/A|     6.996ns|     N/A|           0
-  _adc_OBUF                                 | HOLD        |     0.800ns|            |       0|           0
+  Autotimespec constraint for clock net clk | SETUP       |         N/A|     6.396ns|     N/A|           0
+  _adc_OBUF                                 | HOLD        |     0.806ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 
@@ -270,16 +273,18 @@ Generating Pad Report.
 
 All signals are completely routed.
 
-Total REAL time to PAR completion: 18 secs 
-Total CPU time to PAR completion: 15 secs 
+WARNING:Par:283 - There are 3 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Peak Memory Usage:  252 MB
+Total REAL time to PAR completion: 13 secs 
+Total CPU time to PAR completion: 11 secs 
+
+Peak Memory Usage:  249 MB
 
 Placement: Completed - No errors found.
 Routing: Completed - No errors found.
 
 Number of error messages: 0
-Number of warning messages: 0
+Number of warning messages: 5
 Number of info messages: 1
 
 Writing design to file spi_slave_new_wrapper_routed.ncd
@@ -296,7 +301,7 @@ C:\Xilinx\14.2\ISE_DS\ISE\.
    "spi_slave_new_wrapper" is an NCD, version 3.2, device xc3s400, package
 tq144, speed -4
 
-Analysis completed Sat Feb 16 10:58:49 2013
+Analysis completed Wed Mar 13 11:23:37 2013
 --------------------------------------------------------------------------------
 
 Generating Report ...

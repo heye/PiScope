@@ -8,35 +8,35 @@ Target Device  : xc3s400
 Target Package : tq144
 Target Speed   : -4
 Mapper Version : spartan3 -- $Revision: 1.55 $
-Mapped Date    : Sat Feb 16 10:58:13 2013
+Mapped Date    : Wed Mar 13 11:23:10 2013
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:    1
+Number of warnings:    0
 Logic Utilization:
-  Number of Slice Flip Flops:           262 out of   7,168    3%
-  Number of 4 input LUTs:               192 out of   7,168    2%
+  Number of Slice Flip Flops:           260 out of   7,168    3%
+  Number of 4 input LUTs:               172 out of   7,168    2%
 Logic Distribution:
-  Number of occupied Slices:            204 out of   3,584    5%
-    Number of Slices containing only related logic:     204 out of     204 100%
-    Number of Slices containing unrelated logic:          0 out of     204   0%
+  Number of occupied Slices:            199 out of   3,584    5%
+    Number of Slices containing only related logic:     199 out of     199 100%
+    Number of Slices containing unrelated logic:          0 out of     199   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         218 out of   7,168    3%
-    Number used as logic:               192
-    Number used as a route-thru:         26
+  Total Number of 4 input LUTs:         196 out of   7,168    2%
+    Number used as logic:               172
+    Number used as a route-thru:         24
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
 
-  Number of bonded IOBs:                 35 out of      97   36%
-  Number of RAMB16s:                      8 out of      16   50%
+  Number of bonded IOBs:                 38 out of      97   39%
+  Number of RAMB16s:                      5 out of      16   31%
   Number of BUFGMUXs:                     2 out of       8   25%
 
-Average Fanout of Non-Clock Nets:                3.27
+Average Fanout of Non-Clock Nets:                3.01
 
-Peak Memory Usage:  230 MB
-Total REAL time to MAP completion:  4 secs 
+Peak Memory Usage:  229 MB
+Total REAL time to MAP completion:  2 secs 
 Total CPU time to MAP completion:   1 secs 
 
 NOTES:
@@ -78,15 +78,15 @@ Section 1 - Errors
 
 Section 2 - Warnings
 --------------------
-WARNING:MapLib:701 - Signal adc_data[0] connected to top level port adc_data(0)
-   has been removed.
 
 Section 3 - Informational
 -------------------------
-INFO:LIT:243 - Logical network fifefgo/dout[1] has no load.
-INFO:LIT:395 - The above info message is repeated 1 more times for the following
+INFO:LIT:243 - Logical network s2_IBUF has no load.
+INFO:LIT:395 - The above info message is repeated 3 more times for the following
    (max. 5 shown):
-   fifefgo/dout[0]
+   s3_IBUF,
+   MOSI_IBUF,
+   bigFifo/dout[10]
    To see the details of these info messages, please use the -detail switch.
 INFO:MapLib:562 - No environment variables are currently set.
 INFO:LIT:244 - All of the single ended outputs in this design are using slew
@@ -95,9 +95,9 @@ INFO:LIT:244 - All of the single ended outputs in this design are using slew
 
 Section 4 - Removed Logic Summary
 ---------------------------------
-  10 block(s) removed
-   5 block(s) optimized away
-  18 signal(s) removed
+   3 block(s) removed
+   4 block(s) optimized away
+   7 signal(s) removed
 
 Section 5 - Removed Logic
 -------------------------
@@ -112,114 +112,50 @@ To quickly locate the original cause for the removal of a chain of logic, look
 above the place where that logic is listed in the trimming report, then locate
 the lines that are least indented (begin at the leftmost edge).
 
-The signal "fifefgo/dout[1]" is sourceless and has been removed.
-The signal "fifefgo/dout[0]" is sourceless and has been removed.
+The signal "bigFifo/dout[10]" is sourceless and has been removed.
 The signal
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ram_doutb0[0]" is
+"bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
+g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ram_doutb0[8]" is
 sourceless and has been removed.
  Sourceless block
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_b.B/Mmux_dout
-_mux_6" (ROM) removed.
-  The signal
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_b.B/Mmux_dout
-_mux_6" is sourceless and has been removed.
-   Sourceless block
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_b.B/Mmux_dout
-_mux_4_f5" (MUX) removed.
-    The signal
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_b.B/Mmux_dout
-_mux_4_f5" is sourceless and has been removed.
-     Sourceless block
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_b.B/Mmux_dout
-_mux_2_f6" (MUX) removed.
-The signal
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ram_doutb2[0]" is
-sourceless and has been removed.
- Sourceless block
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_b.B/Mmux_dout
-_mux_51" (ROM) removed.
-  The signal
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_b.B/Mmux_dout
-_mux_51" is sourceless and has been removed.
-The signal
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ram_doutb6[0]" is
-sourceless and has been removed.
- Sourceless block
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
+"bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
 g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_b.B/Mmux_dout
 _mux_4" (ROM) removed.
   The signal
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
+"bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
 g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_b.B/Mmux_dout
 _mux_4" is sourceless and has been removed.
    Sourceless block
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
+"bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
 g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_b.B/Mmux_dout
-_mux_3_f5" (MUX) removed.
-    The signal
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_b.B/Mmux_dout
-_mux_3_f5" is sourceless and has been removed.
+_mux_2_f5" (MUX) removed.
 The signal
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ram_doutb7[0]" is
-sourceless and has been removed.
-The signal
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ram_doutb4[0]" is
+"bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
+g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ram_doutb2[8]" is
 sourceless and has been removed.
  Sourceless block
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
+"bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
 g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_b.B/Mmux_dout
-_mux_5" (ROM) removed.
+_mux_3" (ROM) removed.
   The signal
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
+"bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
 g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/has_mux_b.B/Mmux_dout
-_mux_5" is sourceless and has been removed.
+_mux_3" is sourceless and has been removed.
 The signal
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ram_doutb5[0]" is
+"bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
+g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ram_doutb3[8]" is
 sourceless and has been removed.
 The signal
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ram_doutb1[0]" is
+"bigFifo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
+g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ram_doutb1[8]" is
 sourceless and has been removed.
-The signal
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ram_doutb3[0]" is
-sourceless and has been removed.
-
-The trimmed logic reported below is either:
-   1. part of a cycle
-   2. part of disabled logic
-   3. a side-effect of other trimmed logic
-
-The signal "adc_data[0]" is unused and has been removed.
- Unused block "adc_data[0]" (PAD) removed.
-The signal "adc_data_0_IBUF" is unused and has been removed.
- Unused block "adc_data_0_IBUF" (BUF) removed.
-Unused block
-"fifefgo/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbm
-g.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s3_n
-oinit.ram/dpram.dp1x1.ram" (RAMB16_S1_S1) removed.
 
 Optimized Block(s):
 TYPE 		BLOCK
 GND 		XST_GND
 VCC 		XST_VCC
-GND 		fifefgo/XST_GND
-VCC 		fifefgo/XST_VCC
-VCC 		spi_slave_core/XST_VCC
+GND 		bigFifo/XST_GND
+VCC 		bigFifo/XST_VCC
 
 To enable printing of redundant blocks removed and signals merged, set the
 detailed map report option and rerun map.
@@ -237,6 +173,7 @@ Section 6 - IOB Properties
 | SS                                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | a[0]                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | a[1]                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| adc_data[0]                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | adc_data[1]                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | adc_data[2]                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | adc_data[3]                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
@@ -265,6 +202,8 @@ Section 6 - IOB Properties
 | led[7]                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | reset                              | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | s1                                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| s2                                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| s3                                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | wr                                 | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
 
