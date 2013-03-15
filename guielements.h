@@ -13,13 +13,18 @@
 
 //anderer shit
 #include "trigger.h"
+#include <string.h>
+#include <string>
 
 #ifndef BUFFLEN
 #define BUFFLEN 4096
 #endif
 
 
-class mouse{
+using namespace std;
+
+
+class Mouse{
 	private:
 		int mWidth;
 		int mHeight;
@@ -27,7 +32,7 @@ class mouse{
 		int mY;
 		int mDown;
 	public:
-		mouse(int, int);
+		Mouse(int, int);
 		void draw();
 		void update();
 		int getX();
@@ -63,9 +68,9 @@ class Button{
 		int mPressed;
 		const char* mText;
 	public:
-		Button(int, int, int, int, int, int, const char*);
+		Button(int width, int height, int posX, int posY, int sizeX, int sizeY, const char* text);
 		void draw(void);
-		void update(mouse&);
+		void update(Mouse&);
 		int getPressed();
 };
 
@@ -82,6 +87,8 @@ class Graph{
 		int mOffsetY;
 		int mOffsetX;
 		int mMidpoint;
+		
+		float mScale;
 		
 		uint16_t* mData;
 		
@@ -101,6 +108,7 @@ class Graph{
 		void setOffsetY(int offset);
 		void setOffsetX(int offset);
 		void setTriggerValue(int pos);
+		void setScale(float scale);
 		//void setYOffset(float offset);
 		void draw();
 		
@@ -108,10 +116,11 @@ class Graph{
 };
 
 
-
 class Poti{
 	private:
 		float mPhi;
+		int mValue;
+		float mFactor;
 		int mWidth;
 		int mHeight;
 		int mX;
@@ -119,13 +128,21 @@ class Poti{
 		int mDotx;
 		int mDoty;
 		int mWrap;
+		//char mText[64];
+		char* mText;
+		char* mUnit;
 	public:
-		Poti(int width, int height, int posX, int posY);
-		Poti(int width, int height, int posX, int posY, int wrap);
+		//Poti(int width, int height, int posX, int posY);
+		Poti(int width, int height, int posX, int posY,  string text);
+		Poti(int width, int height, int posX, int posY,  string text,  string unit);
+		//Poti(int width, int height, int posX, int posY, const char* text, int wrap);
+		void setFactor(float factor);
+		void setValue(int value);
 		void draw();
-		void update(mouse&);
+		void update(Mouse&);
 		float getValue();
 };
+
 
 class Grid{
 	private:
@@ -139,6 +156,52 @@ class Grid{
 		Grid(int width, int height, int div);
 		void draw();
 };
+
+
+class Menu{
+	private:	
+		//intern
+		int mWidth;
+		int mHeight;
+		
+		int mPosX;
+		int mPosY;
+		int mSizeX;
+		int mSizeY;
+		
+		//Buttons & stuff
+		Mouse* mCursor;
+		
+		Poti* mCHAVertShiftPt;
+		Poti* mCHBVertShiftPt;
+		Poti* mCHAVertDivPt;
+		Poti* mCHBVertDivPt;
+		
+		Poti* mHorzShiftPt;
+		Poti* mHorzDivPt;
+		
+		//Poti* mTrigger
+		
+		//data
+		int mVpp;
+		
+	public:
+		Menu(int width, int height, int posX, int posY, Mouse* cursor);
+		
+		int getCHAVertShift();
+		int getCHBVertShift();
+		float getCHAVertScale();
+		float getCHBVertScale();
+		
+		int getHorzShift();
+		int getHorzDiv();
+		
+		void update();
+		
+		void draw();
+		
+};
+
 
 /*class Mark{
 	private:

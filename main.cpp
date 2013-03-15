@@ -82,21 +82,18 @@ int main ()
     Button quit(width, height, width-80, height-30, 80, 30, "QUIT");
  	Button pauseButton(width, height-30, width-80, height-60, 80, 30, "PAUSE");
  	
- 	mouse cursor(width, height);
+ 	Mouse cursor(width, height);
  	
  	Graph g(width, height, 512, 480, 255, 255, 0);
  	g.setTriggerValue(0);
  	Graph g2(width, height, 700, 480, 0, 255, 255);
  	g2.setTriggerValue(0);
  	
-    Poti pot(width, height, 100, 100);
-    Poti pot2(width, height, 200, 100);
-    Poti pot3(width, height, 300, 100);
-    Poti pot4(width, height, 400, 100);
-    Poti pot5(width, height, 500, 100);
+
     spi spiConnection(16000000);    
     Grid grid(width, height, 50);
     
+    Menu menu(width, height, (width/2)-250, 0, &cursor);
         
     Background(0, 0, 0);    
     
@@ -106,9 +103,7 @@ int main ()
     
    	int quitv = 0; 
     while(quitv == 0){
-    	//#######################get and process data#########################
-    	
-    	
+    	//#######################get and process data#########################  
     	
     	if(pauseButton.getPressed()){
     		pause = (pause+1)%2;
@@ -118,44 +113,45 @@ int main ()
     		g.setData(spiConnection.getCHB(), spiConnection.getBuffLen());
     		g2.setData(spiConnection.getCHA(), spiConnection.getBuffLen());
     	}
+    	
     	//channel A 
-    	g.setOffsetY(-(pot.getValue()*256)/(3.14159));
-    	g.setTriggerValue(-(pot3.getValue()*256)/(3.14159));
-    	g.setOffsetX(-(pot4.getValue()*256)/(3.14159));
+    	g.setTriggerValue(0);    	
+    	g.setOffsetY(menu.getCHAVertShift());
+    	g.setOffsetX(menu.getHorzShift());
+    	g.setScale(menu.getCHAVertScale());
     	
-		g2.setOffsetY(-(pot2.getValue()*256)/(3.14159));
+    	//channel B    	
+    	g2.setTriggerValue(0);    
+    	g2.setOffsetX(menu.getHorzShift());    	
+		g2.setOffsetY(menu.getCHBVertShift());
+    	g2.setScale(menu.getCHBVertScale());
 		
-		//g.setTrigger(		
-    	
+    	//other buttons + cursor
     	cursor.update();
-    	pot.update(cursor);
-    	pot2.update(cursor);
-    	pot3.update(cursor);
-    	pot4.update(cursor);
-    	pot5.update(cursor);
-    	quit.update(cursor);
     	pauseButton.update(cursor);
+    	quit.update(cursor);
     	
     	if(quit.getPressed()){
     		quitv = 1;
     	}
+    	
+    	//menu
+    	menu.update();
     	 
     	//################################draw #############################
     	Background(0, 0, 0);
-    	//drawGrid(50, width, height);
+    	
     	grid.draw();
     	
     	g.draw();
     	g2.draw();
-    	pot.draw();
-    	pot2.draw();
-    	pot3.draw();
-    	pot4.draw();
-    	pot5.draw();
+    	
     	quit.draw();
     	pauseButton.draw();
     	
-    	drawFPS(width-100, height-100);
+    	drawFPS(width-100, height-100);    	
+    	
+    	menu.draw();
     	
     	Stroke(255,255,0,1); 
 		StrokeWidth(1);

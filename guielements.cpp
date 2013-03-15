@@ -1,25 +1,25 @@
 #include "guielements.h"
 
 //Fontinfo SansTypeface;
+using namespace std;
 
-
-mouse::mouse(int width, int height){
+Mouse::Mouse(int width, int height){
 	mWidth = width;
 	mHeight = height;
 	mX = width/2;
 	mY = height/2;
 	mDown = 0;
 }
-int mouse::getX(){
+int Mouse::getX(){
 	return mX;
 }
-int mouse::getY(){
+int Mouse::getY(){
 	return mY;
 }
-int mouse::getDown(){
+int Mouse::getDown(){
 	return mDown;
 }
-void mouse::update(){
+void Mouse::update(){
 	SDL_Event event;
 	while( SDL_PollEvent( &event ) ){                
 		switch( event.type ){
@@ -44,7 +44,7 @@ void mouse::update(){
         }
     }
 }
-void mouse::draw(){
+void Mouse::draw(){
 	Stroke(255,255,255, 1);
 	Line(mX-10, mY, mX+10, mY);
 	Line(mX, mY-10, mX, mY+10);
@@ -88,7 +88,7 @@ void Button::draw(){
 	//Fontinfo SansTypeface, SerifTypeface, MonoTypeface;
 	TextMid((mPosX1 + mSizeX/2), (mPosY1 + mSizeY/2 - 5), (char*)mText,SansTypeface, 10);
 }
-void Button::update(mouse& cursor){
+void Button::update(Mouse& cursor){
 	if(mActive == 1 && !cursor.getDown())
 		mPressed = 1;
 	else
@@ -114,6 +114,7 @@ Graph::Graph(int width, int height, int offsetY, int midpoint, int red, int gree
 	mMidpoint = midpoint;
 	mTrigger.setMid(mMidpoint);
 	
+	mScale = 1;
 	
 	mOffsetX = 512;
 	
@@ -166,18 +167,18 @@ void Graph::draw(){
 	
 	if(mTrigger.getPos() == -1){
 		for(int i = 0 ; i<mWidth; i++){
-			mY[i] = mData[i] - mMidpoint + mOffsetY;
+			mY[i] = (mData[i] - mMidpoint)*mScale + mOffsetY;
 		}
 	}	
 	else if(mTrigger.getPos()<mOffsetX){
 		drawOffset = mOffsetX - mTrigger.getPos();
 		for(int i = drawOffset, j=0; j<BUFFLEN, i<mWidth; j++, i++){
-			mY[i] = mData[j] - mMidpoint + mOffsetY;
+			mY[i] = (mData[j] - mMidpoint)*mScale + mOffsetY;
 		}
 	}
 	else if(mTrigger.getPos()>mOffsetX){
 		for(int i = 0, j=mTrigger.getPos()-mOffsetX; j<BUFFLEN, i<mWidth; j++, i++){
-			mY[i] = mData[j] - mMidpoint + mOffsetY;
+			mY[i] = (mData[j] - mMidpoint)*mScale + mOffsetY;
 		}
 	}
 	
@@ -185,7 +186,7 @@ void Graph::draw(){
 	//trigger bubble
 	Stroke(mRed,mGreen,mBlue,1); // red green blue alpha
 	Fill(0, 0, 0, 0);	
-	Circle(mOffsetX, mTrigger.getValue()+mOffsetY, 25);
+	Circle(mOffsetX, mTrigger.getValue()*mScale+mOffsetY, 25);
 
 	//draw graph
 	Stroke(mRed,mGreen,mBlue,1); // red green blue alpha
@@ -204,6 +205,9 @@ void Graph::draw(){
 	
 }
 
+void Graph::setScale(float scale){
+	mScale = scale;
+}
 
 void Graph::drawMark(int x, int y){
 	Stroke(mRed,mGreen,mBlue,1); // red green blue alpha
@@ -224,7 +228,7 @@ void Graph::drawMark(int x, int y){
 
 
 
-Poti::Poti(int width, int height, int posX, int posY){
+/*Poti::Poti(int width, int height, int posX, int posY){
 	mWidth = width;
 	mHeight = height;
 	mX = posX;
@@ -233,8 +237,50 @@ Poti::Poti(int width, int height, int posX, int posY){
 	mPhi = 0;
 	mDotx = mX + cos(mPhi)*25;
 	mDoty = mY + sin(mPhi)*25;
+}*/
+Poti::Poti(int width, int height, int posX, int posY, string text){
+	mWidth = width;
+	mHeight = height;
+	mX = posX;
+	mY = posY;
+	mWrap = 0;
+	mPhi = 0;
+	mDotx = mX + cos(mPhi)*25;
+	mDoty = mY + sin(mPhi)*25;
+	
+	mText = new char[text.size()+1];
+	mText[text.size()]=0;
+	memcpy(mText,text.c_str(),text.size());
+
+	mUnit = new char[1];
+	mUnit[0] = 0;
+	
+	mFactor = 1;
+	mValue = 0;
 }
-Poti::Poti(int width, int height, int posX, int posY, int wrap){
+Poti::Poti(int width, int height, int posX, int posY,  string text, string unit){
+	mWidth = width;
+	mHeight = height;
+	mX = posX;
+	mY = posY;
+	mWrap = 0;
+	mPhi = 0;
+	mDotx = mX + cos(mPhi)*25;
+	mDoty = mY + sin(mPhi)*25;
+	
+	mText = new char[text.size()+1];
+	mText[text.size()]=0;
+	memcpy(mText,text.c_str(),text.size());
+	
+	mUnit = new char[unit.size()+1];
+	mUnit[unit.size()]=0;
+	memcpy(mUnit,unit.c_str(),unit.size());
+
+	
+	mFactor = 1;
+	mValue = 0;
+}
+/*Poti::Poti(int width, int height, int posX, int posY, const char* text, int wrap){
 	mWidth = width;
 	mHeight = height;
 	mX = posX;
@@ -243,7 +289,10 @@ Poti::Poti(int width, int height, int posX, int posY, int wrap){
 	mPhi = 0;
 	mDotx = mX + cos(mPhi)*25;
 	mDoty = mY + sin(mPhi)*25;
-}
+	mText = text;
+	//mFactor = 0;
+	mValue = 0;
+}*/
 void Poti::draw(){
 	Stroke(255,255,255,1); // red green blue alpha
 	StrokeWidth(1);
@@ -255,8 +304,25 @@ void Poti::draw(){
 	StrokeWidth(0);
 	Fill(0, 255, 0, 1);
 	Circle(mDotx, mDoty, 10);
+	
+	
+	Fill(255, 255, 255, 1);
+	TextMid(mX, mY+30, mText, SansTypeface, 10);
+	
+	
+	char buff[64];	
+	sprintf(buff, "%d %s", mValue, mUnit);
+	TextMid(mX, mY-40, buff, SansTypeface, 10);
+	
 }
-void Poti::update(mouse& cursor){
+void Poti::setFactor(float factor){
+	mFactor = factor;
+}
+void Poti::setValue(int value){
+	mValue = value;
+	mPhi = mValue/mFactor;
+}
+void Poti::update(Mouse& cursor){
 	if(cursor.getDown() && cursor.getX() < mX+20 && cursor.getX() > mX-20 &&
 		cursor.getY() < mY && cursor.getY() > mY -20){
 		mPhi += 0.08;
@@ -274,14 +340,95 @@ void Poti::update(mouse& cursor){
 			mPhi += 6.28;
 	}
 	
+	mValue = mPhi*mFactor;
+	
 	mDotx = mX + cos(mPhi)*25; //dont calculate dot position in every fram for better performance
 	mDoty = mY + sin(mPhi)*25;
 }
 float Poti::getValue(){
-	return mPhi;
+	//return mPhi;
+	return mValue;
 }
 
 
+
+Menu::Menu(int width, int height, int posX, int posY, Mouse* cursor){
+	mWidth = width;
+	mHeight = height;
+	mPosX = posX;
+	mPosY = posY;
+	mSizeX = 500;
+	mSizeY = 200;
+	mVpp = 2;
+	mCursor = cursor;
+	
+	mCHAVertShiftPt = new Poti(mWidth, mHeight, mPosX+50, mPosY+50, "CHA-vert-shift", "px");
+	mCHAVertShiftPt->setFactor(-256/3.141);
+	mCHAVertShiftPt->setValue(mHeight/2+50);
+	
+	mCHBVertShiftPt = new Poti(mWidth, mHeight, mPosX+50, mPosY+150, "CHB-vert-shift", "px");
+	mCHBVertShiftPt->setFactor(-256/3.141);
+	mCHBVertShiftPt->setValue(mHeight/2-50);
+	
+	mCHAVertDivPt = new Poti(mWidth, mHeight, mPosX+150, mPosY+50, "CHA-vert-div", "mV/div");
+	mCHAVertDivPt->setFactor(-64/3.14159);
+	mCHAVertDivPt->setValue(100);	//default 100mV/Div
+	
+	mCHBVertDivPt = new Poti(mWidth, mHeight, mPosX+150, mPosY+150, "CHB-vert-div", "mV/div");
+	mCHBVertDivPt->setFactor(-64/3.141);
+	mCHBVertDivPt->setValue(100);	//default 100mV/Div
+	
+	mHorzShiftPt = new Poti(mWidth, mHeight, mPosX+250, mPosY+50, "Horizontal Shift", "px");
+	mHorzShiftPt->setFactor(-256/3.141);
+	
+	
+	
+}
+void Menu::draw(){
+	//frame
+	Stroke(255,255,255, 1);
+	StrokeWidth(1);
+	
+	//black background
+	Fill(0, 0, 0, 1);
+	
+	Roundrect(mPosX,mPosY,mSizeX, mSizeY, 10, 10);
+	
+	//Buttons & stuff
+	mCHAVertShiftPt->draw();	
+	mCHBVertShiftPt->draw();	
+	mCHAVertDivPt->draw();	
+	mCHBVertDivPt->draw();	
+	mHorzShiftPt->draw();
+
+}
+
+void Menu::update(){
+	mCHAVertShiftPt->update(*mCursor);
+	mCHBVertShiftPt->update(*mCursor);
+	mCHAVertDivPt->update(*mCursor);
+	mCHBVertDivPt->update(*mCursor);
+	mHorzShiftPt->update(*mCursor);
+}
+
+int Menu::getCHAVertShift(){
+	return mCHAVertShiftPt->getValue();
+}
+int Menu::getCHBVertShift(){
+	return mCHBVertShiftPt->getValue();
+}
+float Menu::getCHAVertScale(){
+	return 100000/(1024*(mCHAVertDivPt->getValue()));
+}
+float Menu::getCHBVertScale(){
+	return 100000/(1024*(mCHBVertDivPt->getValue()));
+}
+int Menu::getHorzShift(){
+	return mHorzShiftPt->getValue();
+}
+int Menu::getHorzDiv(){
+	return mHorzDivPt->getValue();
+}
 
 
 
