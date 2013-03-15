@@ -112,8 +112,12 @@ Graph::Graph(int width, int height, int offsetY, int midpoint, int red, int gree
 	mHeight = height;
 	mOffsetY = offsetY;
 	mMidpoint = midpoint;
+	mTrigger.setMid(mMidpoint);
 	
-	mData = new uint16_t[mWidth];
+	
+	mOffsetX = 512;
+	
+	//mData = new uint16_t[BUFFLEN];
 	
 	mX = new VGfloat[mWidth];
 	mY = new VGfloat[mWidth];
@@ -133,31 +137,65 @@ Graph::~Graph(){
 }
 
 void Graph::setData(uint16_t* newData, int len){
-	if(len > mWidth)
-		len = mWidth;
-	for(int i = 0; i < len; i++){
+	mTrigger.setData(newData, len);
+
+	if(len > BUFFLEN)
+		len = BUFFLEN;
+	mData = newData;
+	/*for(int i = 0; i < len; i++){
 		mData[i] = newData[i];
-	}
+	}*/
 }
 
 void Graph::setOffsetY(int offset){
 	mOffsetY = offset;
-	
-	for(int i = 0; i < mWidth; i++){
-		mY[i] = mData[i] - mMidpoint + mOffsetY;
-	}
+}
+
+void Graph::setOffsetX(int offset){
+	mOffsetX = offset;
+}
+
+void Graph::setTriggerValue(int value){
+	mTrigger.setValue(value);
 }
 
 void Graph::draw(){
+	//shift data (trigger / Y offset)
+	
+	int drawOffset=0;
+	
+	if(mTrigger.getPos() == -1){
+		for(int i = 0 ; i<mWidth; i++){
+			mY[i] = mData[i] - mMidpoint + mOffsetY;
+		}
+	}	
+	else if(mTrigger.getPos()<mOffsetX){
+		drawOffset = mOffsetX - mTrigger.getPos();
+		for(int i = drawOffset, j=0; j<BUFFLEN, i<mWidth; j++, i++){
+			mY[i] = mData[j] - mMidpoint + mOffsetY;
+		}
+	}
+	else if(mTrigger.getPos()>mOffsetX){
+		for(int i = 0, j=mTrigger.getPos()-mOffsetX; j<BUFFLEN, i<mWidth; j++, i++){
+			mY[i] = mData[j] - mMidpoint + mOffsetY;
+		}
+	}
+	
+	
+	//trigger bubble
+	Stroke(mRed,mGreen,mBlue,1); // red green blue alpha
+	Fill(0, 0, 0, 0);	
+	Circle(mOffsetX, mTrigger.getValue()+mOffsetY, 25);
 
+	//draw graph
 	Stroke(mRed,mGreen,mBlue,1); // red green blue alpha
 	StrokeWidth(1);
 	
-	int div = mWidth/256;
-	int r = mWidth%256;
+	int div = (mWidth-drawOffset)/256;
+	int r = (mWidth-drawOffset)%256 ;
 	
-	for(int i = 0; i<div; i++){
-		Polyline(mX+i*256,mY+i*256, 256);	
+	for(int i = 0; (i*256+drawOffset+256) <= mWidth; i++){
+		Polyline(mX+i*256+drawOffset,mY+i*256+drawOffset, 256);	
 	}
 	if(r > 0)
 		Polyline(mX+(mWidth-r), mY + (mWidth-r), r);
@@ -177,6 +215,7 @@ void Graph::drawMark(int x, int y){
 	Polyline(markX, markY, 3);	
 	
 }
+
 
 
 

@@ -13,6 +13,8 @@
 
 #include "guielements.h"
 
+#define BUFFLEN 4096
+
 using namespace std;
 
 
@@ -83,7 +85,9 @@ int main ()
  	mouse cursor(width, height);
  	
  	Graph g(width, height, 512, 480, 255, 255, 0);
+ 	g.setTriggerValue(0);
  	Graph g2(width, height, 700, 480, 0, 255, 255);
+ 	g2.setTriggerValue(0);
  	
     Poti pot(width, height, 100, 100);
     Poti pot2(width, height, 200, 100);
@@ -92,6 +96,7 @@ int main ()
     Poti pot5(width, height, 500, 100);
     spi spiConnection(16000000);    
     Grid grid(width, height, 50);
+    
         
     Background(0, 0, 0);    
     
@@ -103,20 +108,24 @@ int main ()
     while(quitv == 0){
     	//#######################get and process data#########################
     	
-    	spiConnection.read();
-    	//spiConnection.print();
+    	
     	
     	if(pauseButton.getPressed()){
     		pause = (pause+1)%2;
     	}   	
     	if(pause == 0){
+    		spiConnection.read();
     		g.setData(spiConnection.getCHB(), spiConnection.getBuffLen());
     		g2.setData(spiConnection.getCHA(), spiConnection.getBuffLen());
     	}
-    	
+    	//channel A 
     	g.setOffsetY(-(pot.getValue()*256)/(3.14159));
+    	g.setTriggerValue(-(pot3.getValue()*256)/(3.14159));
+    	g.setOffsetX(-(pot4.getValue()*256)/(3.14159));
+    	
 		g2.setOffsetY(-(pot2.getValue()*256)/(3.14159));
 		
+		//g.setTrigger(		
     	
     	cursor.update();
     	pot.update(cursor);
