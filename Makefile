@@ -41,16 +41,16 @@ main.o: $(SHAPESH) $(MAIN)
 #	gcc -c shapes.h -I/opt/vc/include -I/opt/vc/include/interface/vcos/pthreads -L/opt/vc/lib -lGLESv2 -ljpeg 
 
 libshapes.o: libshapes.c $(SHAPESH) 
-	gcc -c libshapes.c -I/opt/vc/include -I/opt/vc/include/interface/vcos/pthreads -L/opt/vc/lib -lGLESv2 -ljpeg 
+	gcc -c libshapes.c -I/opt/vc/include -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include/interface/vmcs_host/linux -L/opt/vc/lib -lGLESv2 -ljpeg 
 
 oglinit.o: oglinit.c $(SHAPESH) 
-	gcc -c oglinit.c -I/opt/vc/include -I/opt/vc/include/interface/vcos/pthreads -L/opt/vc/lib -lGLESv2 -ljpeg 
+	gcc -c oglinit.c -I/opt/vc/include -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include/interface/vmcs_host/linux -L/opt/vc/lib -lGLESv2 -ljpeg 
 
 spi.o: spi.cpp spi.h 
 	g++ -c spi.cpp 
 
 fontinfo.o: fontinfo.cpp fontinfo.h
-	g++ -c fontinfo.cpp -I/opt/vc/include -I/opt/vc/include/interface/vcos/pthreads -L/opt/vc/lib -lGLESv2 -ljpeg 
+	g++ -c fontinfo.cpp -I/opt/vc/include -I/opt/vc/include/interface/vcos/pthreads -I/opt/vc/include/interface/vmcs_host/linux -L/opt/vc/lib -lGLESv2 -ljpeg 
 	
 #guielements.o: guielements.cpp guielements.h libshapes.o 
 #	g++ -o guielements.cpp libshapes.o $(LIBS) $(INCL) 
