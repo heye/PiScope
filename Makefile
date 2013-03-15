@@ -56,5 +56,5 @@ fontinfo.o: fontinfo.cpp fontinfo.h
 trigger.o: trigger.cpp trigger.h 
 	g++ -o $@ -c trigger.cpp
 
-guielements.o: guielements.cpp guielements.h fontinfo.h trigger.h
+guielements.o: guielements.cpp guielements.h fontinfo.h
 	g++ -o $@ -c guielements.cpp $(LIBS) $(INCL) 
