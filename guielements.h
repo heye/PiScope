@@ -180,6 +180,8 @@ class Menu{
 		Poti* mHorzShiftPt;
 		Poti* mHorzDivPt;
 		
+		Poti* mTriggerValuePt;
+		
 		//Poti* mTrigger
 		
 		//data
@@ -190,6 +192,7 @@ class Menu{
 		
 		int getCHAVertShift();
 		int getCHBVertShift();
+		int getTriggerValue();
 		float getCHAVertScale();
 		float getCHBVertScale();
 		

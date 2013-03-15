@@ -163,23 +163,33 @@ void Graph::setTriggerValue(int value){
 void Graph::draw(){
 	//shift data (trigger / Y offset)
 	
-	int drawOffset=0;
+	//int drawOffset=0;
+	int i, j;	
+	
+	int startX = 0;
+	int endX = mWidth;
 	
 	if(mTrigger.getPos() == -1){
-		for(int i = 0 ; i<mWidth; i++){
-			mY[i] = (mData[i] - mMidpoint)*mScale + mOffsetY;
+		if(mOffsetX > 0) startX = mOffsetX;
+		
+		for(i = startX , j=startX - mOffsetX; i<endX && j<BUFFLEN;j++, i++){
+			mY[i] = (mData[j] - mMidpoint)*mScale + mOffsetY;
 		}
+		endX = i-1;
 	}	
 	else if(mTrigger.getPos()<mOffsetX){
-		drawOffset = mOffsetX - mTrigger.getPos();
-		for(int i = drawOffset, j=0; j<BUFFLEN, i<mWidth; j++, i++){
+		//drawOffset = mOffsetX - mTrigger.getPos();
+		startX = mOffsetX-mTrigger.getPos();
+		for(i = startX, j=0; j<BUFFLEN, i<mWidth; j++, i++){
 			mY[i] = (mData[j] - mMidpoint)*mScale + mOffsetY;
 		}
+		endX = i;
 	}
 	else if(mTrigger.getPos()>mOffsetX){
-		for(int i = 0, j=mTrigger.getPos()-mOffsetX; j<BUFFLEN, i<mWidth; j++, i++){
+		for(i = 0, j=mTrigger.getPos()-mOffsetX; j<BUFFLEN && i<mWidth; j++, i++){
 			mY[i] = (mData[j] - mMidpoint)*mScale + mOffsetY;
 		}
+		endX = i;
 	}
 	
 	
@@ -192,14 +202,16 @@ void Graph::draw(){
 	Stroke(mRed,mGreen,mBlue,1); // red green blue alpha
 	StrokeWidth(1);
 	
-	int div = (mWidth-drawOffset)/256;
-	int r = (mWidth-drawOffset)%256 ;
+	//endX = 1000;
 	
-	for(int i = 0; (i*256+drawOffset+256) <= mWidth; i++){
-		Polyline(mX+i*256+drawOffset,mY+i*256+drawOffset, 256);	
+	int div = (endX-startX)/256; //int div = (mWidth-drawOffset)/256;
+	int r = (endX-startX)%256; //int r = (mWidth-drawOffset)%256 ;
+	
+	for(i = 0; i<div; i++){
+		Polyline(mX+i*256+startX,mY+i*256+startX, 256);	
 	}
 	if(r > 0)
-		Polyline(mX+(mWidth-r), mY + (mWidth-r), r);
+		Polyline(mX+(endX-r), mY + div*256+startX, r);
 	
 	drawMark(mWidth, mOffsetY);
 	
@@ -381,8 +393,9 @@ Menu::Menu(int width, int height, int posX, int posY, Mouse* cursor){
 	mHorzShiftPt = new Poti(mWidth, mHeight, mPosX+250, mPosY+50, "Horizontal Shift", "px");
 	mHorzShiftPt->setFactor(-256/3.141);
 	
-	
-	
+	mTriggerValuePt = new Poti(mWidth, mHeight, mPosX+350, mPosY+50, "Trigger Value", "mV");
+	mTriggerValuePt->setFactor(-64/3.14159);
+	mTriggerValuePt->setValue(0);	//default 0mV
 }
 void Menu::draw(){
 	//frame
@@ -400,6 +413,7 @@ void Menu::draw(){
 	mCHAVertDivPt->draw();	
 	mCHBVertDivPt->draw();	
 	mHorzShiftPt->draw();
+	mTriggerValuePt->draw();
 
 }
 
@@ -409,8 +423,11 @@ void Menu::update(){
 	mCHAVertDivPt->update(*mCursor);
 	mCHBVertDivPt->update(*mCursor);
 	mHorzShiftPt->update(*mCursor);
+	mTriggerValuePt->update(*mCursor);
 }
-
+int Menu::getTriggerValue(){
+	return mTriggerValuePt->getValue();
+}
 int Menu::getCHAVertShift(){
 	return mCHAVertShiftPt->getValue();
 }

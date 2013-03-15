@@ -85,11 +85,11 @@ static void transfer(int fd)
 	for (ret = 0; ret < ARRAY_SIZE(tx); ret+=3) {
 		
 		//printbits((rx[ret]<<16) + (rx[ret+1]<<8) + rx[ret+2],  24);
-		printf("CHA: %d \n", (((rx[ret]<<16) + (rx[ret+1]<<8) + rx[ret+2])&0b001111111111000000000000) >> 12);
+		printf("CHA: %d \n", (((rx[ret]<<16) + (rx[ret+1]<<8) + rx[ret+2])&0b000000000000001111111111));
 		
 		//printf("%.2X ", rx[ret]);
 	}
-	puts("");
+	//puts("");
 }
 
 
@@ -226,7 +226,7 @@ int main(int argc, char *argv[])
 	printf("bits per word: %d\n", bits);
 	printf("max speed: %d Hz (%d KHz)\n", speed, speed/1000);
 
-	for(int i = 0; i< 10; i++){
+	for(int i = 0; i< 50; i++){
 		transfer(fd);
 	}
 

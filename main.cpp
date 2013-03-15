@@ -115,13 +115,13 @@ int main ()
     	}
     	
     	//channel A 
-    	g.setTriggerValue(0);    	
+    	g.setTriggerValue(menu.getTriggerValue());    	
     	g.setOffsetY(menu.getCHAVertShift());
     	g.setOffsetX(menu.getHorzShift());
     	g.setScale(menu.getCHAVertScale());
     	
     	//channel B    	
-    	g2.setTriggerValue(0);    
+    	g2.setTriggerValue(menu.getTriggerValue());    
     	g2.setOffsetX(menu.getHorzShift());    	
 		g2.setOffsetY(menu.getCHBVertShift());
     	g2.setScale(menu.getCHBVertScale());
