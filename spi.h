@@ -28,6 +28,7 @@ class spi{
 		spi(uint32_t);
 		~spi();
 		void read();
+		void setSampleDelay(uint16_t sampleDelay);
 		uint8_t* getRX();
 		
 		uint16_t* getCHA();

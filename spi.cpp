@@ -26,9 +26,9 @@ spi::spi(uint32_t speed){
 	mCHA = new uint16_t[BUFFLEN];
 	mCHB = new uint16_t[BUFFLEN];	
 	
-	for(int i=0; i<BUFFLEN; i++){
+	for(int i=0; i<BUFFLEN*3; i++){
 		mRx[i] = 42;
-		mTx[i] = 42;
+		mTx[i] = 0;
 	}
 	
 	
@@ -128,6 +128,12 @@ void spi::print(){
 	}
 }
 
+void spi::setSampleDelay(uint16_t sampleDelay){
+	mTx[5] = ((1)<<4) + ((sampleDelay) & 0x000F );
+	mTx[6] = ((2)<<4) + (((sampleDelay) & 0x00F0 ) >> 4 );
+	mTx[7] = ((3)<<4) + (((sampleDelay) & 0x0300 ) >> 8 );	
+}
+
 void spi::read(){	
 	int ret;
 	/*uint8_t tx[] = {
@@ -138,7 +144,7 @@ void spi::read(){
 	};	*/
 	//uint8_t rx[ARRAY_SIZE(mTx)] = {0, };
 	
-	
+	//split complete transmission into blocks of 4096 bytes (spi driver problem)
 	int spiNumTransmissions = (BUFFLEN*3)/4096;
 	int spiTransmissionLen = 4096;
 	int spiLastTransmissionLen = BUFFLEN*3 - spiTransmissionLen*spiNumTransmissions;
@@ -147,7 +153,8 @@ void spi::read(){
 	for(int i = 0; i < spiNumTransmissions; i++){
 	
 	struct spi_ioc_transfer tr;   
-		tr.tx_buf = (unsigned long)mTx+i*spiTransmissionLen;
+		//tr.tx_buf = (unsigned long)mTx+i*spiTransmissionLen;
+		tr.tx_buf = (unsigned long)mTx;
 		tr.rx_buf = (unsigned long)mRx+i*spiTransmissionLen;
 		tr.len = spiTransmissionLen ;
 		tr.delay_usecs = mDelay;
@@ -164,7 +171,8 @@ void spi::read(){
 	if(spiLastTransmissionLen > 0){
 	//last transmission
 	struct spi_ioc_transfer tr;   
-		tr.tx_buf = (unsigned long)(mTx+spiNumTransmissions*spiTransmissionLen);
+		//tr.tx_buf = (unsigned long)(mTx+spiNumTransmissions*spiTransmissionLen);
+		tr.tx_buf = (unsigned long)mTx;
 		tr.rx_buf = (unsigned long)(mRx+spiNumTransmissions*spiTransmissionLen);
 		tr.len = spiLastTransmissionLen ;
 		tr.delay_usecs = mDelay;

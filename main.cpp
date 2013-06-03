@@ -84,9 +84,9 @@ int main ()
  	
  	Mouse cursor(width, height);
  	
- 	Graph g(width, height, 512, 480, 255, 255, 0);
+ 	Graph g(width, height, 512, 605, 250, 255, 0);
  	g.setTriggerValue(0);
- 	Graph g2(width, height, 700, 480, 0, 255, 255);
+ 	Graph g2(width, height, 700, 605, 0, 255, 250);
  	g2.setTriggerValue(0);
  	
 
@@ -130,6 +130,7 @@ int main ()
     	cursor.update();
     	pauseButton.update(cursor);
     	quit.update(cursor);
+    	spiConnection.setSampleDelay(menu.getHorzDiv());
     	
     	if(quit.getPressed()){
     		quitv = 1;

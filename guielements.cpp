@@ -89,7 +89,7 @@ void Button::draw(){
 	TextMid((mPosX1 + mSizeX/2), (mPosY1 + mSizeY/2 - 5), (char*)mText,SansTypeface, 10);
 }
 void Button::update(Mouse& cursor){
-	if(mActive == 1 && !cursor.getDown())
+	if(mActive == 1 && !cursor.getDown()) 
 		mPressed = 1;
 	else
 		mPressed = 0;
@@ -98,7 +98,7 @@ void Button::update(Mouse& cursor){
 		mActive = 1;
 	else
 		mActive = 0;
-}
+} 
 int Button::getPressed(){
 	return mPressed;
 }
@@ -204,15 +204,20 @@ void Graph::draw(){
 	
 	//endX = 1000;
 	
-	int div = (endX-startX)/256; //int div = (mWidth-drawOffset)/256;
-	int r = (endX-startX)%256; //int r = (mWidth-drawOffset)%256 ;
+	int div = (endX-startX)/256; 	//divide graph into block with 256 samples
+	int r = (endX-startX)%256; 		//last block
 	
-	for(i = 0; i<div; i++){
-		Polyline(mX+i*256+startX,mY+i*256+startX, 256);	
+	if(endX-startX > 0){	
+	for(i = 0; i<div-1; i++){		//draw block 0 to div-1
+		Polyline(mX+i*256+startX,mY+i*256+startX, 257);	//257 for closing gap between graph-blocks
 	}
-	if(r > 0)
+	if(r == 0)						//if r=0 the last div block has no 267th sample
+		Polyline(mX+(div-1)*256+startX,mY+(div-1)*256+startX, 256);
+	if(r > 0 && div > 0)			//if r>0 and div>0 there is a 257th sample
+		Polyline(mX+(div-1)*256+startX,mY+(div-1)*256+startX, 257);
+	if(r > 0)						//draw last block (r<256)
 		Polyline(mX+(endX-r), mY + div*256+startX, r);
-	
+	}
 	drawMark(mWidth, mOffsetY);
 	
 }
@@ -396,6 +401,10 @@ Menu::Menu(int width, int height, int posX, int posY, Mouse* cursor){
 	mTriggerValuePt = new Poti(mWidth, mHeight, mPosX+350, mPosY+50, "Trigger Value", "mV");
 	mTriggerValuePt->setFactor(-64/3.14159);
 	mTriggerValuePt->setValue(0);	//default 0mV
+	
+	mHorzDivPt = new  Poti(mWidth, mHeight, mPosX+450, mPosY+50, "Sample", " ");
+	mHorzDivPt->setFactor(-64/3.14159);
+	mHorzDivPt->setValue(0);	//default 0ns
 }
 void Menu::draw(){
 	//frame
@@ -414,6 +423,7 @@ void Menu::draw(){
 	mCHBVertDivPt->draw();	
 	mHorzShiftPt->draw();
 	mTriggerValuePt->draw();
+	mHorzDivPt->draw();
 
 }
 
@@ -424,6 +434,7 @@ void Menu::update(){
 	mCHBVertDivPt->update(*mCursor);
 	mHorzShiftPt->update(*mCursor);
 	mTriggerValuePt->update(*mCursor);
+	mHorzDivPt->update(*mCursor);
 }
 int Menu::getTriggerValue(){
 	return mTriggerValuePt->getValue();

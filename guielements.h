@@ -43,10 +43,10 @@ class Mouse{
 
 /*****
 *
-* Button(width, height, posx, posy, sizex, sizey, text)
+* Button(width, height, posx, posy, sizex, sizey, text) 
 *	width: 	picture width
 *	height: picture height
-*	posx: 	lower left x
+*	posx: 	lower left x  
 *	posy: 	lower left y
 *	sizex: 	button width
 *	sizey: 	button height
@@ -56,7 +56,7 @@ class Mouse{
 ****/
 class Button{
 	private:
-		int mWidth;
+		int mWidth; 
 		int mHeight;
 		int mSizeX;
 		int mSizeY;
