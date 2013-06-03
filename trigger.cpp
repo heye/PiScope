@@ -1,7 +1,7 @@
 #include "trigger.h"
 
 Trigger::Trigger(){
-	mTriggerpoints = new int[10];
+	mTriggerpoints = new int[MAX_TRIGGERPOINTS];
 }
 
 Trigger::~Trigger(){
@@ -30,7 +30,7 @@ int Trigger::getPos(int value){
 	return getPos();
 }
 
-int Trigger::getPos(){
+/*int Trigger::getPos(){
 	int found = 0;
 	int i=1;
 	while(found==0 && i+1 < mLen){
@@ -42,9 +42,9 @@ int Trigger::getPos(){
 		i++;
 	}
 	return -1;
-}
+}*/
 
-/*
+
 int Trigger::getPos(){
 	int found = 0;
 	int i=1;
@@ -60,6 +60,6 @@ int Trigger::getPos(){
 		i++;
 	}
 	if(count > 0)
-	return mTriggerpoints[5];
+	return mTriggerpoints[0];
 	return -1;
-}*/
+}

@@ -397,6 +397,7 @@ Menu::Menu(int width, int height, int posX, int posY, Mouse* cursor){
 	
 	mHorzShiftPt = new Poti(mWidth, mHeight, mPosX+250, mPosY+50, "Horizontal Shift", "px");
 	mHorzShiftPt->setFactor(-256/3.141);
+	mHorzShiftPt->setValue(300);
 	
 	mTriggerValuePt = new Poti(mWidth, mHeight, mPosX+350, mPosY+50, "Trigger Value", "mV");
 	mTriggerValuePt->setFactor(-64/3.14159);

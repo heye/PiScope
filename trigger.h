@@ -1,7 +1,7 @@
 #ifndef TRIGGER_H
 #define TRIGGER_H
 
-#define MAX_TRIGGERPOINTS 10
+#define MAX_TRIGGERPOINTS 4
 
 class Trigger{
 	private:
