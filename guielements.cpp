@@ -9,6 +9,7 @@ Mouse::Mouse(int width, int height){
 	mX = width/2;
 	mY = height/2;
 	mDown = 0;
+	mDownRight = 0;
 }
 int Mouse::getX(){
 	return mX;
@@ -18,6 +19,9 @@ int Mouse::getY(){
 }
 int Mouse::getDown(){
 	return mDown;
+}
+int Mouse::getDownRight(){
+	return mDownRight;
 }
 void Mouse::update(){
 	SDL_Event event;
@@ -34,10 +38,16 @@ void Mouse::update(){
                 		
            		break;
           	case SDL_MOUSEBUTTONDOWN:            		
-           		mDown = 1;
+           		if(event.button.button == SDL_BUTTON_LEFT)
+           			mDown = 1;
+           		if(event.button.button == SDL_BUTTON_RIGHT)
+           			mDownRight = 1;
                 break;
           	case SDL_MOUSEBUTTONUP:            		
-          		mDown = 0;
+           		if(event.button.button == SDL_BUTTON_LEFT)
+           			mDown = 0;
+           		if(event.button.button == SDL_BUTTON_RIGHT)
+           			mDownRight = 0;
                 break;
             default:
                 break;
@@ -256,6 +266,9 @@ void Graph::drawMark(int x, int y){
 	mDoty = mY + sin(mPhi)*25;
 }*/
 Poti::Poti(int width, int height, int posX, int posY, string text){
+	setModeLin();
+	setMaxVal(INT_MAX);
+	setMinVal(INT_MIN);
 	mWidth = width;
 	mHeight = height;
 	mX = posX;
@@ -276,6 +289,9 @@ Poti::Poti(int width, int height, int posX, int posY, string text){
 	mValue = 0;
 }
 Poti::Poti(int width, int height, int posX, int posY,  string text, string unit){
+	setModeLin();
+	setMaxVal(INT_MAX);
+	setMinVal(INT_MIN);
 	mWidth = width;
 	mHeight = height;
 	mX = posX;
@@ -297,6 +313,15 @@ Poti::Poti(int width, int height, int posX, int posY,  string text, string unit)
 	mFactor = 1;
 	mValue = 0;
 }
+
+void Poti::setMaxVal(int val){
+	mMaxVal = val;
+}
+
+void Poti::setMinVal(int val){
+	mMinVal = val;
+}
+
 /*Poti::Poti(int width, int height, int posX, int posY, const char* text, int wrap){
 	mWidth = width;
 	mHeight = height;
@@ -337,16 +362,81 @@ void Poti::setFactor(float factor){
 }
 void Poti::setValue(int value){
 	mValue = value;
-	mPhi = mValue/mFactor;
+	if(mMode == MODE_LIN)
+		mPhi = mValue/mFactor;
+	if(mMode == MODE_EXP)
+		mPhi = log(mValue)/log(2);
 }
 void Poti::update(Mouse& cursor){
-	if(cursor.getDown() && cursor.getX() < mX+20 && cursor.getX() > mX-20 &&
-		cursor.getY() < mY && cursor.getY() > mY -20){
-		mPhi += 0.08;
+	if(cursor.getDown() == 1 && mMode == MODE_LIN){
+		if(cursor.getX() < mX+20 && cursor.getX() > mX-20 &&
+			cursor.getY() < mY && cursor.getY() > mY -20){
+			if(mValue > mMinVal)
+				mPhi += 0.08;
+			mValue = mPhi*mFactor;
+		}	
+		else if(cursor.getX() < mX+20 && cursor.getX() > mX-20 &&
+			cursor.getY() < mY + 20 && cursor.getY() > mY){
+			if(mValue < mMaxVal)
+				mPhi -= 0.08;
+			mValue = mPhi*mFactor;
+		}
 	}
-	else if(cursor.getDown() && cursor.getX() < mX+20 && cursor.getX() > mX-20 &&
-		cursor.getY() < mY + 20 && cursor.getY() > mY){
-		mPhi -= 0.08;
+	
+	
+	if(cursor.getDownRight() == 1 && mMode == MODE_LIN){
+		if(cursor.getX() < mX+20 && cursor.getX() > mX-20 &&
+			cursor.getY() < mY && cursor.getY() > mY -20){
+			if(mValue > mMinVal)
+				mPhi += 0.016;
+			mValue = mPhi*mFactor;
+		}
+		else if(cursor.getX() < mX+20 && cursor.getX() > mX-20 &&
+			cursor.getY() < mY + 20 && cursor.getY() > mY){
+			if(mValue < mMaxVal)
+				mPhi -= 0.016;
+			mValue = mPhi*mFactor;
+		}
+	}
+	
+	
+	if(cursor.getDown() == 1 && mMode == MODE_EXP){
+		if(cursor.getX() < mX+20 && cursor.getX() > mX-20 &&
+			cursor.getY() < mY && cursor.getY() > mY -20){
+			if(mValue > mMinVal)
+				mPhi += 0.08;
+			mValue = mFactor*pow(2, -mPhi);
+		}	
+		else if(cursor.getX() < mX+20 && cursor.getX() > mX-20 &&
+			cursor.getY() < mY + 20 && cursor.getY() > mY){
+			if(mValue < mMaxVal)
+				mPhi -= 0.08;			
+			mValue = mFactor*pow(2, -mPhi);
+		}
+	}
+	
+	
+	if(cursor.getDownRight() == 1 && mMode == MODE_EXP){
+		if(cursor.getX() < mX+20 && cursor.getX() > mX-20 &&
+			cursor.getY() < mY && cursor.getY() > mY -20){
+			if(mValue > mMinVal)
+			if(mPhi<-2)
+				mPhi += pow(2, mPhi);
+			else
+				mPhi += 0.08;
+			
+			mValue = mFactor*pow(2, -mPhi);
+		}
+		else if(cursor.getX() < mX+20 && cursor.getX() > mX-20 &&
+			cursor.getY() < mY + 20 && cursor.getY() > mY){
+			if(mValue < mMaxVal)
+			if(mPhi<-2)
+				mPhi -= pow(2, mPhi);
+			else
+				mPhi -= 0.08;
+			
+			mValue = mFactor*pow(2, -mPhi);
+		}
 	}
 	
 	//make wrap around
@@ -357,15 +447,25 @@ void Poti::update(Mouse& cursor){
 			mPhi += 6.28;
 	}
 	
-	mValue = mPhi*mFactor;
-	
-	mDotx = mX + cos(mPhi)*25; //dont calculate dot position in every fram for better performance
+	mDotx = mX + cos(mPhi)*25; //dont calculate dot position in every frame for better performance
 	mDoty = mY + sin(mPhi)*25;
 }
 float Poti::getValue(){
 	//return mPhi;
 	return mValue;
 }
+void Poti::setModeExp(){
+	mMode = MODE_EXP;
+}
+void Poti::setModeLin(){
+	mMode = MODE_LIN;
+}
+
+
+
+
+
+
 
 
 
@@ -389,6 +489,7 @@ Menu::Menu(int width, int height, int posX, int posY, Mouse* cursor){
 	
 	mCHAVertDivPt = new Poti(mWidth, mHeight, mPosX+150, mPosY+50, "CHA-vert-div", "mV/div");
 	mCHAVertDivPt->setFactor(-64/3.14159);
+	//mCHAVertDivPt->setModeExp();
 	mCHAVertDivPt->setValue(100);	//default 100mV/Div
 	
 	mCHBVertDivPt = new Poti(mWidth, mHeight, mPosX+150, mPosY+150, "CHB-vert-div", "mV/div");
@@ -403,9 +504,12 @@ Menu::Menu(int width, int height, int posX, int posY, Mouse* cursor){
 	mTriggerValuePt->setFactor(-64/3.14159);
 	mTriggerValuePt->setValue(0);	//default 0mV
 	
-	mHorzDivPt = new  Poti(mWidth, mHeight, mPosX+450, mPosY+50, "Sample", " ");
-	mHorzDivPt->setFactor(-64/3.14159);
-	mHorzDivPt->setValue(0);	//default 0ns
+	mHorzDivPt = new  Poti(mWidth, mHeight, mPosX+450, mPosY+50, "Timebase", " µs/div");
+	mHorzDivPt->setFactor(4/3.14159);
+	mHorzDivPt->setModeExp();
+	mHorzDivPt->setValue(1);	//default 0ns
+	mHorzDivPt->setMaxVal(1000);
+	mHorzDivPt->setMinVal(1);
 }
 void Menu::draw(){
 	//frame

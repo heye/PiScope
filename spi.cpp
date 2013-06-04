@@ -134,6 +134,8 @@ void spi::setSampleDelay(uint16_t sampleDelay){
 	mTx[7] = ((3)<<4) + (((sampleDelay) & 0x0300 ) >> 8 );	
 }
 
+
+
 void spi::read(){	
 	int ret;
 	/*uint8_t tx[] = {

@@ -14,6 +14,8 @@
 #include "guielements.h"
 
 #define BUFFLEN 4096
+#define GRID_WIDTH 50
+#define SAMPLERATE 50 //in MSPS
 
 using namespace std;
 
@@ -23,9 +25,6 @@ using namespace std;
 
 
 //Fontinfo SerifTypeface, MonoTypeface;
-
-
-
 
 
 
@@ -39,28 +38,15 @@ void drawFPS(int x, int y){
 	sprintf(buff, "FPS: %d \n", 1000/ (currentTime - lastTime));
 	
 	Fill(255, 255, 255, 1);
-	
-	//Fontinfo SerifTypeface;
-	
-	//Fontinfo SansTypeface, SerifTypeface, MonoTypeface;
     TextMid(x, y, buff, SerifTypeface, 10);  // Greetings 
     
     lastTime = currentTime;
 }
 
-/*void drawGrid(int div, int width, int height){
-	int i;
-	
-	Stroke(255,255,255, 0.5);
-	StrokeWidth(1);
-	
-	for(i= 0; i < width; i+=div){
-		Line(i, 0, i, height);
-	}
-	for(i = 0; i < height; i+=div){
-		Line(0,i, width,i);
-	}
-}*/
+
+
+
+
 
 int main ()
 {
@@ -91,14 +77,13 @@ int main ()
  	
 
     spi spiConnection(16000000);    
-    Grid grid(width, height, 50);
+    Grid grid(width, height, GRID_WIDTH);
     
     Menu menu(width, height, (width/2)-250, 0, &cursor);
         
     Background(0, 0, 0);    
     
-    //drawGrid(50, width, height);	
-	
+    	
     End();
     
    	int quitv = 0; 
@@ -130,7 +115,7 @@ int main ()
     	cursor.update();
     	pauseButton.update(cursor);
     	quit.update(cursor);
-    	spiConnection.setSampleDelay(menu.getHorzDiv());
+    	spiConnection.setSampleDelay(menu.getHorzDiv()*(SAMPLERATE/GRID_WIDTH)-1);
     	
     	if(quit.getPressed()){
     		quitv = 1;

@@ -15,11 +15,14 @@
 #include "trigger.h"
 #include <string.h>
 #include <string>
+#include <limits.h>
 
 #ifndef BUFFLEN
 #define BUFFLEN 4096
 #endif
 
+#define MODE_EXP 0
+#define MODE_LIN 1
 
 using namespace std;
 
@@ -31,6 +34,7 @@ class Mouse{
 		int mX;
 		int mY;
 		int mDown;
+		int mDownRight;
 	public:
 		Mouse(int, int);
 		void draw();
@@ -38,6 +42,7 @@ class Mouse{
 		int getX();
 		int getY();
 		int getDown();
+		int getDownRight();
 };
 
 
@@ -120,6 +125,8 @@ class Poti{
 	private:
 		float mPhi;
 		int mValue;
+		int mMaxVal;
+		int mMinVal;
 		float mFactor;
 		int mWidth;
 		int mHeight;
@@ -128,6 +135,7 @@ class Poti{
 		int mDotx;
 		int mDoty;
 		int mWrap;
+		int mMode;
 		//char mText[64];
 		char* mText;
 		char* mUnit;
@@ -138,6 +146,10 @@ class Poti{
 		//Poti(int width, int height, int posX, int posY, const char* text, int wrap);
 		void setFactor(float factor);
 		void setValue(int value);
+		void setModeExp();
+		void setModeLin();
+		void setMaxVal(int val);
+		void setMinVal(int val);
 		void draw();
 		void update(Mouse&);
 		float getValue();
